@@ -67,4 +67,5 @@ acc = accuracy_score(y_test, y_pred)
 - Precision = True Positives / (True Positives + False Positives)
 - High Recall (False Positives: Okay, False Negatives: Not Okay)
 - High Precision (False Positives: Not Okay, False Negatives: Okay)
-- F1 Score = 2\*Precision\*Recall / (Precision + Recall)
+- F<sub>1</sub> Score (*Harmonic Mean*) = 2\*Precision\*Recall / (Precision + Recall)
+- F<sub>beta</sub> Score = 
