@@ -6,6 +6,7 @@
 |2|||
 
 ## Course Content
+### Term 1
 - Decision Trees
 - Naive Bayes
 - Gradient Descent
@@ -16,6 +17,7 @@
 - Kernel Method
 - K-means Clustering
 - Hierarchical Clustering
+### Term 2
 
 ## Training and Testing model
 scikit-learn
@@ -49,7 +51,7 @@ acc = accuracy_score(y_test, y_pred)
 ```
 
 ## Evaluation Metrics
-- Confusion Matrix
+- Confusion Matrix:
 
   ||Guessed Positive|Guessed Negative|
   |---|:---:|:---:|
