@@ -49,3 +49,9 @@ acc = accuracy_score(y_test, y_pred)
 ```
 
 ## Evaluation Metrics
+- Confusion Matrix
+
+  ||Guessed Positive|Guessed Negative|
+  |---|:---:|:---:|
+  |Positive|True Positive|False Positive|
+  |Negative|False Positive|True Negative|
