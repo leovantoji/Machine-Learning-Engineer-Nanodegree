@@ -1,12 +1,11 @@
-# Machine-Learning-Nanodegree
-
-Udacity Nanodegree.
+# Udacity Machine Learning Engineer Nanodegree
 
 |Term|From|To|
 |:---:|:---:|:---:|
 |1|20 Feb 2019|8 May 2019|
 |2|||
 
+## Course Content
 - Decision Trees
 - Naive Bayes
 - Gradient Descent
