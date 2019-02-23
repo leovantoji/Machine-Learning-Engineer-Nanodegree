@@ -11,7 +11,6 @@ To begin working with the RMS Titanic passenger data, we'll first need to `impor
 Run the code cell below to load our data and display the first few entries (passengers) for examination using the `.head()` function.
 > **Tip:** You can run a code cell by clicking on the cell and using the keyboard shortcut **Shift + Enter** or **Shift + Return**. Alternatively, a code cell can be executed using the **Play** button in the hotbar after selecting it. Markdown cells (text cells like this one) can be edited by double-clicking, and saved using these same shortcuts. [Markdown](http://daringfireball.net/projects/markdown/syntax) allows you to write easy-to-read plain text that can be converted to HTML.
 
-
 ```python
 # Import libraries necessary for this project
 import numpy as np
@@ -32,120 +31,6 @@ full_data = pd.read_csv(in_file)
 display(full_data.head())
 ```
 
-
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>PassengerId</th>
-      <th>Survived</th>
-      <th>Pclass</th>
-      <th>Name</th>
-      <th>Sex</th>
-      <th>Age</th>
-      <th>SibSp</th>
-      <th>Parch</th>
-      <th>Ticket</th>
-      <th>Fare</th>
-      <th>Cabin</th>
-      <th>Embarked</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>0</td>
-      <td>3</td>
-      <td>Braund, Mr. Owen Harris</td>
-      <td>male</td>
-      <td>22.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>A/5 21171</td>
-      <td>7.2500</td>
-      <td>NaN</td>
-      <td>S</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>1</td>
-      <td>1</td>
-      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
-      <td>female</td>
-      <td>38.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>PC 17599</td>
-      <td>71.2833</td>
-      <td>C85</td>
-      <td>C</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>1</td>
-      <td>3</td>
-      <td>Heikkinen, Miss. Laina</td>
-      <td>female</td>
-      <td>26.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>STON/O2. 3101282</td>
-      <td>7.9250</td>
-      <td>NaN</td>
-      <td>S</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>1</td>
-      <td>1</td>
-      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
-      <td>female</td>
-      <td>35.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>113803</td>
-      <td>53.1000</td>
-      <td>C123</td>
-      <td>S</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>0</td>
-      <td>3</td>
-      <td>Allen, Mr. William Henry</td>
-      <td>male</td>
-      <td>35.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>373450</td>
-      <td>8.0500</td>
-      <td>NaN</td>
-      <td>S</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
 From a sample of the RMS Titanic data, we can see the various features present for each passenger on the ship:
 - **Survived**: Outcome of survival (0 = No; 1 = Yes)
 - **Pclass**: Socio-economic class (1 = Upper class; 2 = Middle class; 3 = Lower class)
@@ -162,7 +47,6 @@ From a sample of the RMS Titanic data, we can see the various features present f
 Since we're interested in the outcome of survival for each passenger or crew member, we can remove the **Survived** feature from this dataset and store it as its own separate variable `outcomes`. We will use these outcomes as our prediction targets.  
 Run the code cell below to remove **Survived** as a feature of the dataset and store it in `outcomes`.
 
-
 ```python
 # Store the 'Survived' feature in a new variable and remove it from the dataset
 outcomes = full_data['Survived']
@@ -172,120 +56,11 @@ data = full_data.drop('Survived', axis = 1)
 display(data.head())
 ```
 
-
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>PassengerId</th>
-      <th>Pclass</th>
-      <th>Name</th>
-      <th>Sex</th>
-      <th>Age</th>
-      <th>SibSp</th>
-      <th>Parch</th>
-      <th>Ticket</th>
-      <th>Fare</th>
-      <th>Cabin</th>
-      <th>Embarked</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>3</td>
-      <td>Braund, Mr. Owen Harris</td>
-      <td>male</td>
-      <td>22.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>A/5 21171</td>
-      <td>7.2500</td>
-      <td>NaN</td>
-      <td>S</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>1</td>
-      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
-      <td>female</td>
-      <td>38.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>PC 17599</td>
-      <td>71.2833</td>
-      <td>C85</td>
-      <td>C</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>3</td>
-      <td>Heikkinen, Miss. Laina</td>
-      <td>female</td>
-      <td>26.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>STON/O2. 3101282</td>
-      <td>7.9250</td>
-      <td>NaN</td>
-      <td>S</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>1</td>
-      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
-      <td>female</td>
-      <td>35.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>113803</td>
-      <td>53.1000</td>
-      <td>C123</td>
-      <td>S</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>3</td>
-      <td>Allen, Mr. William Henry</td>
-      <td>male</td>
-      <td>35.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>373450</td>
-      <td>8.0500</td>
-      <td>NaN</td>
-      <td>S</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
 The very same sample of the RMS Titanic data now shows the **Survived** feature removed from the DataFrame. Note that `data` (the passenger data) and `outcomes` (the outcomes of survival) are now *paired*. That means for any passenger `data.loc[i]`, they have the survival outcome `outcomes[i]`.
 
 To measure the performance of our predictions, we need a metric to score our predictions against the true outcomes of survival. Since we are interested in how *accurate* our predictions are, we will calculate the proportion of passengers where our prediction of their survival is correct. Run the code cell below to create our `accuracy_score` function and test a prediction on the first five passengers.  
 
 **Think:** *Out of the first five passengers, if we predict that all of them survived, what would you expect the accuracy of our predictions to be?*
-
 
 ```python
 def accuracy_score(truth, pred):
@@ -307,14 +82,12 @@ print(accuracy_score(outcomes[:5], predictions))
 
     Predictions have an accuracy of 60.00%.
 
-
 > **Tip:** If you save an iPython Notebook, the output from running code blocks will also be saved. However, the state of your workspace will be reset once a new session is started. Make sure that you run all of the code blocks from your previous session to reestablish variables and functions before picking up where you last left off.
 
 # Making Predictions
 
 If we were asked to make a prediction about any passenger aboard the RMS Titanic whom we knew nothing about, then the best prediction we could make would be that they did not survive. This is because we can assume that a majority of the passengers (more than 50%) did not survive the ship sinking.  
 The `predictions_0` function below will always predict that a passenger did not survive.
-
 
 ```python
 def predictions_0(data):
@@ -353,19 +126,13 @@ print(accuracy_score(outcomes, predictions))
 Let's take a look at whether the feature **Sex** has any indication of survival rates among passengers using the `survival_stats` function. This function is defined in the `visuals.py` Python script included with this project. The first two parameters passed to the function are the RMS Titanic data and passenger survival outcomes, respectively. The third parameter indicates which feature we want to plot survival statistics across.  
 Run the code cell below to plot the survival outcomes of passengers based on their sex.
 
-
 ```python
 vs.survival_stats(data, outcomes, 'Sex')
 ```
 
-
-![png](output_13_0.png)
-
-
 Examining the survival statistics, a large majority of males did not survive the ship sinking. However, a majority of females *did* survive the ship sinking. Let's build on our previous prediction: If a passenger was female, then we will predict that they survived. Otherwise, we will predict the passenger did not survive.  
 Fill in the missing code below so that the function will make this prediction.  
 **Hint:** You can access the values of each feature for a passenger like a dictionary. For example, `passenger['Sex']` is the sex of the passenger.
-
 
 ```python
 def predictions_1(data):
@@ -393,13 +160,11 @@ predictions = predictions_1(data)
 
 **Hint:** Run the code cell below to see the accuracy of this prediction.
 
-
 ```python
 print(accuracy_score(outcomes, predictions))
 ```
 
     Predictions have an accuracy of 78.68%.
-
 
 **Answer**: 78.68%
 
@@ -407,19 +172,13 @@ print(accuracy_score(outcomes, predictions))
 Using just the **Sex** feature for each passenger, we are able to increase the accuracy of our predictions by a significant margin. Now, let's consider using an additional feature to see if we can further improve our predictions. For example, consider all of the male passengers aboard the RMS Titanic: Can we find a subset of those passengers that had a higher rate of survival? Let's start by looking at the **Age** of each male, by again using the `survival_stats` function. This time, we'll use a fourth parameter to filter out the data so that only passengers with the **Sex** 'male' will be included.  
 Run the code cell below to plot the survival outcomes of male passengers based on their age.
 
-
 ```python
 vs.survival_stats(data, outcomes, 'Age', ["Sex == 'male'"])
 ```
 
-
-![png](output_20_0.png)
-
-
 Examining the survival statistics, the majority of males younger than 10 survived the ship sinking, whereas most males age 10 or older *did not survive* the ship sinking. Let's continue to build on our previous prediction: If a passenger was female, then we will predict they survive. If a passenger was male and younger than 10, then we will also predict they survive. Otherwise, we will predict they do not survive.  
 Fill in the missing code below so that the function will make this prediction.  
 **Hint:** You can start your implementation of this function using the prediction code you wrote earlier from `predictions_1`.
-
 
 ```python
 def predictions_2(data):
@@ -450,13 +209,11 @@ predictions = predictions_2(data)
 
 **Hint:** Run the code cell below to see the accuracy of this prediction.
 
-
 ```python
 print(accuracy_score(outcomes, predictions))
 ```
 
     Predictions have an accuracy of 79.35%.
-
 
 **Answer**: 79.35%
 
@@ -467,19 +224,13 @@ Adding the feature **Age** as a condition in conjunction with **Sex** improves t
 Use the `survival_stats` function below to to examine various survival statistics.  
 **Hint:** To use mulitple filter conditions, put each condition in the list passed as the last argument. Example: `["Sex == 'male'", "Age < 18"]`
 
-
 ```python
 vs.survival_stats(data, outcomes, 'SibSp', ["Sex == male", "Age >= 10", "Age < 18"])
 ```
 
-
-![png](output_27_0.png)
-
-
 After exploring the survival statistics visualization, fill in the missing code below so that the function will make your prediction.  
 Make sure to keep track of the various features and conditions you tried before arriving at your final prediction model.  
 **Hint:** You can start your implementation of this function using the prediction code you wrote earlier from `predictions_2`.
-
 
 ```python
 def predictions_3(data):
@@ -520,7 +271,6 @@ predictions = predictions_3(data)
 * Describe the steps you took to implement the final prediction model so that it got **an accuracy of at least 80%**. What features did you look at? Were certain features more informative than others? Which conditions did you use to split the survival outcomes in the data? How accurate are your predictions?
 
 **Hint:** Run the code cell below to see the accuracy of your predictions.
-
 
 ```python
 print(accuracy_score(outcomes, predictions))
