@@ -62,4 +62,6 @@ acc = accuracy_score(y_test, y_pred)
   - Type 1 Error: False Positive
   - Type 2 Error: False Negative
 
-- Accuracy:
+- Accuracy = (True Positives + True Negatives)/(Total)
+- High Recall (False Positives: Okay, False Negatives: Not Okay)
+- High Precision (False Positives: Not Okay, False Negatives: Okay)
