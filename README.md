@@ -94,4 +94,6 @@ acc = accuracy_score(y_test, y_pred)
   guesses = classifier.predict(X)
   error = mean_squared_error(y, guesses)
   ```
-  - R2 Score:
+  - R2 Score = 1 - Model_score / Simple_model_score
+    - Bad model: R2 Score close to 0
+    - Good model: R2 Score close to 1
