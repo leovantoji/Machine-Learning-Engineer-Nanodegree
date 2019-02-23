@@ -17,6 +17,7 @@
 - Kernel Method
 - K-means Clustering
 - Hierarchical Clustering
+
 ### Term 2
 
 ## Training and Testing model
@@ -60,4 +61,5 @@ acc = accuracy_score(y_test, y_pred)
 
   - Type 1 Error: False Positive
   - Type 2 Error: False Negative
+
 - Accuracy:
