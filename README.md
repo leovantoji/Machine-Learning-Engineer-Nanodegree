@@ -70,4 +70,5 @@ acc = accuracy_score(y_test, y_pred)
 - F<sub>1</sub> Score (*Harmonic Mean*) = 2 × Precision × Recall / (Precision + Recall)
 - F<sub>β</sub> Score:
   - F<sub>β</sub> Score = (1 + β<sup>2</sup>) × Precision × Recall / (β × Precision + Recall)
-  - The smaller the β, the closer the score is to Precision. The higher the β, the closer the score is to Recall
+  - If β = 0 then F<sub>β</sub> = Precision
+  - If β = ∞ then F<sub>β</sub> = Recall
