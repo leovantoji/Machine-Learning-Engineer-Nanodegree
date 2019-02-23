@@ -53,5 +53,9 @@ acc = accuracy_score(y_test, y_pred)
 
   ||Guessed Positive|Guessed Negative|
   |---|:---:|:---:|
-  |Positive|True Positive|False Positive|
-  |Negative|False Positive|True Negative|
+  |Positive|True Positives|False Negatives|
+  |Negative|False Positives|True Negatives|
+
+  - Type 1 Error: False Positive
+  - Type 2 Error: False Negative
+- Accuracy:
