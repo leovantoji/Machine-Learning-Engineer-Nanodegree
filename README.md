@@ -67,5 +67,7 @@ acc = accuracy_score(y_test, y_pred)
 - Precision = True Positives / (True Positives + False Positives)
 - High Recall (False Positives: Okay, False Negatives: Not Okay)
 - High Precision (False Positives: Not Okay, False Negatives: Okay)
-- F<sub>1</sub> Score (*Harmonic Mean*) = 2\*Precision\*Recall / (Precision + Recall)
-- F<sub>β</sub> Score. The smaller the β, the closer the score is to Precision. The higher the β, the closer the score is to Recall
+- F<sub>1</sub> Score (*Harmonic Mean*) = 2 × Precision × Recall / (Precision + Recall)
+- F<sub>β</sub> Score:
+  - F<sub>β</sub> Score = (1 + β<sup>2</sup>) × Precision × Recall / (β × Precision + Recall)
+  - The smaller the β, the closer the score is to Precision. The higher the β, the closer the score is to Recall
