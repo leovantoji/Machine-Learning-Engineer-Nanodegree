@@ -72,3 +72,26 @@ acc = accuracy_score(y_test, y_pred)
   - F<sub>β</sub> Score = (1 + β<sup>2</sup>) × Precision × Recall / (β × Precision + Recall)
   - If β = 0 then F<sub>β</sub> = Precision
   - If β = ∞ then F<sub>β</sub> = Recall
+- Receiver Operating Characteristic (ROC Curve)
+- Regression Metrics:
+  - Mean Absolute Error:
+  ```python
+  from sklearn.metrics import mean_absolute_error
+  from sklearn.linear_model import LinearRegression
+  
+  classifier = LinearRegression()
+  classifier.fit(X, y)
+  guesses = classifier.predict(X)
+  error = mean_absolute_error(y, guesses)
+  ```
+  - Mean Squared Error:
+  ```python
+  from sklearn.metrics import mean_squared_error
+  from sklearn.linear_model import LinearRegression
+  
+  classifier = LinearRegression()
+  classifier.fit(X, y)
+  guesses = classifier.predict(X)
+  error = mean_squared_error(y, guesses)
+  ```
+  - R2 Score:
