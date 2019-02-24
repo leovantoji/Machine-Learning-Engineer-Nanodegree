@@ -146,5 +146,5 @@ acc = accuracy_score(y_test, y_pred)
   grid_fit = grid_obj.fit(X, y)
   
   # Choose the best estimator
-  best_clf = grid_fit.best_estimator
+  best_clf = grid_fit.best_estimator_
   ```
