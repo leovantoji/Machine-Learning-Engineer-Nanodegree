@@ -97,3 +97,30 @@ acc = accuracy_score(y_test, y_pred)
   - R2 Score = 1 - Model_score / Simple_model_score
     - Bad model: R2 Score close to 0
     - Good model: R2 Score close to 1
+
+## Model Selection
+- Type of errors:
+  - Underfitting: 
+    - Error due to bias (high bias)
+    - Bad on training set
+    - Bad on testing set
+  - Overfitting:
+    - Error due to variance (high variance)
+    - Great on the training set
+    - Bad on testing set
+- Model Complexity Graph
+- Data set:
+  - Training: training model
+  - Cross Validation: making decisions about the complexity of the model
+  - Testing: testing model
+- K-fold cross validation: useful to recycle data
+  - Break the data set into *k* buckets
+  - Train the model *k* times
+  - Average the results to get the final model
+  - sklearn:
+  ```python
+  from sklearn.model_selection import KFold
+  kf = KFold(12, 3, shuffle = True)
+  ```
+- Learning Curves:
+  
