@@ -125,6 +125,8 @@ acc = accuracy_score(y_test, y_pred)
 - Learning Curves
 - Grid Search:
   ```python
+  from sklearn.tree import DecisionTreeClassifier
+  
   # Import GridSearchCV
   from sklearn.model_selection import GridSearchCV
   
@@ -135,6 +137,9 @@ acc = accuracy_score(y_test, y_pred)
   from sklearn.metrics import make_scorer
   from sklearn.metrics import f1_score
   scorer = make_scorer(f1_score)
+  
+  # Define the model
+  clf = DecisionTreeClassifier(random_state=42)
   
   # Create a GridSearch Object
   grid_obj = GridSearchSV(clf, parameters, scoring = scorer)
