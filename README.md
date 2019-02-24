@@ -110,9 +110,9 @@ acc = accuracy_score(y_test, y_pred)
     - Bad on testing set
 - Model Complexity Graph
 - Data set:
-  - Training: training model
-  - Cross Validation: making decisions about the complexity of the model
-  - Testing: testing model
+  - Training
+  - Cross Validation
+  - Testing
 - K-fold cross validation: useful to recycle data
   - Break the data set into *k* buckets
   - Train the model *k* times
@@ -122,5 +122,24 @@ acc = accuracy_score(y_test, y_pred)
   from sklearn.model_selection import KFold
   kf = KFold(12, 3, shuffle = True)
   ```
-- Learning Curves:
+- Learning Curves
+- Grid Search:
+  ```python
+  # Import GridSearchCV
+  from sklearn.model_selection import GridSearchCV
   
+  # Select parameters
+  parameters = {'kernel': ['poly', 'rbf'], 'C': [0.1, 1, 10]}
+  
+  # Create a scorer
+  from sklearn.metrics import make_scorer
+  from sklearn.metrics import f1_score
+  scorer = make_scorer(f1_score)
+  
+  # Create a GridSearch Object
+  grid_obj = GridSearchSV(clf, parameters, scoring = scorer)
+  grid_fit = grid_obj.fit(X, y)
+  
+  # Choose the best estimator
+  best_clf = grid_fit.best_estimator
+  ```
