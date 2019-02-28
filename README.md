@@ -151,10 +151,22 @@ acc = accuracy_score(y_test, y_pred)
 
 ## Linear Regression
 - Absolute trick:
-  - Line equation: y = w<sub>1</sub>x + w<sub>2</sub>
-  - Point (p,q) is not on the line
-  - Learning rate: α
-  - Move line closer to point: y = (w<sub>1</sub> ± αp)x + (w<sub>2</sub> ± α)
+  - Line equation: *y = w<sub>1</sub>x + w<sub>2</sub>*
+  - Point *(p,q)* is not on the line
+  - Learning rate: *α*
+  - Move line closer to point: *y = (w<sub>1</sub> ± αp)x + (w<sub>2</sub> ± α)*
 - Square trick: 
-  - Point (p,q<sup>'</sup>) is on the line
-  - Move line closer to point: y = (w<sub>1</sub> ± αp(q - q<sup>'</sup>))x + (w<sub>2</sub> ± α(q - q<sup>'</sup>))
+  - Point *(p,q<sup>'</sup>)* is on the line
+  - Move line closer to point: *y = (w<sub>1</sub> ± αp(q - q<sup>'</sup>))x + (w<sub>2</sub> ± α(q - q<sup>'</sup>))*
+- Error functions:
+  - Mean Absolute Error
+  - Mean Squared Error
+- Stochastic Gradient Descent: apply the squared (or absolute) trick at every point in our data one by one, and repeat this process many times
+- Batch Gradient Descent: apply the squared (or absolute) trick at every point in our data all at the same time, and repeat this process many times
+- Mini-batch Gradient Descent: split the dataset into roughly equal-sized subsets, and apply Batch Gradient Descent to each subset
+- Linear Regression Implementation in Sklearn:
+  ```python
+  from sklearn.linear_model import LinearRegression
+  model = LinearRegression()
+  model.fit(x_values, y_values)
+  ```
