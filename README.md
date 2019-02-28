@@ -150,9 +150,11 @@ acc = accuracy_score(y_test, y_pred)
   ```
 
 ## Linear Regression
-- Moving a line
 - Absolute trick:
   - Line equation: y = w<sub>1</sub>x + w<sub>2</sub>
-  - Point: (p,q)
+  - Point (p,q) is not on the line
   - Learning rate: α
-  - Move line closer to point: y = (w<sub>1</sub> + αp)x + (w<sub>2</sub> + α)
+  - Move line closer to point: y = (w<sub>1</sub> ± αp)x + (w<sub>2</sub> ± α)
+- Square trick: 
+  - Point (p,q<sup>'</sup>) is on the line
+  - Move line closer to point: y = (w<sub>1</sub> ± αp(q - q<sup>'</sup>))x + (w<sub>2</sub> ± α(q - q<sup>'</sup>))
