@@ -148,3 +148,11 @@ acc = accuracy_score(y_test, y_pred)
   # Choose the best estimator
   best_clf = grid_fit.best_estimator_
   ```
+
+## Linear Regression
+- Moving a line
+- Absolute trick:
+  - Line equation: y = w<sub>1</sub>x + w<sub>2</sub>
+  - Point: (p,q)
+  - Learning rate: α
+  - Move line closer to point: y = (w<sub>1</sub> + αp)x + (w<sub>2</sub> + α)
