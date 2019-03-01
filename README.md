@@ -209,3 +209,4 @@ acc = accuracy_score(y_test, y_pred)
   |Computationally Inefficient (unless data is sparse)|Computationally Efficient|
   |Sparse Outputs|Non-Sparse Outputs|
   |Feature Selection|No Feature Selection|
+- Perceptron Algorithm:
