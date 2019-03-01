@@ -190,3 +190,21 @@ acc = accuracy_score(y_test, y_pred)
                 1.86000000e+01, 3.94870000e+02, 1.09700000e+01]]
   prediction = model.predict(sample_house)
   ```
+- Closed Form Solution is computationally expensive when *n* is large (*n* equations, *n* unknowns). Thus, it's the reason why we use Gradient Descent. Even though Gradient Descent won't give us 100% accurate answer, it is able to give us good enough answer which fits the data pretty well. 
+- Linear Regression Warnings:
+  - Linear Regression works best when the data is linear
+  - Linear Regression is sensitive to outliers
+- Polynomial Regression
+- Regularization: Take the complexity of the model into account when calculating error
+  - L1 Regularization: Add absolute values of the coefficients into the error
+  - L2 Regularization: Add the square of the coefficients into the error
+  - Regularization punishes complexity of the model
+  - λ parameter:
+    - Large λ punishes Complex model → Simple model wins
+    - Small λ punishes Simple model → Complex model wins
+  
+  |L1 Regularization|L2 Regularization|
+  |:---:|:---:|
+  |Computationally Inefficient (unless data is sparse)|Computationally Efficient|
+  |Sparse Outputs|Non-Sparse Outputs|
+  |Feature Selection|No Feature Selection|
