@@ -202,6 +202,7 @@ acc = accuracy_score(y_test, y_pred)
   - λ parameter:
     - Large λ punishes Complex model → Simple model wins
     - Small λ punishes Simple model → Complex model wins
+  - L1 vs. L2 Regularization:
   
   |L1 Regularization|L2 Regularization|
   |:---:|:---:|
