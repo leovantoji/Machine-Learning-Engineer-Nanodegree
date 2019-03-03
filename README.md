@@ -210,3 +210,8 @@ acc = accuracy_score(y_test, y_pred)
   |Sparse Outputs|Non-Sparse Outputs|
   |Feature Selection|No Feature Selection|
 - Perceptron Algorithm:
+  - Perceptron step:
+    For a point with coordinates *(p,q)*, label *y*, and prediction given by the equation *y<sub>prediction</sub> = step(w<sub>1</sub>x<sub>1</sub> + w<sub>2</sub>x<sub>2</sub> + b)*:
+    - If the point is correctly classified, do nothing.
+    - If the point is classified positive, but it has a negative label, subtract *αp, αq,* and *α* from *w<sub>1</sub>, w<sub>2</sub>,* and *b* respectively.
+    - If the point is classified negative, but it has a positive label, add *αp, αq,* and *α* from *w<sub>1</sub>, w<sub>2</sub>,* and *b* respectively.
