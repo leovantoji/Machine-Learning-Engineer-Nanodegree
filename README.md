@@ -259,3 +259,8 @@ acc = accuracy_score(y_test, y_pred)
         boundary_lines.append((-W[0]/W[1], -b/W[1]))
     return boundary_lines
   ```
+- Decision Trees:
+  - Entropy:
+    - High Knowledge → Low Entropy
+    - Medium Knowledge → Medium Entropy
+    - Low Knowledge → High Entropy
