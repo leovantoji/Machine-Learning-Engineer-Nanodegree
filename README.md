@@ -293,11 +293,12 @@ acc = accuracy_score(y_test, y_pred)
     y = data[:,2]
 
     # Creat and fit the model
-    model = DecisionTreeClassifier().fit(X,y)
+    model = DecisionTreeClassifier().fit(X, y)
 
     # Make predictions. Store them in the variable y_pred.
     y_pred = model.predict(X)
 
     # Calculate the accuracy and assign it to the variable acc.
-    acc = accuracy_score(y_pred,y)
+    acc = accuracy_score(y, y_pred)
     ```
+- One hot encoding is a process by which categorical variables are converted into a form that could be provided to ML algorithms to do a better job in prediction. The problem with label encoding is that it assumes the higher the categorical value, the better the category is
