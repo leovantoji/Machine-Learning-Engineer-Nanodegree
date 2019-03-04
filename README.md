@@ -270,3 +270,13 @@ acc = accuracy_score(y_test, y_pred)
     - Low Knowledge → High Entropy
   - Entropy = -Σ*p<sub>i</sub>×log<sub>2</sub>(p<sub>i</sub>)*
   - Information Gain = Entropy(Parent) - 0.5×\[Entropy(Child<sub>1</sub>) + Entropy(Child<sub>2</sub>)\]
+  - Maximize Information Gain at each step
+  - Decision Tree tends to overfit
+  - Hyperparameters for decision tree:
+    - `max_depth` is the largest possible length from the root to a leaf
+    - `min_samples_split`: a node must have at least `min_samples_split` samples in order to be large enough to be split. If it has less than `min_samples_split` samples, it will not be split, and the splitting process stops. `min_samples_split` doesn't control the minimum size of a leaf
+    - `min_samples_leaf` is the minimum number of samples that a leaf must have. `min_samples_leaf` can be a float or an integer
+  - Large `max_depth` very often causes overfitting, since a tree that is too deep, can memorize the data. Small `max_depth` can result in a very simple model, which may cause underfitting.
+  - Small `min_samples_split` may result in a complicated, highly branched tree, which can mean the model has memorized the data, or in other words, overfit. Large `min_samples_split` may result in the tree not having enough flexibility to get built, and may result in underfitting
+- Random Forests:
+  - 
