@@ -142,7 +142,7 @@ acc = accuracy_score(y_test, y_pred)
   clf = SVC(gamma='auto')
   
   # Create a GridSearch Object
-  grid_obj = GridSearchSV(clf, parameters, scoring = scorer)
+  grid_obj = GridSearchCV(clf, parameters, scoring = scorer)
   grid_fit = grid_obj.fit(X, y)
   
   # Choose the best estimator
