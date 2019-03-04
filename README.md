@@ -230,8 +230,9 @@ acc = accuracy_score(y_test, y_pred)
     return stepFunction((np.matmul(X,W)+b)[0])
 
   # Perceptron trick
-  # The function should receive as inputs the data X, the labels y, the weights W (as an array), 
-  # and the bias b, update the weights and bias W, b, according to the perceptron algorithm, and return W and b.
+  # The function should receive as inputs the data X, the labels y, 
+  # the weights W (as an array), and the bias b, update the weights 
+  # and bias W, b, according to the perceptron algorithm, and return W and b.
   def perceptronStep(X, y, W, b, learn_rate = 0.01):
     # Fill in code
     for i in range(len(X)):
