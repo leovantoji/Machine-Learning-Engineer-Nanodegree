@@ -264,4 +264,5 @@ acc = accuracy_score(y_test, y_pred)
     - High Knowledge → Low Entropy
     - Medium Knowledge → Medium Entropy
     - Low Knowledge → High Entropy
+  - Entropy = -Σ*p<sub>i</sub>×log<sub>2</sub>(p<sub>i</sub>)*
   - Information Gain = Entropy(Parent) - 0.5×\[Entropy(Child<sub>1</sub>) + Entropy(Child<sub>2</sub>)\]
