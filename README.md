@@ -278,5 +278,26 @@ acc = accuracy_score(y_test, y_pred)
     - `min_samples_leaf` is the minimum number of samples that a leaf must have. `min_samples_leaf` can be a float or an integer
   - Large `max_depth` very often causes overfitting, since a tree that is too deep, can memorize the data. Small `max_depth` can result in a very simple model, which may cause underfitting.
   - Small `min_samples_split` may result in a complicated, highly branched tree, which can mean the model has memorized the data, or in other words, overfit. Large `min_samples_split` may result in the tree not having enough flexibility to get built, and may result in underfitting
-- Random Forests:
-  - 
+  - Decision Tree in sklearn:
+    ```python
+    # Import statements 
+    from sklearn.tree import DecisionTreeClassifier
+    from sklearn.metrics import accuracy_score
+    import pandas as pd
+    import numpy as np
+
+    # Read the data.
+    data = np.asarray(pd.read_csv('data.csv', header=None))
+    # Assign the features to the variable X, and the labels to the variable y. 
+    X = data[:,0:2]
+    y = data[:,2]
+
+    # Creat and fit the model
+    model = DecisionTreeClassifier().fit(X,y)
+
+    # Make predictions. Store them in the variable y_pred.
+    y_pred = model.predict(X)
+
+    # Calculate the accuracy and assign it to the variable acc.
+    acc = accuracy_score(y_pred,y)
+    ```
