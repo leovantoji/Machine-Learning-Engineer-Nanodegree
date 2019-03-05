@@ -192,13 +192,13 @@ acc = accuracy_score(y_test, y_pred)
   ```
 - Closed Form Solution is computationally expensive when *n* is large (*n* equations, *n* unknowns). Thus, it's the reason why we use Gradient Descent. Even though Gradient Descent won't give us 100% accurate answer, it is able to give us good enough answer which fits the data pretty well. 
 - Linear Regression Warnings:
-  - Linear Regression works best when the data is linear
-  - Linear Regression is sensitive to outliers
+  - Linear Regression works best when the data is linear.
+  - Linear Regression is sensitive to outliers.
 - Polynomial Regression
-- Regularization: Take the complexity of the model into account when calculating error
-  - L1 Regularization: Add absolute values of the coefficients into the error
-  - L2 Regularization: Add the square of the coefficients into the error
-  - Regularization punishes complexity of the model
+- Regularization: Take the complexity of the model into account when calculating error.
+  - L1 Regularization: Add absolute values of the coefficients into the error.
+  - L2 Regularization: Add the square of the coefficients into the error.
+  - Regularization punishes complexity of the model.
   - λ parameter:
     - Large λ punishes Complex model → Simple model wins
     - Small λ punishes Simple model → Complex model wins
@@ -277,7 +277,7 @@ acc = accuracy_score(y_test, y_pred)
     - `min_samples_split`: a node must have at least `min_samples_split` samples in order to be large enough to be split. If it has less than `min_samples_split` samples, it will not be split, and the splitting process stops. `min_samples_split` doesn't control the minimum size of a leaf
     - `min_samples_leaf` is the minimum number of samples that a leaf must have. `min_samples_leaf` can be a float or an integer
   - Large `max_depth` very often causes overfitting, since a tree that is too deep, can memorize the data. Small `max_depth` can result in a very simple model, which may cause underfitting.
-  - Small `min_samples_split` may result in a complicated, highly branched tree, which can mean the model has memorized the data, or in other words, overfit. Large `min_samples_split` may result in the tree not having enough flexibility to get built, and may result in underfitting
+  - Small `min_samples_split` may result in a complicated, highly branched tree, which can mean the model has memorized the data, or in other words, overfit. Large `min_samples_split` may result in the tree not having enough flexibility to get built, and may result in underfitting.
   - Decision Tree in sklearn:
     ```python
     # Import statements 
@@ -301,4 +301,13 @@ acc = accuracy_score(y_test, y_pred)
     # Calculate the accuracy and assign it to the variable acc.
     acc = accuracy_score(y, y_pred)
     ```
-- One hot encoding is a process by which categorical variables are converted into a form that could be provided to ML algorithms to do a better job in prediction. The problem with label encoding is that it assumes the higher the categorical value, the better the category is
+- One hot encoding is a process by which categorical variables are converted into a form that could be provided to ML algorithms to do a better job in prediction. The problem with label encoding is that it assumes the higher the categorical value, the better the category is.
+- Naive Bayes:
+  - Naive assumption: events are independent. *P(A AND B) = P(A)×P(B)*
+  - Bag of Words(BoW) concept specifies the problems that have a collection of text data that needs to be worked with.
+  - `CountVectorizer` method (```python from sklearn.feature_extraction.text import CountVectorizer```)
+    - It tokenizes the string(separates the string into individual words) and gives an integer ID to each token.
+    - It counts the occurrence of each of those tokens.
+  
+  
+  
