@@ -310,6 +310,10 @@ acc = accuracy_score(y_test, y_pred)
   naive_bayes = MultinomialNB()
   naive_bayes.fit(training_data, y_train)
   ```
+  - Advantages of Naive Bayes:
+    - Ability to handle an extremely large number of features. Performs well even with the presence of irrelevant features and is relatively unaffected by them. 
+    - Relative simplicity. Naive Bayes works well right out of the box and tuning it's parameters is rarely ever necessary, except usually in cases where the distribution of the data is known. It rarely ever overfits the data. 
+    - Model training and prediction times are very fast for the amount of data it can handle. 
   - Bag of Words(BoW) concept specifies the problems that have a collection of text data that needs to be worked with.
   - `CountVectorizer` method (```from sklearn.feature_extraction.text import CountVectorizer```)
     - It tokenizes the string(separates the string into individual words) and gives an integer ID to each token.
