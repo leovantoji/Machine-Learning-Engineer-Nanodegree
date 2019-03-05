@@ -304,6 +304,12 @@ acc = accuracy_score(y_test, y_pred)
 - One hot encoding is a process by which categorical variables are converted into a form that could be provided to ML algorithms to do a better job in prediction. The problem with label encoding is that it assumes the higher the categorical value, the better the category is.
 - Naive Bayes:
   - Naive assumption: events are independent. *P(A AND B) = P(A)×P(B)*
+  - Implementation in sklearn:
+  ```python
+  from sklearn.naive_bayes import MultinomialNB
+  naive_bayes = MultinomialNB()
+  naive_bayes.fit(training_data, y_train)
+  ```
   - Bag of Words(BoW) concept specifies the problems that have a collection of text data that needs to be worked with.
   - `CountVectorizer` method (```from sklearn.feature_extraction.text import CountVectorizer```)
     - It tokenizes the string(separates the string into individual words) and gives an integer ID to each token.
