@@ -305,9 +305,9 @@ acc = accuracy_score(y_test, y_pred)
 - Naive Bayes:
   - Naive assumption: events are independent. *P(A AND B) = P(A)×P(B)*
   - Bag of Words(BoW) concept specifies the problems that have a collection of text data that needs to be worked with.
-  - `CountVectorizer` method (```python from sklearn.feature_extraction.text import CountVectorizer```)
+  - `CountVectorizer` method (```from sklearn.feature_extraction.text import CountVectorizer```)
     - It tokenizes the string(separates the string into individual words) and gives an integer ID to each token.
     - It counts the occurrence of each of those tokens.
-  
-  
-  
+    - The CountVectorizer method automatically converts all tokenized words to their lower case form so that it does not treat words like 'He' and 'he' differently. It does this using the lowercase parameter which is by default set to `True`.
+    - It also ignores all punctuation so that words followed by a punctuation mark (for example: 'hello!') are not treated differently than the same words not prefixed or suffixed by a punctuation mark (for example: 'hello'). It does this using the `token_pattern` parameter which has a default regular expression which selects tokens of 2 or more alphanumeric characters.
+    - The third parameter to take note of is the `stop_words` parameter. Stop words refer to the most commonly used words in a language. They include words like 'am', 'an', 'and', 'the' etc. By setting this parameter value to english, CountVectorizer will automatically ignore all words(from our input text) that are found in the built in list of english stop words in scikit-learn. This is extremely helpful as stop words can skew our calculations when we are trying to find certain key words that are indicative of spam.
