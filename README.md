@@ -332,3 +332,5 @@ acc = accuracy_score(y_test, y_pred)
   |:---:|:---:|:---:|
   |Large|Good|Small|
   |Small|Some Errors|Large|
+- Kernel trick means transforming data into another dimension that has a clear dividing margin between classes of data.
+
