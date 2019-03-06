@@ -209,12 +209,12 @@ acc = accuracy_score(y_test, y_pred)
   |Computationally Inefficient (unless data is sparse)|Computationally Efficient|
   |Sparse Outputs|Non-Sparse Outputs|
   |Feature Selection|No Feature Selection|
-- Perceptron Algorithm:
-  - Perceptron step:
-    For a point with coordinates *(p,q)*, label *y*, and prediction given by the equation *y<sub>prediction</sub> = step(w<sub>1</sub>x<sub>1</sub> + w<sub>2</sub>x<sub>2</sub> + b)*:
-    - If the point is correctly classified, do nothing.
-    - If the point is classified positive, but it has a negative label, subtract *αp, αq,* and *α* from *w<sub>1</sub>, w<sub>2</sub>,* and *b* respectively.
-    - If the point is classified negative, but it has a positive label, add *αp, αq,* and *α* from *w<sub>1</sub>, w<sub>2</sub>,* and *b* respectively.
+
+## Perceptron Algorithm
+- Perceptron step: For a point with coordinates *(p,q)*, label *y*, and prediction given by the equation *y<sub>prediction</sub> = step(w<sub>1</sub>x<sub>1</sub> + w<sub>2</sub>x<sub>2</sub> + b)*:
+  - If the point is correctly classified, do nothing.
+  - If the point is classified positive, but it has a negative label, subtract *αp, αq,* and *α* from *w<sub>1</sub>, w<sub>2</sub>,* and *b* respectively.
+  - If the point is classified negative, but it has a positive label, add *αp, αq,* and *α* from *w<sub>1</sub>, w<sub>2</sub>,* and *b* respectively.
   
   ```python
   import numpy as np
@@ -263,22 +263,23 @@ acc = accuracy_score(y_test, y_pred)
         boundary_lines.append((-W[0]/W[1], -b/W[1]))
     return boundary_lines
   ```
-- Decision Trees:
-  - Entropy:
-    - High Knowledge → Low Entropy
-    - Medium Knowledge → Medium Entropy
-    - Low Knowledge → High Entropy
+
+## Decision Trees
+- Entropy:
+  - High Knowledge → Low Entropy
+  - Medium Knowledge → Medium Entropy
+  - Low Knowledge → High Entropy
   - Entropy = -Σ*p<sub>i</sub>×log<sub>2</sub>(p<sub>i</sub>)*
   - Information Gain = Entropy(Parent) - 0.5×\[Entropy(Child<sub>1</sub>) + Entropy(Child<sub>2</sub>)\]
-  - Maximize Information Gain at each step
-  - Decision Tree tends to overfit
-  - Hyperparameters for decision tree:
-    - `max_depth` is the largest possible length from the root to a leaf
-    - `min_samples_split`: a node must have at least `min_samples_split` samples in order to be large enough to be split. If it has less than `min_samples_split` samples, it will not be split, and the splitting process stops. `min_samples_split` doesn't control the minimum size of a leaf
-    - `min_samples_leaf` is the minimum number of samples that a leaf must have. `min_samples_leaf` can be a float or an integer
-  - Large `max_depth` very often causes overfitting, since a tree that is too deep, can memorize the data. Small `max_depth` can result in a very simple model, which may cause underfitting.
-  - Small `min_samples_split` may result in a complicated, highly branched tree, which can mean the model has memorized the data, or in other words, overfit. Large `min_samples_split` may result in the tree not having enough flexibility to get built, and may result in underfitting.
-  - Decision Tree in sklearn:
+  - Maximize Information Gain at each step.
+- Decision Tree tends to overfit.
+- Hyperparameters for decision tree:
+  - `max_depth` is the largest possible length from the root to a leaf.
+  - `min_samples_split`: a node must have at least `min_samples_split` samples in order to be large enough to be split. If it has less than `min_samples_split` samples, it will not be split, and the splitting process stops. `min_samples_split` doesn't control the minimum size of a leaf.
+  - `min_samples_leaf` is the minimum number of samples that a leaf must have. `min_samples_leaf` can be a float or an integer.
+- Large `max_depth` very often causes overfitting, since a tree that is too deep, can memorize the data. Small `max_depth` can result in a very simple model, which may cause underfitting.
+- Small `min_samples_split` may result in a complicated, highly branched tree, which can mean the model has memorized the data, or in other words, overfit. Large `min_samples_split` may result in the tree not having enough flexibility to get built, and may result in underfitting.
+- Decision Tree in sklearn:
     ```python
     # Import statements 
     from sklearn.tree import DecisionTreeClassifier
@@ -302,22 +303,26 @@ acc = accuracy_score(y_test, y_pred)
     acc = accuracy_score(y, y_pred)
     ```
 - One hot encoding is a process by which categorical variables are converted into a form that could be provided to ML algorithms to do a better job in prediction. The problem with label encoding is that it assumes the higher the categorical value, the better the category is.
-- Naive Bayes:
-  - Naive assumption: events are independent. *P(A AND B) = P(A)×P(B)*
-  - Implementation in sklearn:
+
+## Naive Bayes
+- Naive assumption: events are independent. *P(A AND B) = P(A)×P(B)*
+- Implementation in sklearn:
   ```python
   from sklearn.naive_bayes import MultinomialNB
   naive_bayes = MultinomialNB()
   naive_bayes.fit(training_data, y_train)
   ```
-  - Advantages of Naive Bayes:
-    - Ability to handle an extremely large number of features. Performs well even with the presence of irrelevant features and is relatively unaffected by them. 
-    - Relative simplicity. Naive Bayes works well right out of the box and tuning it's parameters is rarely ever necessary, except usually in cases where the distribution of the data is known. It rarely ever overfits the data. 
-    - Model training and prediction times are very fast for the amount of data it can handle. 
-  - Bag of Words(BoW) concept specifies the problems that have a collection of text data that needs to be worked with.
-  - `CountVectorizer` method (```from sklearn.feature_extraction.text import CountVectorizer```)
-    - It tokenizes the string(separates the string into individual words) and gives an integer ID to each token.
-    - It counts the occurrence of each of those tokens.
-    - The CountVectorizer method automatically converts all tokenized words to their lower case form so that it does not treat words like 'He' and 'he' differently. It does this using the lowercase parameter which is by default set to `True`.
-    - It also ignores all punctuation so that words followed by a punctuation mark (for example: 'hello!') are not treated differently than the same words not prefixed or suffixed by a punctuation mark (for example: 'hello'). It does this using the `token_pattern` parameter which has a default regular expression which selects tokens of 2 or more alphanumeric characters.
-    - The third parameter to take note of is the `stop_words` parameter. Stop words refer to the most commonly used words in a language. They include words like 'am', 'an', 'and', 'the' etc. By setting this parameter value to english, CountVectorizer will automatically ignore all words(from our input text) that are found in the built in list of english stop words in scikit-learn. This is extremely helpful as stop words can skew our calculations when we are trying to find certain key words that are indicative of spam.
+- Advantages of Naive Bayes:
+  - Ability to handle an extremely large number of features. Performs well even with the presence of irrelevant features and is relatively unaffected by them. 
+  - Relative simplicity. Naive Bayes works well right out of the box and tuning it's parameters is rarely ever necessary, except usually in cases where the distribution of the data is known. It rarely ever overfits the data. 
+  - Model training and prediction times are very fast for the amount of data it can handle. 
+- Bag of Words(BoW) concept specifies the problems that have a collection of text data that needs to be worked with.
+- `CountVectorizer` method (```from sklearn.feature_extraction.text import CountVectorizer```)
+  - It tokenizes the string(separates the string into individual words) and gives an integer ID to each token.
+  - It counts the occurrence of each of those tokens.
+  - The CountVectorizer method automatically converts all tokenized words to their lower case form so that it does not treat words like 'He' and 'he' differently. It does this using the lowercase parameter which is by default set to `True`.
+  - It also ignores all punctuation so that words followed by a punctuation mark (for example: 'hello!') are not treated differently than the same words not prefixed or suffixed by a punctuation mark (for example: 'hello'). It does this using the `token_pattern` parameter which has a default regular expression which selects tokens of 2 or more alphanumeric characters.
+  - The third parameter to take note of is the `stop_words` parameter. Stop words refer to the most commonly used words in a language. They include words like 'am', 'an', 'and', 'the' etc. By setting this parameter value to english, CountVectorizer will automatically ignore all words(from our input text) that are found in the built in list of english stop words in scikit-learn. This is extremely helpful as stop words can skew our calculations when we are trying to find certain key words that are indicative of spam.
+
+## Support Vector Machine
+- SVM Error = Classification Error + Margin Error. Use Gradient Descent to minimize SVM Error.
