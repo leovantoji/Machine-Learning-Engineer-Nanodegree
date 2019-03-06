@@ -326,3 +326,9 @@ acc = accuracy_score(y_test, y_pred)
 
 ## Support Vector Machine
 - SVM Error = Classification Error + Margin Error. Use Gradient Descent to minimize SVM Error.
+- The `C` parameter is a constant that attaches itself to the Classification Error.
+  
+  |`C`|Points Classification|Margin|
+  |:---:|:---:|:---:|
+  |Large|Good|Small|
+  |Small|Some Errors|Large|
