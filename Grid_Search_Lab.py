@@ -1,23 +1,17 @@
 
 # Improving a model with Grid Search
+# In this mini-lab, we'll fit a decision tree model to some sample data. 
+# This initial model will overfit heavily. 
+# Then we'll use Grid Search to find better parameters for this model, to reduce the overfitting.
 
-In this mini-lab, we'll fit a decision tree model to some sample data. This initial model will overfit heavily. Then we'll use Grid Search to find better parameters for this model, to reduce the overfitting.
-
-First, some imports.
-
-
-```python
 %matplotlib inline
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-```
 
-### 1. Reading and plotting the data
-Now, a function that will help us read the csv file, and plot the data.
+# 1. Reading and plotting the data
+# Now, a function that will help us read the csv file, and plot the data.
 
-
-```python
 def load_pts(csv_name):
     data = np.asarray(pd.read_csv(csv_name, header=None))
     X = data[:,0:2]
@@ -39,27 +33,21 @@ def load_pts(csv_name):
 
 X, y = load_pts('data.csv')
 plt.show()
-```
 
-### 2. Splitting our data into training and testing sets
+# 2. Splitting our data into training and testing sets
 
-
-```python
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score, make_scorer
 
-#Fixing a random seed
+# Fixing a random seed
 import random
 random.seed(42)
 
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-```
 
-### 3. Fitting a Decision Tree model
+# 3. Fitting a Decision Tree model
 
-
-```python
 from sklearn.tree import DecisionTreeClassifier
 
 # Define the model (with default hyperparameters)
@@ -71,14 +59,10 @@ clf.fit(X_train, y_train)
 # Make predictions
 train_predictions = clf.predict(X_train)
 test_predictions = clf.predict(X_test)
-```
 
-Now let's plot the model, and find the testing f1_score, to see how we did.
+# Now let's plot the model, and find the testing f1_score, to see how we did.
+# The following function will help us plot the model.
 
-The following function will help us plot the model.
-
-
-```python
 def plot_model(X, y, clf):
     plt.scatter(X[np.argwhere(y==0).flatten(),0],X[np.argwhere(y==0).flatten(),1],s = 50, color = 'blue', edgecolor = 'k')
     plt.scatter(X[np.argwhere(y==1).flatten(),0],X[np.argwhere(y==1).flatten(),1],s = 50, color = 'red', edgecolor = 'k')
@@ -108,55 +92,44 @@ def plot_model(X, y, clf):
     if len(np.unique(z)) > 1:
         plt.contour(s,t,z,colors = 'k', linewidths = 2)
     plt.show()
-```
 
-
-```python
 plot_model(X, y, clf)
 print('The Training F1 Score is', f1_score(train_predictions, y_train))
 print('The Testing F1 Score is', f1_score(test_predictions, y_test))
-```
 
-    The Training F1 Score is 1.0
-    The Testing F1 Score is 0.7
+# The Training F1 Score is 1.0
+# The Testing F1 Score is 0.7
+# Woah! Some heavy overfitting there. Not just from looking at the graph, but also from looking at the difference between the high training score (1.0) and the low testing score (0.7).
+# Let's see if we can find better hyperparameters for this model to do better. We'll use grid search for this.
 
+# 4. Use grid search to improve this model.
+# 1. First define some parameters to perform grid search on. We suggest to play with `max_depth`, `min_samples_leaf`, and `min_samples_split`.
+# 2. Make a scorer for the model using `f1_score`.
+# 3. Perform grid search on the classifier, using the parameters and the scorer.
+# 4. Fit the data to the new classifier.
+# 5. Plot the model and find the f1_score.
+# 6. If the model is not much better, try changing the ranges for the parameters and fit it again.
 
-Woah! Some heavy overfitting there. Not just from looking at the graph, but also from looking at the difference between the high training score (1.0) and the low testing score (0.7).Let's see if we can find better hyperparameters for this model to do better. We'll use grid search for this.
-
-### 4. (TODO) Use grid search to improve this model.
-
-In here, we'll do the following steps:
-1. First define some parameters to perform grid search on. We suggest to play with `max_depth`, `min_samples_leaf`, and `min_samples_split`.
-2. Make a scorer for the model using `f1_score`.
-3. Perform grid search on the classifier, using the parameters and the scorer.
-4. Fit the data to the new classifier.
-5. Plot the model and find the f1_score.
-6. If the model is not much better, try changing the ranges for the parameters and fit it again.
-
-**_Hint:_ If you're stuck and would like to see a working solution, check the solutions notebook in this same folder.**
-
-
-```python
 from sklearn.metrics import make_scorer, f1_score
 from sklearn.model_selection import GridSearchCV
 
 clf = DecisionTreeClassifier(random_state=42)
 
-# TODO: Create the parameters list you wish to tune.
+# Create the parameters list you wish to tune.
 parameters = {'max_depth': [1, 2, 4, 8, 16], 
               'min_samples_leaf': [1, 2, 4, 8, 16], 
               'min_samples_split': [2, 4, 8, 16]}
 
-# TODO: Make an fbeta_score scoring object.
+# Make an fbeta_score scoring object.
 scorer = make_scorer(f1_score)
 
-# TODO: Perform grid search on the classifier using 'scorer' as the scoring method.
+# Perform grid search on the classifier using 'scorer' as the scoring method.
 grid_obj = GridSearchCV(clf, parameters, scoring=scorer)
 
-# TODO: Fit the grid search object to the training data and find the optimal parameters.
+# Fit the grid search object to the training data and find the optimal parameters.
 grid_fit = grid_obj.fit(X_train, y_train)
 
-# TODO: Get the estimator.
+# Get the estimator.
 best_clf = grid_fit.best_estimator_
 
 # Fit the new model.
@@ -175,15 +148,6 @@ plot_model(X, y, best_clf)
 
 # Let's also explore what parameters ended up being used in the new model.
 best_clf
-```
 
-    The training F1 Score is 0.814814814815
-    The testing F1 Score is 0.8
-
-    DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=4,
-                max_features=None, max_leaf_nodes=None,
-                min_impurity_decrease=0.0, min_impurity_split=None,
-                min_samples_leaf=2, min_samples_split=16,
-                min_weight_fraction_leaf=0.0, presort=False, random_state=42,
-                splitter='best')
-
+# The training F1 Score is 0.814814814815
+# The testing F1 Score is 0.8
