@@ -333,4 +333,28 @@ acc = accuracy_score(y_test, y_pred)
   |Large|Good|Small|
   |Small|Some Errors|Large|
 - Kernel trick means transforming data into another dimension that has a clear dividing margin between classes of data.
+- Linear Kernel (Degree 1: *x*, *y*).
+- Polynomial Kernel (Degree 2: *x<sup>2</sup>, xy, y<sup>2</sup>*, Degree 3: *x<sup>3</sup>, x<sup>2</sup>y, xy<sup>2</sup>, y<sup>3</sup>,* etc.).
+- RBF (Radio Basis Function) Kernel.
+- Gamma (`γ`) parameter:
+  - Large Gamma gives tall and pointy mountains → the model tends to overfit.
+  - Large Gamma gives short and wide mountains → the model tends to underfit.
+- Implementation in sklearn:
+  - `C`: The `C` parameter.
+  - `kernel`: The kernel. The most common ones are 'linear', 'poly', and 'rbf'.
+  - `degree`: If the kernel is polynomial, this is the maximum degree of the monomials in the kernel.
+  - `gamma` : If the kernel is rbf, this is the Gamma parameter.
 
+  ```python
+  from sklearn.svm import SVC
+  
+  # Default
+  model = SVC()
+  
+  # SVC model with a polynomial kernel of degree 4, and a C parameter of 0.1
+  model = SVC(kernel='poly', degree=4, C=0.1)
+  
+  # Fitting the model
+  model.fit(x_values, y_values)
+  ```
+  
