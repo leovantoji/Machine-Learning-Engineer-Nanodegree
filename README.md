@@ -340,11 +340,12 @@ acc = accuracy_score(y_test, y_pred)
   - Large Gamma gives tall and pointy mountains → the model tends to overfit.
   - Large Gamma gives short and wide mountains → the model tends to underfit.
 - Implementation in sklearn:
-  - `C`: The `C` parameter.
-  - `kernel`: The kernel. The most common ones are 'linear', 'poly', and 'rbf'.
-  - `degree`: If the kernel is polynomial, this is the maximum degree of the monomials in the kernel.
-  - `gamma` : If the kernel is rbf, this is the Gamma parameter.
-
+  - Hyperparameters:
+    - `C`: The `C` parameter.
+    - `kernel`: The kernel. The most common ones are 'linear', 'poly', and 'rbf'.
+    - `degree`: If the kernel is polynomial, this is the maximum degree of the monomials in the kernel.
+    - `gamma` : If the kernel is rbf, this is the Gamma parameter.
+  
   ```python
   from sklearn.svm import SVC
   
@@ -358,3 +359,30 @@ acc = accuracy_score(y_test, y_pred)
   model.fit(x_values, y_values)
   ```
   
+## Ensemble Method
+- Ensemble method is about combining a bunch of models together to get a better one (Weak Learners → Strong Learners).
+- Popular methods:
+  - Bagging (Bootstrap aggregating).
+  - Boosting (Adaboost).
+- Boosting: weight = ln\[accuracy × (1 - accuracy)<sup>-1</sup>\]
+- Adaboost in sklearn:
+  - Hyperparameters:
+    - `base_estimator`: The model utilised for the weak learners.
+    - `n_estimators`: The maximum number of weak learners.
+    
+  ```python
+  from sklearn.ensemble import AdaBoostClassifier
+  from sklearn.tree import DecisionTreeClassifier
+  
+  # Default
+  model = AdaBoostClassifier()
+  
+  # Weak learner uses DecisionTree as the model
+  model = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(max_depth=2), n_estimators=4)
+  
+  # Fitting the model
+  model.fit(x_train, y_train)
+  
+  # Making predictions
+  model.predict(x_test)
+  ```
