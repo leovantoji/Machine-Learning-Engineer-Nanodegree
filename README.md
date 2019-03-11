@@ -386,3 +386,5 @@ acc = accuracy_score(y_test, y_pred)
   # Making predictions
   model.predict(x_test)
   ```
+
+## Clustering
