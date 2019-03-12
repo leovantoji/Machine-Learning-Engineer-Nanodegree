@@ -387,4 +387,25 @@ acc = accuracy_score(y_test, y_pred)
   model.predict(x_test)
   ```
 
-## Clustering
+## K-means Clustering
+- Reference: https://scikit-learn.org/stable/modules/clustering.html#k-means
+- K-means algorithm clusters data by separating the dataset into *k* groups of equal variance, minimizing a criterion known as the inertia or within-cluster sum-of-squares. The number of clusters - *k* - needs to be specified before running the algorithm.
+  - Step 1: Choose the intial centroids.
+  - Loop the next 2 steps until the difference between old and new centroids are less than a threshold.
+    - Step 2: Assign each sample to its nearest centroid.
+    - Step 3: Create new centroids by averaging the values of all of the samples assigned to each previous centroid.
+- Inertia suffers from various drawbacks:
+  - Since inertia assumes that clusters are convex and isotropic, it responds poorly to elongated clusters, or manifolds with irregular shapes.
+  - Inertia is not a normalised metric. In very high dimensional spaces, Euclidean distances tend to become inflated. Therefore, running a dimensionality reduction algorithm prior to k-means clustering is essential and can help mitigate the problems as well as speed up the computations.
+- K-means's hyperparameters:
+  - `n_clusters` is the number of clusters.
+  - `max_iter` is the maximum number of iterations of k-means algorithm for a single run.
+  - `n_init` is the number of time the k-means algorithm will be run with different centroid seeds.
+- Implementation in sklearn:
+  ```python
+  from sklearn.cluster import KMeans
+  model = KMeans(n_clusters=4, max_iter=300, n_init=10)
+  predictions = model.fit(X)
+  ```
+
+# Hierarchical and Density-based Clustering
