@@ -404,8 +404,13 @@ acc = accuracy_score(y_test, y_pred)
 - Implementation in sklearn:
   ```python
   from sklearn.cluster import KMeans
-  model = KMeans(n_clusters=4, max_iter=300, n_init=10)
+  model = KMeans(n_clusters=8, max_iter=300, n_init=10)
   predictions = model.fit(X)
   ```
 
 # Hierarchical and Density-based Clustering
+- Agglomerative Clustering (bottoms-up approach: assume that every point is a cluster and work upwards):
+  - Single Link.
+  - Complete Link.
+  - Average Link.
+  - Ward.
