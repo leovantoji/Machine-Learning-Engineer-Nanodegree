@@ -410,12 +410,16 @@ acc = accuracy_score(y_test, y_pred)
 
 # Hierarchical and Density-based Clustering
 
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+| <ul><li>item1</li><li>item2</li></ul>| See the list | from the first column|
+
 |Clustering Method|Pros|Cons|
 |-|-|-|
-|Hierarchical|- Resulting hierarchical representation can be very imformative.
-              - Provides an additional ability to visualise.
-              - Especially potent when the dataset contains real hierarchical relationships (e.g. Evolutionary biology).| - Sensitive to noise and outliers.
-  - Computational intensive *O(N<sup>2</sup>)*.|
+|Hierarchical|<ul><li>Resulting hierarchical representation can be very imformative.</li><li>Provides an additional ability to visualise.</li><li>Especially potent when the dataset contains real hierarchical relationships (e.g. Evolutionary biology).</li></ul>|<ul><li>Sensitive to noise and outliers.</li><li>Computational intensive *O(N<sup>2</sup>)*.</li></ul>|
 
 |DBSCAN|
 - Advantages of Hierarchical Clustering:
