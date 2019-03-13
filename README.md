@@ -408,7 +408,7 @@ acc = accuracy_score(y_test, y_pred)
   predictions = model.fit(X)
   ```
 
-# Hierarchical and Density-based Clustering
+## Hierarchical and Density-based Clustering
 
 |Clustering Method|Pros|Cons|
 |-|-|-|
@@ -463,3 +463,5 @@ acc = accuracy_score(y_test, y_pred)
   
   # db.labels_ contains an array representing which cluster each point belongs to. Samples labeled -1 are noise.
   ```
+
+## Gaussian Mixture Models and Clustering Validation
