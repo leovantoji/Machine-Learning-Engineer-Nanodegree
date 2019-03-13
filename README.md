@@ -414,3 +414,26 @@ acc = accuracy_score(y_test, y_pred)
   - Complete Link.
   - Average Link.
   - Ward.
+- Implementation in sklearn:
+  ```python
+  from sklearn import cluster
+  clust = cluster.AgglomerativeClustering(n_clusters=3, linkage='ward')
+  labels = clust.fit_predict(X)  
+  ```
+- Implmentation in scipy with dendogram:
+  ```python
+  from scipy.cluster.hierarchy import dendogram, ward, single
+  from sklearn import datasets
+  import matplotlib.pyplot as plt
+  
+  # Load dataset
+  X = datasets.load_iris().data[:10]
+  
+  # Perform Clustering
+  linkage_matrix = ward(X)
+  
+  # Plot dendogram
+  dendogram(linkage_matrix)
+  
+  plt.show()
+  ```
