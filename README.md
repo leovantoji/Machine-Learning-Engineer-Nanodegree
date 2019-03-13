@@ -410,13 +410,18 @@ acc = accuracy_score(y_test, y_pred)
 
 # Hierarchical and Density-based Clustering
 - Agglomerative Clustering (bottoms-up approach: assume that every point is a cluster and work upwards):
-  - Single Link.
+  - Single Link: the linkage method that is more prone to result in elongated shapes that are not necessarily compact or circular.
   - Complete Link.
   - Average Link.
-  - Ward.
+  - Ward: the linkage method that leads to the least increase in variance in the clusters after merging.
 - Implementation in sklearn:
   ```python
-  from sklearn import cluster
+  from sklearn import cluster, datasets
+  
+  # Load dataset
+  X = datasets.load_iris().data
+  
+  # Perform clustering
   clust = cluster.AgglomerativeClustering(n_clusters=3, linkage='ward')
   labels = clust.fit_predict(X)  
   ```
@@ -425,6 +430,7 @@ acc = accuracy_score(y_test, y_pred)
   from scipy.cluster.hierarchy import dendogram, ward, single
   from sklearn import datasets
   import matplotlib.pyplot as plt
+  %matplotlib inline
   
   # Load dataset
   X = datasets.load_iris().data[:10]
@@ -436,4 +442,25 @@ acc = accuracy_score(y_test, y_pred)
   dendogram(linkage_matrix)
   
   plt.show()
+  ```
+- Advantages of Hierarchical Clustering:
+  - Resulting hierarchical representation can be very imformative.
+  - Provides an additional ability to visualise.
+  - Especially potent when the dataset contains real hierarchical relationships (e.g. Evolutionary biology).
+- Disadvantages of Hierarchical Clustering:
+  - Sensitive to noise and outliers.
+  - Computational intensive *O(N<sup>2</sup>)*.
+- Density-Based Clustering (DBSCAN)
+  - Implementation in sklearn
+  ```python
+  from sklearn import datasets, cluster
+  
+  # Load dataset
+  X = datasets.load_iris().data
+  
+  # Perform clustering
+  db = cluster.DBSCAN(eps=0.5, min_samples=5)
+  db.fit(X)
+  
+  # db.labels_ contains an array representing which cluster each point belongs to. Samples labeled -1 are noise.
   ```
