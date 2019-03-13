@@ -409,6 +409,23 @@ acc = accuracy_score(y_test, y_pred)
   ```
 
 # Hierarchical and Density-based Clustering
+
+|Clustering Method|Pros|Cons|
+|-|-|-|
+|Hierarchical|- Resulting hierarchical representation can be very imformative.
+              - Provides an additional ability to visualise.
+              - Especially potent when the dataset contains real hierarchical relationships (e.g. Evolutionary biology).| - Sensitive to noise and outliers.
+  - Computational intensive *O(N<sup>2</sup>)*.|
+
+|DBSCAN|
+- Advantages of Hierarchical Clustering:
+  - Resulting hierarchical representation can be very imformative.
+  - Provides an additional ability to visualise.
+  - Especially potent when the dataset contains real hierarchical relationships (e.g. Evolutionary biology).
+- Disadvantages of Hierarchical Clustering:
+  - Sensitive to noise and outliers.
+  - Computational intensive *O(N<sup>2</sup>)*.
+
 - Agglomerative Clustering (bottoms-up approach: assume that every point is a cluster and work upwards):
   - Single Link: the linkage method that is more prone to result in elongated shapes that are not necessarily compact or circular.
   - Complete Link.
@@ -443,13 +460,6 @@ acc = accuracy_score(y_test, y_pred)
   
   plt.show()
   ```
-- Advantages of Hierarchical Clustering:
-  - Resulting hierarchical representation can be very imformative.
-  - Provides an additional ability to visualise.
-  - Especially potent when the dataset contains real hierarchical relationships (e.g. Evolutionary biology).
-- Disadvantages of Hierarchical Clustering:
-  - Sensitive to noise and outliers.
-  - Computational intensive *O(N<sup>2</sup>)*.
 - Density-Based Clustering (DBSCAN)
   - Implementation in sklearn
   ```python
