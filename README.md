@@ -410,25 +410,10 @@ acc = accuracy_score(y_test, y_pred)
 
 # Hierarchical and Density-based Clustering
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
-| <ul><li>item1</li><li>item2</li></ul>| See the list | from the first column|
-
 |Clustering Method|Pros|Cons|
 |-|-|-|
 |Hierarchical|<ul><li>Resulting hierarchical representation can be very imformative.</li><li>Provides an additional ability to visualise.</li><li>Especially potent when the dataset contains real hierarchical relationships (e.g. Evolutionary biology).</li></ul>|<ul><li>Sensitive to noise and outliers.</li><li>Computational intensive *O(N<sup>2</sup>)*.</li></ul>|
-
-|DBSCAN|
-- Advantages of Hierarchical Clustering:
-  - Resulting hierarchical representation can be very imformative.
-  - Provides an additional ability to visualise.
-  - Especially potent when the dataset contains real hierarchical relationships (e.g. Evolutionary biology).
-- Disadvantages of Hierarchical Clustering:
-  - Sensitive to noise and outliers.
-  - Computational intensive *O(N<sup>2</sup>)*.
+|DBSCAN|<ul><li>No need to specify the number of clusters.</li><li>Flexibility in the shapes & sizes of clusters.</li><li>Able to deal with noise.</li><li>Able to deal with outliers.</li></ul>|<ul><li>Border points that are reachable from two clusters.</li><li>Faces difficulty finding clusters of varying density.</li></ul>|
 
 - Agglomerative Clustering (bottoms-up approach: assume that every point is a cluster and work upwards):
   - Single Link: the linkage method that is more prone to result in elongated shapes that are not necessarily compact or circular.
