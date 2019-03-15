@@ -504,8 +504,8 @@ acc = accuracy_score(y_test, y_pred)
   |Jaccard|\[0,1\]|Yes|
   |F-measure|\[0,1\]|Yes|
   |Purity|\[0,1\]|No|
-  
-  
+- Internal Indices:
+  - Silhouette coefficient (\[-1,1\])
   
 
 
