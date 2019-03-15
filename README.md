@@ -465,3 +465,49 @@ acc = accuracy_score(y_test, y_pred)
   ```
 
 ## Gaussian Mixture Models and Clustering Validation
+- GMM:
+  - Advantages:
+    - Soft-clustering (sample membership of multiple clusters).
+    - Cluster shape flexibility.
+  - Disadvantages:
+    - Sensitive to initialisation values.
+    - Possible to converge to local optimum.
+    - Slow convergence rate.
+- Implementation in sklearn:
+  ```python
+  from sklearn import datasets, mixture
+  
+  # Load dataset
+  X = datasets.load_iris().data[:10]
+  
+  # GMM
+  gmm = mixture.GaussianMixture(n_components=3)
+  gmm.fit(X)
+  clustering = gmm.predict(X)
+  ```
+- Cluster Analysis process: Data ↔ Feature Selection/Extraction ↔ Clustering Algorithm Selection & Tuning ↔ Clustering Validation ↔ Results Interpretation ↔ Knowledge.
+- Cluster Validation:
+  - Categories of cluster validation indices:
+    - External Indices.
+    - Internal Indices.
+    - Relative Indices.
+  - Measures:
+    - Compactness: How close are the elements to each others?
+    - Separability: How distinct are the clusters to each others?
+- External Indices: Matching a clustering structure to information we know beforehand.
+  
+  |Index|Range|Available in sklearn|
+  |:-:|:-:|:-:|
+  |Adjusted Rand Score|\[-1,1\]|Yes|
+  |Fawlks and Mallows|\[0,1\]|Yes|
+  |NMI Measure|\[0,1\]|Yes|
+  |Jaccard|\[0,1\]|Yes|
+  |F-measure|\[0,1\]|Yes|
+  |Purity|\[0,1\]|No|
+  
+  
+  
+
+
+
+  
