@@ -502,3 +502,4 @@ acc = accuracy_score(y_test, y_pred)
   - KMeans clustering.
 
 ## Principal Component Analysis (PCA)
+- A Scree Plot is a graphical representation of the percentages of variation that each principal component accounts for.
