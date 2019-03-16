@@ -500,3 +500,5 @@ acc = accuracy_score(y_test, y_pred)
 - Algorithms affected by feature scaling:
   - SVM with 'rbf' `kernel`.
   - KMeans clustering.
+
+## Principal Component Analysis (PCA)
