@@ -484,3 +484,19 @@ acc = accuracy_score(y_test, y_pred)
   |Purity|\[0,1\]|No|
 - Internal Indices:
   - Silhouette coefficient (\[-1,1\])
+
+## Feature Scaling
+- Feature Scaling is an important step in preprocessing step for some algorithms.
+- Feature Scaling Formula: X<sup>'</sup> = (X - X<sub>min</sub>)/(X<sub>max</sub> - X<sub>min</sub>)
+- Min/Max Scaling is susceptible to outliers.
+- Min/Max Scaler in sklearn:
+  ```python
+  from sklearn.preprocessing import MinMaxScaler
+  import numpy as np
+  weights = np.array([[115.],[140.],[175.]])
+  scaler = MinMaxScaler()
+  rescaled_weights = scaler.fit_transform(weights)
+  ```
+- Algorithms affected by feature scaling:
+  - SVM with 'rbf' `kernel`.
+  - KMeans clustering.
