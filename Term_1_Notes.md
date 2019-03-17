@@ -502,4 +502,9 @@ acc = accuracy_score(y_test, y_pred)
   - KMeans clustering.
 
 ## Principal Component Analysis (PCA)
+- PCA is a systemic
 - A Scree Plot is a graphical representation of the percentages of variation that each principal component accounts for.
+- Dimensionality reduction or dimension reduction is the process of reducing the number of random variables under consideration by obtaining a set of principal variables. It can be divided into feature selection and feature extraction.
+- Variance (another definition): technical term in statistics - roughly the "spread" of a data distribution (square of standard deviation).
+- Principal component of a dataset is the direction that has the largest variance because we want to retain the maximum amount of information in the original data.
+- 
