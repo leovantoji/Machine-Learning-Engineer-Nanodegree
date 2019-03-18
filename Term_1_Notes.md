@@ -525,3 +525,7 @@ acc = accuracy_score(y_test, y_pred)
   pca = PCA(n_components=2)
   pca.fit(data)
   ```
+
+## Random Projection and ICA
+- Johnson-Lindenstrauss Lemma: A dataset of *N* points in high-dimensional Euclideanspace can be mapped down to a space in much lower dimension in a way that preserves the distance between the points to a large degree.
+- *(1 - esp)*||*u - v*||<sup>2</sup> < ||*p(u) - p(v)*|| < *(1 + esp)*||*u - v*||<sup>2</sup>
