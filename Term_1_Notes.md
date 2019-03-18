@@ -510,4 +510,18 @@ acc = accuracy_score(y_test, y_pred)
 - The maximum number of PCs is the number of input features.
 - A Scree Plot is a graphical representation of the percentages of variation that each principal component accounts for.
 - Dimensionality reduction or dimension reduction is the process of reducing the number of random variables under consideration by obtaining a set of principal variables. It can be divided into feature selection and feature extraction.
-
+- When to use PCA:
+  - Identify latent features driving the patterns in data.
+  - Dimensionality reduction.
+    - Visualise high dimensional data.
+    - Reduce noise.
+    - Make other algorithms (regression, classification) work better because there are fewer inputs (eigenfaces).
+- PCA for Facial Recognition:
+  - Pictures of faces generally have high input dimensionality (many pixels).
+  - Faces have general patterns that could be captured in smaller number of dimensions (two eyes on top, mouth/chin on bottom, etc.).
+- Implementation in sklearn:
+  ```python
+  from sklearn.decomposition import PCA
+  pca = PCA(n_components=2)
+  pca.fit(data)
+  ```
