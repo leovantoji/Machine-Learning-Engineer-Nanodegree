@@ -531,16 +531,27 @@ acc = accuracy_score(y_test, y_pred)
 - *(1 - esp)*||*u - v*||<sup>2</sup> < ||*p(u) - p(v)*|| < *(1 + esp)*||*u - v*||<sup>2</sup>
 - Random Projection is used instead of PCA in case that there are too many dimensions causing PCA's performance to become unacceptable for the situation.
 - Random Projection can work either by setting `n_components` or by specifying a value for `eps` and having the algorithm calculate a conservative value for the number of dimensions.
-- Implementation in sklearn:
+- Random Projection Implementation in sklearn:
   ```python
   from sklearn import random_projection
   rp = random_projection.SparseRandomProjection()
   new_X = rp.fit_transform(X)
   ```
-- Independent Component Analysis (ICA) solves Blind source separation problem.
+- ICA is a method similar to PCA/Random Projection, but it is different in the sense that ICA assumes that features are mixture of independent sources and tries to isolate these independent sources.
+- ICA needs as many observations as the original signals we are trying to separate.
+- ICA solves Blind source separation problem.
 - FastICA Algorithm:
   1. Centre, whiten X
   2. Choose Initial Random Weight Matrix *W<sub>1</sub>,W<sub>2</sub>, ... , W<sub>n</sub>*
   3. Estimate *W*, containing vectors
   4. Decorrelate *W*
   5. Repeat from step #3 until converged
+- *w<sup>+</sup> = E{xg(w<sup>T</sup>x)} - E{g<sup>'</sup>(w<sup>T</sup>x)}w
+- *W = (WW<sup>T</sup>)<sup>-0.5</sup>W*
+- ICA Implementation in sklearn:
+  ```python
+  from sklearn.decomposition import FastICA
+  X = list(zip(signal_1, signal_2, signal_3))
+  ica = FastICA(n_components=3)
+  components = ica.fit_transform(X)
+  ```
