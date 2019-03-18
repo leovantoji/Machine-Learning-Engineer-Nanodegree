@@ -546,7 +546,7 @@ acc = accuracy_score(y_test, y_pred)
   3. Estimate *W*, containing vectors
   4. Decorrelate *W*
   5. Repeat from step #3 until converged
-- *w<sup>+</sup> = E{xg(w<sup>T</sup>x)} - E{g<sup>'</sup>(w<sup>T</sup>x)}w
+- *w<sup>+</sup> = E{xg(w<sup>T</sup>x)} - E{g<sup>'</sup>(w<sup>T</sup>x)}w*
 - *W = (WW<sup>T</sup>)<sup>-0.5</sup>W*
 - ICA Implementation in sklearn:
   ```python
