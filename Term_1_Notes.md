@@ -526,6 +526,21 @@ acc = accuracy_score(y_test, y_pred)
   pca.fit(data)
   ```
 
-## Random Projection and ICA
+## Random Projection and Independent Component Analysis (ICA)
 - Johnson-Lindenstrauss Lemma: A dataset of *N* points in high-dimensional Euclideanspace can be mapped down to a space in much lower dimension in a way that preserves the distance between the points to a large degree.
 - *(1 - esp)*||*u - v*||<sup>2</sup> < ||*p(u) - p(v)*|| < *(1 + esp)*||*u - v*||<sup>2</sup>
+- Random Projection is used instead of PCA in case that there are too many dimensions causing PCA's performance to become unacceptable for the situation.
+- Random Projection can work either by setting `n_components` or by specifying a value for `eps` and having the algorithm calculate a conservative value for the number of dimensions.
+- Implementation in sklearn:
+  ```python
+  from sklearn import random_projection
+  rp = random_projection.SparseRandomProjection()
+  new_X = rp.fit_transform(X)
+  ```
+- Independent Component Analysis (ICA) solves Blind source separation problem.
+- FastICA Algorithm:
+  1. Centre, whiten X
+  2. Choose Initial Random Weight Matrix *W<sub>1</sub>,W<sub>2</sub>, ... , W<sub>n</sub>*
+  3. Estimate *W*, containing vectors
+  4. Decorrelate *W*
+  5. Repeat from step #3 until converged
