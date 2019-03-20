@@ -453,11 +453,10 @@ acc = accuracy_score(y_test, y_pred)
   - Sensitive to initialisation values.
   - Possible to converge to local optimum.
   - Slow convergence rate.
-- From [https://www.quora.com/What-are-the-advantages-to-using-a-Gaussian-Mixture-Model-clustering-algorithm]
-First, if you think that your model is having some hidden, not observable parameters, then you should use GMM. This is because, this algorithm is assigning a probability to each point to belong to certain cluster, instead of assigning a flag that the point belongs to certain cluster as in the classical k-Means. Then, GMM is producing non-convex clusters, which can be controlled with the variance of the distribution. In fact, k-Means is a special case of GMM, such that the probability of a one point to belong to a certain cluster is 1, and all other probabilities are 0, and the variance is 1, which a reason why k-Means produces only spherical clusters.
-
-However, the algorithms for optimizing the loss function for GMM are not so trivial, since it is not a convex function. The most popular algorithm is the Expectation Maximization algorithm.
-
+- From https://www.quora.com/What-are-the-advantages-to-using-a-Gaussian-Mixture-Model-clustering-algorithm:
+  - GMM should be used when the model has some hidden parameters. This is because GMM assigns a probability of belonging to a certain cluster to each point. K-Means is, in fact, a special case of GMM with probability of belonging to a certain cluster is either 0 or 1.
+  - GMM produces non-convex clusters, which can be controlled with the variance of the distribution.
+  - However, optimising the loss function for GMM is not trivial, since it is not a convex function. Expectation Maximization algorithm is the most popular algorithm to optimise GMM's loss function.
 - Implementation in sklearn:
   ```python
   from sklearn import datasets, mixture
