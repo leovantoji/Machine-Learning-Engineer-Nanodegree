@@ -372,6 +372,9 @@ acc = accuracy_score(y_test, y_pred)
   - Loop the next 2 steps until the difference between old and new centroids are less than a threshold.
     - Step 2: Assign each sample to its nearest centroid.
     - Step 3: Create new centroids by averaging the values of all of the samples assigned to each previous centroid.
+- Advantages of K-Means Clustering:
+  - K-Means is generally computationally faster than hierarchical clustering (if *K* is small).
+  - K-Means produce tighter clusters than hierarchical clustering, especially if the clusters are globular (spherical).
 - Inertia suffers from various drawbacks:
   - Since inertia assumes that clusters are convex and isotropic, it responds poorly to elongated clusters, or manifolds with irregular shapes.
   - Inertia is not a normalised metric. In very high dimensional spaces, Euclidean distances tend to become inflated. Therefore, running a dimensionality reduction algorithm prior to k-means clustering is essential and can help mitigate the problems as well as speed up the computations.
@@ -443,14 +446,17 @@ acc = accuracy_score(y_test, y_pred)
   ```
 
 ## Gaussian Mixture Models and Clustering Validation
-- GMM:
-  - Advantages:
-    - Soft-clustering (sample membership of multiple clusters).
-    - Cluster shape flexibility.
-  - Disadvantages:
-    - Sensitive to initialisation values.
-    - Possible to converge to local optimum.
-    - Slow convergence rate.
+- Advantages of GMM:
+  - Soft-clustering (sample membership of multiple clusters).
+  - Cluster shape flexibility.
+- Disadvantages of GMM:
+  - Sensitive to initialisation values.
+  - Possible to converge to local optimum.
+  - Slow convergence rate.
+- From https://www.quora.com/What-are-the-advantages-to-using-a-Gaussian-Mixture-Model-clustering-algorithm:
+  - GMM should be used when the model has some hidden parameters. This is because GMM assigns a probability of belonging to a certain cluster to each point. K-Means is, in fact, a special case of GMM with probability of belonging to a certain cluster is either 0 or 1.
+  - GMM produces non-convex clusters, which can be controlled with the variance of the distribution.
+  - However, optimising the loss function for GMM is not trivial, since it is not a convex function. Expectation Maximization algorithm is the most popular algorithm to optimise GMM's loss function.
 - Implementation in sklearn:
   ```python
   from sklearn import datasets, mixture
