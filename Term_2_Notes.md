@@ -33,4 +33,5 @@
       P = np.float_(P)
       return -np.sum(Y * np.log(P) + (1 - Y) * np.log(1 - P))
   ```
-- 
+
+## Cloud Computing
