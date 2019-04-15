@@ -44,3 +44,12 @@
   - Running the feedforward operations backwards (backpropagation) to spread the error to each of the weights.
   - Use this to update the weights, and get a better model.
   - Continue this until we have a model that is good.
+- Regularisation is a technique that contrains our optimisation problem to discourage complex models. This technique helps improve generalisation of the model on unseen data.
+  - Modify the error function:
+    - L1: *E(W) = -m<sup>-1</sup> × Σ(y<sub>i</sub>ln(y_hat<sub>i</sub>) + (1-y<sub>i</sub>)ln(1-y_hat<sub>i</sub>)) + λ(|w<sub>1</sub>| + ... + |w<sub>n</sub>|)*
+    - L2: *E(W) = -m<sup>-1</sup> × Σ(y<sub>i</sub>ln(y_hat<sub>i</sub>) + (1-y<sub>i</sub>)ln(1-y_hat<sub>i</sub>)) + λ(w<sub>1</sub><sup>2</sup> + ... + w<sub>n</sub><sup>2</sup>)*
+  - Reguralisation 1: Dropout:
+    - During training, randomly set some activations to 0. This forces network to not rely on any single node.
+    - `tf.keras.layers.Dropout(p=0.5)`
+  - Regularisation 2: Early Stopping:
+    - Stop training before we have a chance to overfit.
