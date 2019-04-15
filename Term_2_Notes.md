@@ -48,8 +48,24 @@
   - Modify the error function:
     - L1: *E(W) = -m<sup>-1</sup> × Σ(y<sub>i</sub>ln(y_hat<sub>i</sub>) + (1-y<sub>i</sub>)ln(1-y_hat<sub>i</sub>)) + λ(|w<sub>1</sub>| + ... + |w<sub>n</sub>|)*
     - L2: *E(W) = -m<sup>-1</sup> × Σ(y<sub>i</sub>ln(y_hat<sub>i</sub>) + (1-y<sub>i</sub>)ln(1-y_hat<sub>i</sub>)) + λ(w<sub>1</sub><sup>2</sup> + ... + w<sub>n</sub><sup>2</sup>)*
-  - Reguralisation 1: Dropout:
+  - L1 vs L2:
+    - L1 is used with sparse vector, and it is good for feature selection.
+    - L2 is used with non-sparse (small homogeneous weights) vector, and it is generally better for training models.
+  - Reguralisation 1: Dropout: Probability each node will be dropped.
     - During training, randomly set some activations to 0. This forces network to not rely on any single node.
     - `tf.keras.layers.Dropout(p=0.5)`
   - Regularisation 2: Early Stopping:
     - Stop training before we have a chance to overfit.
+- Vanishing Gradients: Multiplying many small numbers together → Errors due to further back time steps have smaller and smaller gradients → Bias network to capture short-term dependencies.
+  - Trick 1: Use different activation functions instead of sigmoid.
+    - ReLU (rectified linear unit) prevents f' from shrinking the gradients when x > 0.
+    - tanh (hyperbolic tangent function).
+  - Trick 2: Initilising weights to identity matrix and biases to zero helps prevent the weights from shrinking to zero.
+  - Trick 3: Gated cells (LSTM, GRU, etc.: more complex recurrent unit with gates to control what information is passed through).
+- Batch vs. Stochastic Gradient Descent (SGD):
+  - SGD typically reaches convergence much faster than Batch Gradient Descent since it updates weights more ferequently.
+  - While Batch Gradient Descent computes the gradient using the whole dataset, SGD, also known as incremental gradient descent, tries to find minimums or maximums by iteration from a singly randomly picked training example. Even though theoretically the error is typically noisier than in standard gradient descent, practically it's much better to take a bunch of slightly inaccurate steps than to take one good one.
+  - SGD can escape shallow local minima more easily.
+  - In order to obtain accurate results with SGD, the data sample should be in a random order, and this is why we want to shuffle the training set for every epoch.
+- Learning Rate Decay is to slowly decrease the learning rate over time. A good rule of them is that if the model is not working, decrease the learning rate.
+  - *α = (1 + decay_rate * epoch_num)<sup>-1</sup> × α<sub>0</sub>*
