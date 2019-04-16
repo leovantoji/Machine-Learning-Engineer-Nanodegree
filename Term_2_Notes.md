@@ -56,6 +56,7 @@
     - `tf.keras.layers.Dropout(p=0.5)`
   - Regularisation 2: Early Stopping:
     - Stop training before we have a chance to overfit.
+- Exploding Gradients ← Gradient clipping to scale big gradients.
 - Vanishing Gradients: Multiplying many small numbers together → Errors due to further back time steps have smaller and smaller gradients → Bias network to capture short-term dependencies.
   - Trick 1: Use different activation functions instead of sigmoid.
     - ReLU (rectified linear unit) prevents f' from shrinking the gradients when x > 0.
@@ -70,3 +71,21 @@
 - Learning Rate Decay is to slowly decrease the learning rate over time. A good rule of them is that if the model is not working, decrease the learning rate.
   - *α = (1 + decay_rate * epoch_num)<sup>-1</sup> × α<sub>0</sub>*
 - Random restart is used to mitigate local minima/maxima. By performing gradient descent from different random locations, we increase the probability of getting to the global optimum, or at least a pretty good local optimum.
+- Gradient Descent with Momentum helps with tackling local minima and is almost always better than traditional Gradient Descent in practice.
+  - *V<sub>dW</sub> = 0, V<sub>db</sub> = 0*
+  - On iteration *t*, compute *dW* and *db* on the current mini-batch:
+    - *V<sub>dW</sub> = βV<sub>dW</sub> + (1-β)dW*.
+    - *V<sub>db</sub> = βV<sub>db</sub> + (1-β)db*.
+    - *W = W - αV<sub>dW</sub>*
+    - *b = b - αV<sub>db</sub>*
+    - Hyperparameters: *α* (learning rate), *β* (momentum). *β = 0.9* is the most common value (average or loss of the last 10 gradients).
+- Information regarding Keras Optimisers can be found at [here](https://keras.io/optimizers/). Some of the most common ones are listed below:
+  - SGD: Stochastic Gradient Descent. It uses the following parameters:
+    - Learning rate.
+    - Momentum (This takes the weighted average of the previous steps, in order to get a bit of momentum and go over bumps, as a way to not get stuck in local minima).
+    - Nesterov Momentum (This slows down the gradient when it's close to the solution).
+    - `keras.optimizers.SGD(lr=0.01, momentum=0.0, decay=0.0, nesterov=False)`
+  - Adam: Adaptive Moment Estimation uses a more complicated exponential decay that consists of not just considering the average (first moment), but also the variance (second moment) of the previous steps.
+    - `keras.optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)`
+  - RMSProp: (RMS stands for Root Mean Squared Error) decreases the learning rate by dividing it by an exponentially decaying average of squared gradients. Usually a good choice for Recurrent Neural Networks (RNN).
+    - `keras.optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=None, decay=0.0)`
