@@ -79,7 +79,7 @@
     - *W = W - αV<sub>dW</sub>*
     - *b = b - αV<sub>db</sub>*
     - Hyperparameters: *α* (learning rate), *β* (momentum). *β = 0.9* is the most common value (average or loss of the last 10 gradients).
-- Information regarding Keras Optimisers can be found at [here](https://keras.io/optimizers/). Some of the most common ones are listed below:
+- Information regarding Keras Optimisers can be found [here](https://keras.io/optimizers/). Some of the most common ones are listed below:
   - SGD: Stochastic Gradient Descent. It uses the following parameters:
     - Learning rate.
     - Momentum (This takes the weighted average of the previous steps, in order to get a bit of momentum and go over bumps, as a way to not get stuck in local minima).
@@ -89,3 +89,4 @@
     - `keras.optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)`
   - RMSProp: (RMS stands for Root Mean Squared Error) decreases the learning rate by dividing it by an exponentially decaying average of squared gradients. Usually a good choice for Recurrent Neural Networks (RNN).
     - `keras.optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=None, decay=0.0)`
+- By removing the final activation function, you can use Neural Network for Regression problems.
