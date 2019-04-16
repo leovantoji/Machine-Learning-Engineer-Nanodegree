@@ -69,3 +69,4 @@
   - In order to obtain accurate results with SGD, the data sample should be in a random order, and this is why we want to shuffle the training set for every epoch.
 - Learning Rate Decay is to slowly decrease the learning rate over time. A good rule of them is that if the model is not working, decrease the learning rate.
   - *α = (1 + decay_rate * epoch_num)<sup>-1</sup> × α<sub>0</sub>*
+- Random restart is used to mitigate local minima/maxima. By performing gradient descent from different random locations, we increase the probability of getting to the global optimum, or at least a pretty good local optimum.
