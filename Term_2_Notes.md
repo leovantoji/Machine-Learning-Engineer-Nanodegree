@@ -90,3 +90,5 @@
   - RMSProp: (RMS stands for Root Mean Squared Error) decreases the learning rate by dividing it by an exponentially decaying average of squared gradients. Usually a good choice for Recurrent Neural Networks (RNN).
     - `keras.optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=None, decay=0.0)`
 - By removing the final activation function, you can use Neural Network for Regression problems.
+
+## Convolutional Neural Networks
