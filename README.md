@@ -1,9 +1,9 @@
 # Udacity Machine Learning Engineer Nanodegree
 
 ## Overview
-|Term|Official Duration|Date of Compeletion|Course Content|Projects|
-|:-:|:-:|:-:|-|-|
-|1|20 Feb - 8 May 2019|20 Mar 2019|<ul><li>Gradient Descent</li><li>Linear Regression</li><li>Logistic Regression</li><li>Naive Bayes</li><li>Decision Trees</li><li>Perceptron Algorithm</li><li>Support Vector Machines</li><li>Ensemble Methods</li><li>Clustering</li><li>Hierarchical and Density-based Clustering</li><li>Gaussian Mixture Models and Cluster Validation</li><li>Feature Scaling</li><li>PCA</li><li>Random Projection and ICA</li></ul>|<ul><li>Predicting Boston Housing Prices</li><li>Finding Donors for CharityML</li><li>Creating Customer Segments</li></ul>|
+|Term|Official Duration|Date of Compeletion|Projects|
+|:-:|:-:|:-:|-|
+|1|20 Feb - 8 May 2019|20 Mar 2019|<ul><li>Predicting Boston Housing Prices</li><li>Finding Donors for CharityML</li><li>Creating Customer Segments</li></ul>|
 |2|10 Apr - 18 Aug 2019|||<ul><li>Dog Breed Classifier</li><li>Teach a Quadcopter how to fly</li><li>Capstone Project</li></ul>|
 
 ## Projects
@@ -34,3 +34,19 @@
   - How to analyze PCA dimensions and construct a new feature space.
   - How to optimally cluster a set of data to find hidden patterns in a dataset.
   - How to assess information given by cluster data and use it in a meaningful way.
+
+## Course Contents:
+- Gradient Descent
+- Linear Regression
+- Logistic Regression
+- Naive Bayes
+- Decision Trees
+- Perceptron Algorithm
+- Support Vector Machines
+- Ensemble Methods
+- Clustering
+- Hierarchical and Density-based Clustering
+- Gaussian Mixture Models and Cluster Validation
+- Feature Scaling
+- PCA
+- Random Projection and ICA
