@@ -197,3 +197,34 @@
 - CNNs:
   - Also use sparsely connected layers.
   - Also accept matrices as input.
+- Convolutional Layers in Keras:
+  
+  |Arguments|Compulsory/Optional|Description|
+  |:-|:-:|:-|
+  |`filters`|C|The number of filters|
+  |`kernel_size`|C|Number specifying both the height and width of the (square) convolution window|
+  |`strides`|O|The stride of the convolution. Default value is 1|
+  |`padding`|O|`valid` or `same`. Default value is `valid`|
+  |`activation`|O|Typically `relu`. No default value. Nonetheless, it's highly advisable to apply `relu` to every convolutional layer in the network|
+  |`input_shape`|C&O|When the first layer after the input layer is a convolutional layer, `input_shape` must be specified. This is a tuple specifying the height, width, and depth (in that order) of the input. If the first layer after the input layer is not a convolutional layer, `input_shape` should not be included|
+  
+  ```python
+  from keras.layers import Conv2D
+  # Example 1
+  Conv2D(filters=16, kernel_size=2, strides=2, activation='relu', input_shape=(200, 200, 1))
+  # Example 2
+  Conv2D(filters=32, kernel_size=3, padding='same', activation='relu')
+  # Example 3
+  Conv2D(filters=64, kernel_size=(2,2), activation='relu')
+  ```
+  
+  - Number of Parameters in a Convolutional Layer: *`Param #` = `filters` × `kernel_size` × `kernel_size` × `depth_of_the_previous_layer` + `filters`*. `depth_of_the_previous_layer` is the last value in `input_shape` tuple. The formula is as such because:
+    - There are *`kernel_size` × `kernel_size` × `depth_of_the_previous_layer`* weights per filter.
+    - There is one bias term per filter, the convolutional layer has *`filters`* biases.
+  - Shape of a Convolutional Layer depends on the supplied values of `kernel_size`, `input_shape`, `padding`, and `stride`:
+    
+    |`padding`|height|width|
+    |:-:|:-:|:-:|
+    |'same'|ceil(float(`input_shape[0]`)/float(`stride`)|ceil(float(`input_shape[1]`)/float(`stride`)|
+    |'valid'|ceil(float(`input_shape[0]` - `kernel_size` + 1)/float(`stride`)|ceil(float(`input_shape[1]` - `kernel_size` + 1)/float(`stride`)|
+    
