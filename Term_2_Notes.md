@@ -228,3 +228,15 @@
     |'same'|ceil(float(`input_shape[0]`)/float(`stride`)|ceil(float(`input_shape[1]`)/float(`stride`)|
     |'valid'|ceil(float(`input_shape[0]` - `kernel_size` + 1)/float(`stride`)|ceil(float(`input_shape[1]` - `kernel_size` + 1)/float(`stride`)|
     
+- Max Pooling Layers are used to reduce the dimensionality of the previous convolutional layers. Max Pooling Layers in Keras:
+
+  |Arguments|Compulsory/Optional|Description|
+  |:-|:-:|:-|
+  |`pool_size`|C|Number specifying the height and width of the pooling window|
+  |`strides`|O|The vertical and horizontal stride. Default value is `pool_size`|
+  |`padding`|O|`valid` or `same`. Default value is `valid`|
+  
+  ```python
+  from keras.layers import MaxPooling2D
+  MaxPooling2D(pool_size=2, strides=2)
+  ```
