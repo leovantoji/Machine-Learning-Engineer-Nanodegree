@@ -123,8 +123,71 @@
   print("Created model and loaded weights from file")
   ```
 - Grid Search Hyperparameters for Deep Learning Models in Python with Keras:
-  - Source: [Here](https://machinelearningmastery.com/grid-search-hyperparameters-deep-learning-models-python-keras/)
-  - Takeaways:
-    - How to wrap Keras models for use in scikit-learn and how to use grid search.
-    - How to grid search common neural network parameters such as learning rate, dropout rate, epochs and number of neurons.
-    - How to define your own hyperparameter tuning experiments on your own projects.
+  - Source: [MachineLearningMastery](https://machinelearningmastery.com/grid-search-hyperparameters-deep-learning-models-python-keras/)
+  - Keras Models in `scikit-learn`: Keras models can be used in `scikit-learn` by wrapping them with the `KerasClassifier` or `KerasRegressor` class. A function that creates and returns a Keras sequential model must be defined and passed to `build_fn` argument when constructing the `KerasClassifier` class.
+  ```python
+  def create_model():
+    ...
+    return model
+  
+  model = KerasClassifier(build_fn=create_model)
+  # model = KerasClassifier(build_fn=create_model, epochs=10)
+  # def create_model(dropout_rate=0.0):
+  #  ...
+  #  return model
+  # model = KerasClassifier(build_fn=create_model, dropout_rate=0.2)
+  ```
+  - Tune Batch Size and Number of Epochs. `n_jobs=-1` allows the process to use all cores on the machine.
+  ```python
+  # Use scikit-learn to grid search the batch size and epochs
+  import numpy
+  from sklearn.model_selection import GridSearchCV
+  from keras.models import Sequential
+  from keras.layers import Dense
+  from keras.wrappers.scikit_learn import KerasClassifier
+
+  # Function to create model, required for KerasClassifier
+  def create_model():
+    # create model
+    model = Sequential()
+    model.add(Dense(12, input_dim=8, activation='relu'))
+    model.add(Dense(1, activation='sigmoid'))
+    # Compile model
+    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+    return model
+  
+  # Create model
+  model = KerasClassifier(build_fn=create_model, verbose=0)
+  
+  # Define the grid search parameters
+  batch_size = [10, 20, 40, 60, 80, 100]
+  epochs = [10, 50, 100]
+  param_grid = dict(batch_size=batch_size, epochs=epochs)
+  grid = GridSearchCV(estimator=model, param_grid=param_grid, n_jobs=-1)
+  grid_result = grid.fit(X, y)
+  
+  # Summarize results
+  print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
+  ```
+  - Tune the Training Optimisation Algorithm:
+  ```python
+  # Create model
+  model = KerasClassifier(build_fn=create_model, epochs=100, batch_size=10, verbose=0)
+  
+  # Define the grid search parameters
+  optimizer = ['SGD', 'RMSprop', 'Adagrad', 'Adadelta', 'Adam', 'Adamax', 'Nadam']
+  param_grid = dict(optimizer=optimizer)
+  grid = GridSearchCV(estimator=model, param_grid=param_grid, n_jobs=-1)
+  grid_result = grid.fit(X, y)
+  
+  # Summarize results
+  print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))  
+  ```
+  - Tips for Hyperparameter Optimisation:
+    - **k-fold Cross Validation**. You can see that the results from the examples in this post show some variance. A default cross-validation of 3 was used, but perhaps k=5 or k=10 would be more stable. Carefully choose your cross validation configuration to ensure your results are stable.
+    - **Review the Whole Grid**. Do not just focus on the best result, review the whole grid of results and look for trends to support configuration decisions.
+    - **Parallelize**. Use all your cores if you can, neural networks are slow to train and we often want to try a lot of different parameters. Consider spinning up a lot of AWS instances.
+    - **Use a Sample of Your Dataset**. Because networks are slow to train, try training them on a smaller sample of your training dataset, just to get an idea of general directions of parameters rather than optimal configurations.
+    - **Start with Coarse Grids**. Start with coarse-grained grids and zoom into finer grained grids once you can narrow the scope.
+    - **Do not Transfer Results**. Results are generally problem specific. Try to avoid favorite configurations on each new problem that you see. It is unlikely that optimal results you discover on one problem will transfer to your next project. Instead look for broader trends like number of layers or relationships between parameters.
+    - **Reproducibility is a Problem**. Although we set the seed for the random number generator in NumPy, the results are not 100% reproducible. There is more to reproducibility when grid searching wrapped Keras models than is presented in this post.
