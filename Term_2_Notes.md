@@ -191,3 +191,9 @@
     - **Start with Coarse Grids**. Start with coarse-grained grids and zoom into finer grained grids once you can narrow the scope.
     - **Do not Transfer Results**. Results are generally problem specific. Try to avoid favorite configurations on each new problem that you see. It is unlikely that optimal results you discover on one problem will transfer to your next project. Instead look for broader trends like number of layers or relationships between parameters.
     - **Reproducibility is a Problem**. Although we set the seed for the random number generator in NumPy, the results are not 100% reproducible. There is more to reproducibility when grid searching wrapped Keras models than is presented in this post.
+- Multilayer Perceptrons (MLPs):
+  - Only use fully connected layers. Lots of parameters are used.
+  - Only accept vectors as input. 2-D information (e.g. spatial information, etc.) is thrown away.
+- CNNs:
+  - Also use sparsely connected layers.
+  - Also accept matrices as input.
