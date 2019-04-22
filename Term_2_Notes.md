@@ -92,3 +92,39 @@
 - By removing the final activation function, you can use Neural Network for Regression problems.
 
 ## Convolutional Neural Networks
+- Deep learning models can be extremely time-consuming to train. In the case the the training is stopped unexpectedly, we will lose lots of work. Therefore, it is necessary to check-point deep learning models during training.
+  - Checkpoint Model Improvements:
+  ```python
+  # Compile model
+  model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+  # checkpoint
+  filepath="weights-improvement-{epoch:02d}-{val_acc:.2f}.hdf5"
+  checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
+  # Fit the model
+  model.fit(X, Y, validation_split=0.33, epochs=150, batch_size=10, callbacks=[checkpoint], verbose=0)
+  ```
+  - Checkpoint Best Neural Network Model Only:
+  ```python
+  # Checkpoint the weights for best model on validation accuracy
+  # Compile model
+  model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+  # Checkpoint
+  filepath="weights.best.hdf5"
+  checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
+  # Fit the model
+  model.fit(X, Y, validation_split=0.33, epochs=150, batch_size=10, callbacks=[checkpoint], verbose=0)
+  ```
+  - Load a Check-pointed Neural Network Model:
+  ```python
+  # load weights
+  model.load_weights("weights.best.hdf5")
+  # Compile model (required to make predictions)
+  model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+  print("Created model and loaded weights from file")
+  ```
+- Grid Search Hyperparameters for Deep Learning Models in Python with Keras:
+  - Source: [Here](https://machinelearningmastery.com/grid-search-hyperparameters-deep-learning-models-python-keras/)
+  - Takeaways:
+    - How to wrap Keras models for use in scikit-learn and how to use grid search.
+    - How to grid search common neural network parameters such as learning rate, dropout rate, epochs and number of neurons.
+    - How to define your own hyperparameter tuning experiments on your own projects.
