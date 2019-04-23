@@ -263,6 +263,8 @@
   model.add(Dense(10, activation='softmax'))
   ```
   - Things to remember:
+    - The filter is often a square, and `kernel_size` is usually 2x2 at the smallest to 5x5 at the largest. The `strides` is usually set to 1, which is the default value in keras. As for `padding`, it is believed that 'same' would yield better results than 'valid'. This choice of hyperparameters makes the width and height of the convolutional layer the same as the previous layer. The number of `filters` often slowly increase in sequence.
+    - Common setting for Max Pooling layer is that `pool_size` and `strides` are both 2.
     - Always add a ReLU activation function to the `Conv2D` layers in your CNN. With the exception of the final layer in the network, `Dense` layers should also have a ReLU activation function.
     - When constructing a network for classification, the final layer in the network should be a `Dense` layer with a softmax activation function. The number of nodes in the final layer should equal the total number of classes in the dataset.
     - [Andrej Karpathy's tumblr](https://lossfunctions.tumblr.com/)
