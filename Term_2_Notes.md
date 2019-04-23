@@ -240,3 +240,29 @@
   from keras.layers import MaxPooling2D
   MaxPooling2D(pool_size=2, strides=2)
   ```
+- CNNs for Image Classification:
+  - Create a `Sequential` model:
+  ```python
+  from keras.models import Sequential
+  ```
+  - Import necessary layers:
+  ```python
+  from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+  ```
+  - Add layers to the network:
+  ```python
+  model = Sequential()
+  model.add(Conv2D(filters=16, kernel_size=2, padding='same', activation='relu', input_shape=(32, 32, 3)))
+  model.add(MaxPooling2D(pool_size=2))
+  model.add(Conv2D(filters=32, kernel_size=2, padding='same', activation='relu'))
+  model.add(MaxPooling2D(pool_size=2))
+  model.add(Conv2D(filters=64, kernel_size=2, padding='same', activation='relu'))
+  model.add(MaxPooling2D(pool_size=2))
+  model.add(Flatten())
+  model.add(Dense(500, activation='relu'))
+  model.add(Dense(10, activation='softmax'))
+  ```
+  - Things to remember:
+    - Always add a ReLU activation function to the `Conv2D` layers in your CNN. With the exception of the final layer in the network, `Dense` layers should also have a ReLU activation function.
+    - When constructing a network for classification, the final layer in the network should be a `Dense` layer with a softmax activation function. The number of nodes in the final layer should equal the total number of classes in the dataset.
+    - [Andrej Karpathy's tumblr](https://lossfunctions.tumblr.com/)
