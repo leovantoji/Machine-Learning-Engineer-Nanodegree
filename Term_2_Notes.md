@@ -269,11 +269,37 @@
     - When constructing a network for classification, the final layer in the network should be a `Dense` layer with a softmax activation function. The number of nodes in the final layer should equal the total number of classes in the dataset.
     - [Andrej Karpathy's tumblr](https://lossfunctions.tumblr.com/)
 - Transfer Learning involves taking a pre-trained neural network and adapating the neural network to a new, different data set.
-  - 4 main scenarios:
+  - 4 main scenarios of Transfer Learning.
     
-    |New Data|Similarity to Original Data|What to do?|
-    |:-:|:-:|:-:|
-    |Small|Similar|End of ConvNet|
-    |Small|Different|Start of ConvNet|
-    |Large|Similar|Fine-tune|
-    |Large|Different|Fine-tune or Retrain|
+    |Case|New Data|Similarity to Original Data|What to do?|
+    |:-:|:-:|:-:|:-:|
+    |1|Small|Similar|End of ConvNet|
+    |2|Small|Different|Start of ConvNet|
+    |3|Large|Similar|Fine-tune|
+    |4|Large|Different|Fine-tune or Retrain|
+  - Case 1: Small data set with similar data.
+    - Slice off the end of the neural network.
+    - Add a new fully connected layer that matches the number of classes in the new data set.
+    - Randomise the weights of the new fully connected layer; freeze all the weights from the pre-trained network.
+    - Train the network to update the weights of the new fully connected layer.
+    - To avoid overfitting on the small data set, the weights of the original network will be held constant rather than re-training the weights.
+    - Since the data set are similar, images from each data set will have similar higher level features. Therefore, most or all of the pre-trained neural network layers already contain relevant information about the new data set and should be kept.
+  - Case 2: Small data set with different data.
+    - Slice off most of the pre-trained layers near the beginning of the network.
+    - Add to the remaining pre-trained layers a new fully connected layer that matches the number of classes in the new data set.
+    - Randomise the weights of the new fully connected layer; freeze all the weights from the pre-trained network.
+    - Train the network to update the weights of the new fully connected layer.
+    - To combat overfitting, the weights of the original neural network will be held constant.
+    - Since the 2 data sets are different, the new network will only use the layers containing lower level features.
+  - Case 3: Large data set with similar data.
+    - Remove the last fully connected layer and replace with a layer matching the number of classes in the new data set.
+    - Randomly initialise the weights in the new fully connected layer.
+    - Initialise the rest of the weights using the pre-trained weights.
+    - Re-train the entire neural network.
+    - Since overfitting is not much of a concern when training on a large data set, you can re-train all of the weights.
+    - The entire neural network is used because the original training set and the new data set share higher level features.
+  - Case 4: Large data set with different data.
+    - Remove the last fully connected layer and replace with a layer matching the number of classes in the new data set.
+    - Re-train the network from scratch with randomly initialised weights.
+    - Alternatively, you could just use the same strategy as that of Case 3.
+    - Even though the data set is different from the training data, initializing the weights from the pre-trained network might make training faster. So this case is exactly the same as the case with a large, similar data set. If using the pre-trained network as a starting point does not produce a successful model, another option is to randomly initialize the convolutional neural network weights and train the network from scratch.
