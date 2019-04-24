@@ -268,3 +268,12 @@
     - Always add a ReLU activation function to the `Conv2D` layers in your CNN. With the exception of the final layer in the network, `Dense` layers should also have a ReLU activation function.
     - When constructing a network for classification, the final layer in the network should be a `Dense` layer with a softmax activation function. The number of nodes in the final layer should equal the total number of classes in the dataset.
     - [Andrej Karpathy's tumblr](https://lossfunctions.tumblr.com/)
+- Transfer Learning involves taking a pre-trained neural network and adapating the neural network to a new, different data set.
+  - 4 main scenarios:
+    
+    |New Data|Similarity to Original Data|What to do?|
+    |:-:|:-:|:-:|
+    |Small|Similar|End of ConvNet|
+    |Small|Different|Start of ConvNet|
+    |Large|Similar|Fine-tune|
+    |Large|Different|Fine-tune or Retrain|
