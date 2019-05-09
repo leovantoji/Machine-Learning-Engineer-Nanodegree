@@ -305,4 +305,39 @@
     - Even though the data set is different from the training data, initializing the weights from the pre-trained network might make training faster. So this case is exactly the same as the case with a large, similar data set. If using the pre-trained network as a starting point does not produce a successful model, another option is to randomly initialize the convolutional neural network weights and train the network from scratch.
 
 ## Reinforcement Learning
-- 
+- Reinforcement Learning Key Concepts:
+  - **Agent**: takes actions.
+  - **Environment**: the world in which the agent exists and operates.
+  - **Action**: a move the agent can make in the environment.
+  - **Observation**: of the environment after taking actions.
+  - **State**: a situation which the agent perceives.
+  - **Reward**: feedback that measures the success or failure of the agent's action.
+  - **Total Reward**: *R<sub>t</sub> = Σr<sub>i</sub>*. 
+  - Because *R<sub>t</sub>* can go to infinity, there has to be a **discount factor** which places more weight on short-term timestamp reward and less weight on long-term timestamp from the current state reward. Thus, we have *R<sub>t</sub> = Σγ<sup>i</sup>r<sub>i</sub>*.
+  - **Q-function** captures the **expected total future reward** an agent in state, *s*, can receive by executing a certain action, *a*. Thus, we have *Q(s,a) = E[R<sub>t</sub>]*
+  - The agent needs a **policy π(s)**, to infer the **best action to take** at its state, *s*.
+  - **Strategy**: the policy should choose an action that maximises future reward. *π\*(s) = argmax Q(s,a)*.
+- A **task** is an instance of the reinforcement learning (RL) problem.
+  - **Episodic tasks** are tasks with well-defined ending points. Interaction ends at some time step *T*: *S<sub>0</sub>, A<sub>0</sub>, R<sub>1</sub>, S<sub>1</sub>, A<sub>1</sub>, ..., R<sub>T</sub>, S<sub>T</sub>*. This whole sequence of interaction (State, Action, Reward), from start to finish, is called an episode. Episodic tasks come to an end whenever the agent reaches a **terminal state**.
+  - **Continuing tasks** are tasks that continue forever, without end.
+- The task suffers the problem of **sparse reward** when the reward signal is largely uninformative (reward only comes at the end of the episode).
+- **Reward Hypothesis**: All goals can be framed as the maximisation of expected cumulative reward.
+- Deep Reinforcement Learning Algorithms:
+  - **Value learning**: Find *Q(s,a). a = argmax Q(s,a)*.
+  - **Policy learning**: Find *π(s)*. Sample *a ~ π(s)*.
+- **Deep Q Networks (DQN)**:
+  
+  |Input|NN|Output|
+  |:-:|:-:|:-:|
+  |<ul><li>state, *s*</li><li>action, *a*</li></ul>|Deep NN|*Q(s,a)*|
+  |state, *s*|Deep NN|<ul><li>*Q(s,a<sub>1</sub>)*</li><li>*Q(s,a<sub>2</sub>)*</li></ul>|
+- Downsides of Q-learning:
+  - Complexity: 
+    - Can model scenarios where the action space is discrete and small.
+    - Cannot handle continuous action spaces.
+  - Flexibility:
+    - Cannot learn stochastic policies since policy is deterministically computed from the Q function.
+- **Policy Gradient**: directly optimises the policy, while DQN tries to approximate Q and infer the optimal policy.
+  - Run a policy for a while.
+  - Increase probability of actions that lead to high rewards.
+  - Decrease the probability of actions that lead to low/no rewards.
