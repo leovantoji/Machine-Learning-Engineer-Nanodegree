@@ -303,3 +303,6 @@
     - Re-train the network from scratch with randomly initialised weights.
     - Alternatively, you could just use the same strategy as that of Case 3.
     - Even though the data set is different from the training data, initializing the weights from the pre-trained network might make training faster. So this case is exactly the same as the case with a large, similar data set. If using the pre-trained network as a starting point does not produce a successful model, another option is to randomly initialize the convolutional neural network weights and train the network from scratch.
+
+## Reinforcement Learning
+- 
