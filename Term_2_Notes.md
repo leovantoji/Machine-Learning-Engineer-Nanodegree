@@ -322,6 +322,14 @@
   - **Continuing tasks** are tasks that continue forever, without end.
 - The task suffers the problem of **sparse reward** when the reward signal is largely uninformative (reward only comes at the end of the episode).
 - **Reward Hypothesis**: All goals can be framed as the maximisation of expected cumulative reward.
+- **Markov Decision Process (MDP)** is a discrete time stochastic control process. It provides a mathematical framework for modeling decision making in situations where outcomes are partly random and partly under the control of a decision maker.
+- A (finite) MDP is defined by:
+  - a (finite) set of states *S* - known to the agent.
+  - a (finite) set of actions *A* - known to the agent.
+  - a (finite) set of rewards *R* - not known to the agent.
+  - the one-step dynamics of the environment - not known to the agent.
+    - *p(s<sup>'</sup>,r|s,a) = P(S<sub>t+1</sub>=s<sup>'</sup>, R<sub>t+1</sub>=r|S<sub>t</sub>=s, A<sub>t</sub>=a)* for all *s, s<sup>'</sup>, a, and r*.
+  - a discount rate *γ∈\[0,1\]* - known to the agent.
 - Deep Reinforcement Learning Algorithms:
   - **Value learning**: Find *Q(s,a). a = argmax Q(s,a)*.
   - **Policy learning**: Find *π(s)*. Sample *a ~ π(s)*.
