@@ -330,6 +330,10 @@
   - the one-step dynamics of the environment - not known to the agent.
     - *p(s<sup>'</sup>,r|s,a) = P(S<sub>t+1</sub>=s<sup>'</sup>, R<sub>t+1</sub>=r|S<sub>t</sub>=s, A<sub>t</sub>=a)* for all *s, s<sup>'</sup>, a, and r*.
   - a discount rate *γ∈\[0,1\]* - known to the agent.
+- Types of policy:
+  - A Deterministic policy is a mapping *π: S → A*.
+  - A Stochastic policy is a mapping *π: S x A → \[0,1\]*
+    - *π(a|s) = P(A<sub>t</sub>=a|S<sub>t</sub>=s)*
 - Deep Reinforcement Learning Algorithms:
   - **Value learning**: Find *Q(s,a). a = argmax Q(s,a)*.
   - **Policy learning**: Find *π(s)*. Sample *a ~ π(s)*.
