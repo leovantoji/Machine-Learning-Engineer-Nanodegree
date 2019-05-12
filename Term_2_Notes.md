@@ -312,9 +312,9 @@
   - **Observation**: of the environment after taking actions.
   - **State**: a situation which the agent perceives.
   - **Reward**: feedback that measures the success or failure of the agent's action.
-  - **Total Reward**: *R<sub>t</sub> = Σr<sub>i</sub>*. 
-  - Because *R<sub>t</sub>* can go to infinity, there has to be a **discount factor** which places more weight on short-term timestamp reward and less weight on long-term timestamp from the current state reward. Thus, we have *R<sub>t</sub> = Σγ<sup>i</sup>r<sub>i</sub>*.
-  - **Q-function** captures the **expected total future reward** an agent in state, *s*, can receive by executing a certain action, *a*. Thus, we have *Q(s,a) = E[R<sub>t</sub>]*
+  - **Total Reward**: *G<sub>t</sub> = Σr<sub>i</sub>*. 
+  - Because *G<sub>t</sub>* can go to infinity, there has to be a **discount factor** which places more weight on short-term timestamp reward and less weight on long-term timestamp from the current state reward. Thus, we have *G<sub>t</sub> = Σγ<sup>i</sup>r<sub>i</sub>*.
+  - **Q-function** captures the **expected total future reward** an agent in state, *s*, can receive by executing a certain action, *a*. Thus, we have *Q(s,a) = E[G<sub>t</sub>]*
   - The agent needs a **policy π(s)**, to infer the **best action to take** at its state, *s*.
   - **Strategy**: the policy should choose an action that maximises future reward. *π\*(s) = argmax Q(s,a)*.
 - A **task** is an instance of the reinforcement learning (RL) problem.
@@ -340,6 +340,11 @@
   - If the agent's policy *π* is stochastic, the agent selects action *a* with probability *π(a∣s)* when in state *s*, and the Bellman Expectation Equation can be rewritten as the sum over three variables (*s<sup>'</sup>*, *r*, and *a*): *v<sub>π</sub>(s) = **∑** π(a|s)p(s<sup>'</sup>,r|s,a)(r + γv<sub>π</sub>(s<sup>'</sup>)*.
 - A policy *π<sup>'</sup>* is better than another policy *π*, if and only if its value function is greater than that of the other policy for all state: *π<sup>'</sup> ≥ π* if and only if *v<sub>π<sup>'</sup></sub>(s) ≥ v<sub>π</sub>(s)* for all *s ∈ S*.
 - An optimal policy *π<sub>\*</sub>* satisfies *π<sub>\*</sub> ≥ π* for all *π*. An optimal policy is guaranteed to exist, but may not be unique. The optimal state-value function is denoted as *v<sub>\*</sub>*.
+- State-value function vs. Action-value function for policy *π*:
+
+|The value of state *s* under a policy *π*|The value of taking action *a* in state *s* under a policy *π*|
+|:-:|:-:|
+|*v<sub>π</sub>(s) = E<sub>π</sub>\[G<sub>t</sub>\|S<sub>t</sub>=s\]|*q<sub>π</sub>(s,a) = E<sub>π</sub>\[G<sub>t</sub>\|S<sub>t</sub>=s, A<sub>t</sub>=a\]|
 - Deep Reinforcement Learning Algorithms:
   - **Value learning**: Find *Q(s,a). a = argmax Q(s,a)*.
   - **Policy learning**: Find *π(s)*. Sample *a ~ π(s)*.
