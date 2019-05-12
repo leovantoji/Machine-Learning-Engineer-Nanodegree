@@ -262,6 +262,57 @@
   model.add(Dense(500, activation='relu'))
   model.add(Dense(10, activation='softmax'))
   ```
+  - We want the algorithm to learn the invariant representation of the image. Types of invariance:
+    - Scale invariance: size of the object.
+    - Rotation invariance: angle of the object.
+    - Translation invariance: position of the object (left, centre, right).
+  - Data augmentation helps prevent overfitting. Image augmentation in Keras:
+    ```python
+    from keras.preprocessing.image import ImageDataGenerator
+    
+    # create and configure augmented image generator
+    datagen = ImageDataGenerator(
+      width_shift_range=0.1, # randomly shift images horizontally (10% of total width)
+      height_shift_range=0.1, # randomly shift images vertically (10% of total height)
+      horizontal_flip=True) # randomly flipp images horizontally
+    
+    # fit augmented image generator on data
+    datagen.fit(X_train)
+    
+    # visualise original and augmented images
+    import matplotlib.pyplot as plt
+    
+    # take subset of training data
+    X_train_subset = X_train[:12] # first 12 images
+    
+    # visualise subset of training data
+    fig = plt.figure(figsize=(20,2))
+    for i in range(0, len(X_train_subset)):
+      ax = fig.add_subplot(1, 12, i+1)
+      ax.imshow(X_train_subset[i])
+    fig.suptitle("Subset of Original Training Images", fontsize=20)
+    
+    # visualise augmented images
+    fig = plt.figure(figsize(20,2))
+    for X_batch in datagen.flow(X_train_subset, batch_size=12):
+      for i in range(0, 12):
+        ax = fig.add_subplot(1, 12, i+1)
+        ax.imshow(X_batch[i])
+      fig.suptitle("Augmented Images", fontsize=20)
+      break;
+      
+    # train the model
+    from keras.callbacks import ModelCheckpoint
+    
+    batch_size = 32
+    epochs = 100
+    
+    checkpointer = ModelCheckpoint(filepath="aug_model.weights.best.hdf5", verbose=0, save_best_only=True)
+    model.fit_generator(datagen.flow(X_train, y_train, batch_size=batch_size),
+                          steps_per_epoch=X_train.shape[0] // batch_size,
+                          epochs=epochs, verbose=0, callbacks=[checkpointer],
+                          validation_data=(X_valid, y_valid))
+    ```
   - Things to remember:
     - The filter is often a square, and `kernel_size` is usually 2x2 at the smallest to 5x5 at the largest. The `strides` is usually set to 1, which is the default value in keras. As for `padding`, it is believed that 'same' would yield better results than 'valid'. This choice of hyperparameters makes the width and height of the convolutional layer the same as the previous layer. The number of `filters` often slowly increase in sequence.
     - Common setting for Max Pooling layer is that `pool_size` and `strides` are both 2.
