@@ -339,12 +339,11 @@
   - In the event that the agent's policy *π* is deterministic, the agent selects action *π(s)* when in state *s*, and the Bellman Expectation Equation can be rewritten as the sum over two variables (*s<sup>'</sup>* and *r*): *v<sub>π</sub>(s) = **∑** p(s<sup>'</sup>,r|s,π(s))(r + γv<sub>π</sub>(s<sup>'</sup>)*.
   - If the agent's policy *π* is stochastic, the agent selects action *a* with probability *π(a∣s)* when in state *s*, and the Bellman Expectation Equation can be rewritten as the sum over three variables (*s<sup>'</sup>*, *r*, and *a*): *v<sub>π</sub>(s) = **∑** π(a|s)p(s<sup>'</sup>,r|s,a)(r + γv<sub>π</sub>(s<sup>'</sup>)*.
 - A policy *π<sup>'</sup>* is better than another policy *π*, if and only if its value function is greater than that of the other policy for all state: *π<sup>'</sup> ≥ π* if and only if *v<sub>π<sup>'</sup></sub>(s) ≥ v<sub>π</sub>(s)* for all *s ∈ S*.
-- An optimal policy *π<sub>\*</sub>* satisfies *π<sub>\*</sub> ≥ π* for all *π*. An optimal policy is guaranteed to exist, but may not be unique. The optimal state-value function is denoted as *v<sub>\*</sub>*.
+- An optimal policy *π<sub>\*</sub>* satisfies *π<sub>\*</sub> ≥ π* for all *π*. An optimal policy is guaranteed to exist, but may not be unique. The optimal state-value function is denoted as *v<sub>\*</sub>*. The optimal action-value function is *q<sub>\*</sub>*.
 - State-value function vs. Action-value function for policy *π*:
-
-|The value of state *s* under a policy *π*|The value of taking action *a* in state *s* under a policy *π*|
-|:-:|:-:|
-|*v<sub>π</sub>(s) = E<sub>π</sub>\[G<sub>t</sub>\|S<sub>t</sub>=s\]|*q<sub>π</sub>(s,a) = E<sub>π</sub>\[G<sub>t</sub>\|S<sub>t</sub>=s, A<sub>t</sub>=a\]|
+  - The value of state *s* under a policy *π* is calculated as *v<sub>π</sub>(s) = E<sub>π</sub>\[G<sub>t</sub>\|S<sub>t</sub>=s\]*. For each state *s*, it yields the expected return if the agent starts in state *s* and then uses the policy to choose its action for all time steps.
+  - The value of taking action *a* in state *s* under a policy *π* is calculated as *q<sub>π</sub>(s,a) = E<sub>π</sub>\[G<sub>t</sub>\|S<sub>t</sub>=s, A<sub>t</sub>=a\]*. For each state *s* and action *a*, it yields the expected return if the agent starts in state *s* then chooses action *a* and then uses the policy to choose its actions for all time steps.
+- Once the agent determines the optimal action-value function *q<sub>\*</sub>*, it can quickly obtain an optimal policy *π* by setting *π<sub>\*</sub>(s) =* argmax*q<sub>\*</sub>(s,a)*.
 - Deep Reinforcement Learning Algorithms:
   - **Value learning**: Find *Q(s,a). a = argmax Q(s,a)*.
   - **Policy learning**: Find *π(s)*. Sample *a ~ π(s)*.
