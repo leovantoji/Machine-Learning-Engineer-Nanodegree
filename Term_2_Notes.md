@@ -343,7 +343,7 @@
 - State-value function vs. Action-value function for policy *π*:
   - The value of state *s* under a policy *π* is calculated as *v<sub>π</sub>(s) = E<sub>π</sub>\[G<sub>t</sub>\|S<sub>t</sub>=s\]*. For each state *s*, it yields the expected return if the agent starts in state *s* and then uses the policy to choose its action for all time steps.
   - The value of taking action *a* in state *s* under a policy *π* is calculated as *q<sub>π</sub>(s,a) = E<sub>π</sub>\[G<sub>t</sub>\|S<sub>t</sub>=s, A<sub>t</sub>=a\]*. For each state *s* and action *a*, it yields the expected return if the agent starts in state *s* then chooses action *a* and then uses the policy to choose its actions for all time steps.
-- Once the agent determines the optimal action-value function *q<sub>\*</sub>*, it can quickly obtain an optimal policy *π* by setting *π<sub>\*</sub>(s) =* argmax*q<sub>\*</sub>(s,a)*.
+- Once the agent determines the optimal action-value function *q<sub>\*</sub>*, it can quickly obtain an optimal policy *π* by setting *π<sub>\*</sub>(s) =* argmax *q<sub>\*</sub>(s,a)*.
 - Deep Reinforcement Learning Algorithms:
   - **Value learning**: Find *Q(s,a). a = argmax Q(s,a)*.
   - **Policy learning**: Find *π(s)*. Sample *a ~ π(s)*.
