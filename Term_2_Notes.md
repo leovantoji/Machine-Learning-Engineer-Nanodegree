@@ -398,12 +398,6 @@
 - Deep Reinforcement Learning Algorithms:
   - **Value learning**: Find *Q(s,a). a = argmax Q(s,a)*.
   - **Policy learning**: Find *π(s)*. Sample *a ~ π(s)*.
-- **Iterative Policy Evaluation**.
-- **Estimation of Action Values**.
-- **Policy Improvement**: An improved policy *π<sup>'</sup>* is a policy that satifies for each state *s ∈ S* and *a ∈ A(s)*: *π<sup>'</sup>(a|s) = 0* if *a ∉ argmax Q(s, a<sup>'</sup>)*. In other words, any policy that (for each state) assigns zero probability to the actions that do not maximise the action-value function estimate (for that state) is an improved policy.
-- **Policy Iteration** proceeds as a series of alternating policy evaluation and improvement steps. Policy iteration is guaranteed to find the optimal policy for any finite MDP in a finite number of iterations.
-- **Truncated Policy Evaluation** only performs a fixed number of sweeps through the state space.
-- **Value Iteration**: each sweep over the state space *S* effectively performs both policy evaluation and policy improvement. Value iteration is guaranteed to find the optimal policy *π<sub>\*</sub>* for any finite MDP.
 - **Deep Q Networks (DQN)**:
   
   |Input|NN|Output|
@@ -420,3 +414,12 @@
   - Run a policy for a while.
   - Increase probability of actions that lead to high rewards.
   - Decrease the probability of actions that lead to low/no rewards.
+
+## Dynamic Programming
+- In the **dynamic programming** setting, the agent has full knowledge of the MDP. (This is much easier than reinforcement learning setting, where the agent initially knows nothing about how the environment decides state and reward and must learn entirely from interaction how to select actions.)
+- **Iterative Policy Evaluation** is an algorithm used in the dynamic programming setting to estimate the state-value function *v<sub>π</sub>* corresponding to a policy *π*.
+- **Estimation of Action Values**: In the dynamic programming setting, it is possible to quickly obtain the action-value function *q<sub>π</sub>* from the state-value function *v<sub>π</sub>* with the equation: *q<sub>π</sub>(s,a) = **∑** p(s<sup>'</sup>,r|s,a)(r + γv<sub>π</sub>(s<sup>'</sup>)*
+- **Policy Improvement**: An improved policy *π<sup>'</sup>* is a policy that satifies for each state *s ∈ S* and *a ∈ A(s)*: *π<sup>'</sup>(a|s) = 0* if *a ∉ argmax Q(s, a<sup>'</sup>)*. In other words, any policy that (for each state) assigns zero probability to the actions that do not maximise the action-value function estimate (for that state) is an improved policy.
+- **Policy Iteration** proceeds as a series of alternating policy evaluation and improvement steps. Policy iteration is guaranteed to find the optimal policy for any finite MDP in a finite number of iterations.
+- **Truncated Policy Evaluation** only performs a fixed number of sweeps through the state space.
+- **Value Iteration**: each sweep over the state space *S* effectively performs both policy evaluation and policy improvement. Value iteration is guaranteed to find the optimal policy *π<sub>\*</sub>* for any finite MDP.
