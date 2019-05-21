@@ -398,6 +398,11 @@
 - Deep Reinforcement Learning Algorithms:
   - **Value learning**: Find *Q(s,a). a = argmax Q(s,a)*.
   - **Policy learning**: Find *π(s)*. Sample *a ~ π(s)*.
+- **Iterative Policy Evaluation**.
+- **Estimation of Action Values**.
+- **Policy Improvement**: An improved policy *π<sup>'</sup>* is a policy that satifies for each state *s ∈ S* and *a ∈ A(s)*: *π<sup>'</sup>(a|s) = 0* if *a ∉ argmax Q(s, a<sup>'</sup>)*. In other words, any policy that (for each state) assigns zero probability to the actions that do not maximise the action-value function estimate (for that state) is an improved policy.
+- **Policy Iteration** proceeds as a series of alternating policy evaluation and improvement steps. Policy iteration is guaranteed to find the optimal policy for any finite MDP in a finite number of iterations.
+- **Truncated Policy Evaluation** only performs a fixed number of sweeps through the state space.
 - **Deep Q Networks (DQN)**:
   
   |Input|NN|Output|
