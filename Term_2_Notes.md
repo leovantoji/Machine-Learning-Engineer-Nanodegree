@@ -423,3 +423,12 @@
 - **Policy Iteration** proceeds as a series of alternating policy evaluation and improvement steps. Policy iteration is guaranteed to find the optimal policy for any finite MDP in a finite number of iterations.
 - **Truncated Policy Evaluation** only performs a fixed number of sweeps through the state space.
 - **Value Iteration**: each sweep over the state space *S* effectively performs both policy evaluation and policy improvement. Value iteration is guaranteed to find the optimal policy *π<sub>\*</sub>* for any finite MDP.
+
+## Monte Carlo Methods
+- The **Prediction Problem**: Given a policy *π*, determine *v<sub>π</sub>* or (*q<sub>π</sub>*).
+- The **Off-Policy Method** for the Prediction Problem: Generate episodes from following policy *b*, where *b ≠ π*. The generated episodes will then be used to estimate *v<sub>π</sub>*.
+- The **On-Policy Method** for the Prediction Problem: Generate episodes from following policy *π*. The generated episodes will then be used to estimate *v<sub>π</sub>*.
+- Each occurence of state *s ∈ S* in an episode is called a **visit** to *s*.
+  - First-visit MC method is unbiased.
+  - Every-visit MC method is biased. Initially, every-visit MC has lower mean squared error (MSE), but as more episodes are collected, first-visit MC attains better MSE.
+  - Both first-visit and every-visit MC method are guaranteed to converge to the true value function, as the number of visits to each state approaches infinity.
