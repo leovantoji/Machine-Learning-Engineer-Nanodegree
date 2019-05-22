@@ -432,3 +432,4 @@
   - First-visit MC method is unbiased.
   - Every-visit MC method is biased. Initially, every-visit MC has lower mean squared error (MSE), but as more episodes are collected, first-visit MC attains better MSE.
   - Both first-visit and every-visit MC method are guaranteed to converge to the true value function, as the number of visits to each state approaches infinity.
+- We won't use MC prediction to estimate the action-values corresponding to a deterministic policy; this is because many state-action pairs will never be visited (since a deterministic policy always chooses the same action from each state). Instead, so that convergence is guaranteed, we will only estimate action-value functions corresponding to policies where each action has a nonzero probability of being selected from each state.
