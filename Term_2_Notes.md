@@ -429,12 +429,12 @@
 - The **Off-Policy Method** for the Prediction Problem: Generate episodes from following policy *b*, where *b ≠ π*. The generated episodes will then be used to estimate *v<sub>π</sub>*.
 - The **On-Policy Method** for the Prediction Problem: Generate episodes from following policy *π*. The generated episodes will then be used to estimate *v<sub>π</sub>*.
 - Each occurence of state *s ∈ S* in an episode is called a **visit** to *s*.
-  - First-visit MC method is unbiased.
-  - Every-visit MC method is biased. Initially, every-visit MC has lower mean squared error (MSE), but as more episodes are collected, first-visit MC attains better MSE.
+  - **First-visit MC** method estimates *v<sub>π</sub>(s)* as the average of the returns following only first visits to *s* (that is, it ignores returns that are associated to later visits). This method is unbiased.
+  - **Every-visit MC** method estimates *v<sub>π</sub>(s)* as the average of the returns following all visits to *s*. This method is biased. Initially, every-visit MC has lower mean squared error (MSE), but as more episodes are collected, first-visit MC attains better MSE.
   - Both first-visit and every-visit MC method are guaranteed to converge to the true value function, as the number of visits to each state approaches infinity.
 - We won't use MC prediction to estimate the action-values corresponding to a deterministic policy; this is because many state-action pairs will never be visited (since a deterministic policy always chooses the same action from each state). Instead, so that convergence is guaranteed, we will only estimate action-value functions corresponding to policies where each action has a nonzero probability of being selected from each state.
 - The **Control Problem**: How might an agent determine an optimal policy *π<sub>\*</sub>* from interactions with the environment?
-- **Generalised Policy Iteration**:
+- **Generalised Policy Iteration (GPI)** refers to the general method of using alternating rounds of policy evaluation and improvement in the search for an optimal policy. All of the reinforcement learning algorithms we examine in this course can be classified as GPI. The pseudocode is shown below:
   - Initialise *N(s,a) = 0* for all *s ∈ S, a ∈ A(s)*.
   - Initialise *Q(s,a) = 0* for all *s ∈ S, a ∈ A(s)*.
   - Begin with starting policy *π*.
@@ -450,5 +450,7 @@
   - No value of *ε* can yield an epsilon-greedy policy that is guaranteed to always select a non-greedy action.
   - *ε = 1* yields an epsilon-greedy policy that is equivalent to the equiprobable random policy.
   - *ε > 0* yields an epsilon-greedy policy that is guaranteed to sometimes select a greedy and sometimes select a non-greedy action.
-- One potential solution to the Exploration-Exploitation Dilemma is implemented by gradually modifying the value of *ε* when constructing epsilon-greedy policies.
+- All reinforcement learning agents face the **Exploration-Exploitation Dilemma**, where they must find a way to balance the drive to behave optimally based on their current knowledge (**exploitation**) and the need to acquire knowledge to attain better judgement (**exploration**).
+- One potential solution to the **Exploration-Exploitation Dilemma** is implemented by gradually modifying the value of *ε* when constructing epsilon-greedy policies.
 - Greedy in the Limit with Infinite Exploration (GLIE): If every state-action pair *(s,a)* is visited infinitely many times, and the policy converges to a policy that is greedy with respect to the action-value function estimate *Q*, then MC Control is guaranteed to converge to the optimal policy (in the limit as the algorithm is run for infinitely many episodes). These condition ensures that the agent continues to explore for all time steps, and the agent gradually exploits more (explores less). To satisfy this, set *ε<sub>i</sub> = 1/i* for all time step *i*.
+- **Constant-alpha MC Control**: The step-size parameter *α* must satisfy *0 < α ≤ 1*. Higher value of *α* will result in faster learning, but values of *α* that are too high can prevent MC Control from converging to *π<sub>\*</sub>*.
