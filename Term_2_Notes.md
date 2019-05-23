@@ -433,3 +433,22 @@
   - Every-visit MC method is biased. Initially, every-visit MC has lower mean squared error (MSE), but as more episodes are collected, first-visit MC attains better MSE.
   - Both first-visit and every-visit MC method are guaranteed to converge to the true value function, as the number of visits to each state approaches infinity.
 - We won't use MC prediction to estimate the action-values corresponding to a deterministic policy; this is because many state-action pairs will never be visited (since a deterministic policy always chooses the same action from each state). Instead, so that convergence is guaranteed, we will only estimate action-value functions corresponding to policies where each action has a nonzero probability of being selected from each state.
+- The **Control Problem**: How might an agent determine an optimal policy *π<sub>\*</sub>* from interactions with the environment?
+- **Generalised Policy Iteration**:
+  - Initialise *N(s,a) = 0* for all *s ∈ S, a ∈ A(s)*.
+  - Initialise *Q(s,a) = 0* for all *s ∈ S, a ∈ A(s)*.
+  - Begin with starting policy *π*.
+  - Repeat:
+    - Policy Evaluation:
+      - Generate an episode *S<sub>0</sub>, A<sub>0</sub>, R<sub>1</sub>, ..., S<sub>r</sub>* using *π*.
+      - Use the episode to update *Q*: *Q(S<sub>t</sub>, A<sub>t</sub>) += 1/N(S<sub>t</sub>, A<sub>t</sub>) × (G<sub>t</sub> - Q(S<sub>t</sub>, A<sub>t</sub>))*
+    - Policy Improvement:
+      - Greedy Policy: Use *Q* to improve *π*: *π(s) ← argmax Q(s,a)* for all *s ∈ S, a ∈ A(s)*.
+      - Epsilon-Greedy Policy: *ε ∈ \[0,1\]*. Agent selects greedy action with *(1 - ε + ε/|A(s)|)* probability and randomly selects an action with *ε/|A(s)|* probability.
+- Notes on value of *ε*:
+  - *ε = 0* yields an epsilon-greedy policy that is the same as greedy policy.
+  - No value of *ε* can yield an epsilon-greedy policy that is guaranteed to always select a non-greedy action.
+  - *ε = 1* yields an epsilon-greedy policy that is equivalent to the equiprobable random policy.
+  - *ε > 0* yields an epsilon-greedy policy that is guaranteed to sometimes select a greedy and sometimes select a non-greedy action.
+- One potential solution to the Exploration-Exploitation Dilemma is implemented by gradually modifying the value of *ε* when constructing epsilon-greedy policies.
+- Greedy in the Limit with Infinite Exploration (GLIE): If every state-action pair *(s,a)* is visited infinitely many times, and the policy converges to a policy that is greedy with respect to the action-value function estimate *Q*, then MC Control is guaranteed to converge to the optimal policy (in the limit as the algorithm is run for infinitely many episodes). These condition ensures that the agent continues to explore for all time steps, and the agent gradually exploits more (explores less). To satisfy this, set *ε<sub>i</sub> = 1/i* for all time step *i*.
