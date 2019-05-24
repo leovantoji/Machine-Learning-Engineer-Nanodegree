@@ -462,9 +462,9 @@
   - In practice, TD prediction converges faster than MC prediction.
 - TD Prediction: Action Values. In this concept, we discussed a TD prediction algorithm for estimating action values. Similar to TD(0), this algorithm is guaranteed to converge to the true action-value function, as long as the step-size parameter *α* is sufficiently small.
 - TD Control:
-  - **Sarsa(0)** (or **Sarsa**) is an on-policy TD control method. It is guaranteed to converge to the optimal action-value function *q<sub>\∗</sub>*, as long as the step-size parameter *α* is sufficiently small and *ϵ* is chosen to satisfy the Greedy in the Limit with Infinite Exploration (GLIE) conditions.
-  - **Sarsamax** (or **Q-Learning**) is an off-policy TD control method. It is guaranteed to converge to the optimal action value function *q<sub>\∗</sub>*, under the same conditions that guarantee convergence of the Sarsa control algorithm.
-  - **Expected Sarsa** is an on-policy TD control method. It is guaranteed to converge to the optimal action value function *q<sub>\∗</sub>*, under the same conditions that guarantee convergence of Sarsa and Sarsamax.
+  - **Sarsa(0)** (or **Sarsa**) is an on-policy TD control method. It is guaranteed to converge to the optimal action-value function *q<sub>∗</sub>*, as long as the step-size parameter *α* is sufficiently small and *ϵ* is chosen to satisfy the Greedy in the Limit with Infinite Exploration (GLIE) conditions.
+  - **Sarsamax** (or **Q-Learning**) is an off-policy TD control method. It is guaranteed to converge to the optimal action value function *q<sub>∗</sub>*, under the same conditions that guarantee convergence of the Sarsa control algorithm.
+  - **Expected Sarsa** is an on-policy TD control method. It is guaranteed to converge to the optimal action value function *q<sub>∗</sub>*, under the same conditions that guarantee convergence of Sarsa and Sarsamax.
 - Analysing Performance:
   - On-policy TD control methods (like Expected Sarsa and Sarsa) have better online performance than off-policy TD control methods (like Q-learning).
   - Expected Sarsa generally achieves better performance than Sarsa.
