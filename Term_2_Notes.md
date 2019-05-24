@@ -454,3 +454,17 @@
 - One potential solution to the **Exploration-Exploitation Dilemma** is implemented by gradually modifying the value of *ε* when constructing epsilon-greedy policies.
 - Greedy in the Limit with Infinite Exploration (GLIE): If every state-action pair *(s,a)* is visited infinitely many times, and the policy converges to a policy that is greedy with respect to the action-value function estimate *Q*, then MC Control is guaranteed to converge to the optimal policy (in the limit as the algorithm is run for infinitely many episodes). These condition ensures that the agent continues to explore for all time steps, and the agent gradually exploits more (explores less). To satisfy this, set *ε<sub>i</sub> = 1/i* for all time step *i*.
 - **Constant-alpha MC Control**: The step-size parameter *α* must satisfy *0 < α ≤ 1*. Higher value of *α* will result in faster learning, but values of *α* that are too high can prevent MC Control from converging to *π<sub>\*</sub>*.
+
+## Temporal Difference (TD) Methods
+- TD Prediction: TD(0):
+  - Whereas Monte Carlo (MC) prediction methods must wait until the end of an episode to update the value function estimate, temporal-difference (TD) methods update the value function after every time step.
+  - For any fixed policy, **one-step TD** (or **TD(0)**) is guaranteed to converge to the true state-value function, as long as the step-size parameter *α* is sufficiently small.
+  - In practice, TD prediction converges faster than MC prediction.
+- TD Prediction: Action Values. In this concept, we discussed a TD prediction algorithm for estimating action values. Similar to TD(0), this algorithm is guaranteed to converge to the true action-value function, as long as the step-size parameter *α* is sufficiently small.
+- TD Control:
+  - **Sarsa(0)** (or **Sarsa**) is an on-policy TD control method. It is guaranteed to converge to the optimal action-value function *q<sub>\∗</sub>*, as long as the step-size parameter *α* is sufficiently small and *ϵ* is chosen to satisfy the Greedy in the Limit with Infinite Exploration (GLIE) conditions.
+  - **Sarsamax** (or **Q-Learning**) is an off-policy TD control method. It is guaranteed to converge to the optimal action value function *q<sub>\∗</sub>*, under the same conditions that guarantee convergence of the Sarsa control algorithm.
+  - **Expected Sarsa** is an on-policy TD control method. It is guaranteed to converge to the optimal action value function *q<sub>\∗</sub>*, under the same conditions that guarantee convergence of Sarsa and Sarsamax.
+- Analysing Performance:
+  - On-policy TD control methods (like Expected Sarsa and Sarsa) have better online performance than off-policy TD control methods (like Q-learning).
+  - Expected Sarsa generally achieves better performance than Sarsa.
