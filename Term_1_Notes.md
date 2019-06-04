@@ -316,7 +316,7 @@ acc = accuracy_score(y_test, y_pred)
 - RBF (Radio Basis Function) Kernel.
 - Gamma (`γ`) parameter:
   - Large Gamma gives tall and pointy mountains → the model tends to overfit.
-  - Large Gamma gives short and wide mountains → the model tends to underfit.
+  - Small Gamma gives short and wide mountains → the model tends to underfit.
 - Implementation in sklearn:
   - Hyperparameters:
     - `C`: The `C` parameter.
