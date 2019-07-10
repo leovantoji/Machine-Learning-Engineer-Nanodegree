@@ -5,15 +5,16 @@
 - July 10, 2019
 
 ### Domain Background
-
-_(approx. 1-2 paragraphs)_
-
-In this section, provide brief details on the background information of the domain from which the project is proposed. Historical information relevant to the project should be included. It should be clear how or why a problem in the domain can or should be solved. Related academic research should be appropriately cited in this section, including why that research is relevant. Additionally, a discussion of your personal motivation for investigating a particular problem in the domain is encouraged but not required.
+- Car Make and Model Image Recognition is a sub problem belonging to a large family of Fine-grained Recognition problems. An algorithm which can effectively distinguish one car make and model from another is extremely beneficial. Some of the benefits include improving Traffic Video Surveillance system or increasing the accuracy of a variety of Traffic Analytics.
+- Some challenges associated with vehicle recognition problems are shown below.
+  - Car image acquisition.
+  - Variations in lighting conditions when the car photo was taken.
+  - Large variety of car makes and models.
+  - Similarities between different car makes and models.
 
 ### Problem Statement
-_(approx. 1 paragraph)_
-
-In this section, clearly describe the problem that is to be solved. The problem described should be well defined and should have at least one relevant potential solution. Additionally, describe the problem thoroughly such that it is clear that the problem is quantifiable (the problem can be expressed in mathematical or logical terms) , measurable (the problem can be measured by some metric and clearly observed), and replicable (the problem can be reproduced and occurs more than once).
+- The problem is to automate the process of car recognition process from the images, including the make and model of the vehicle.
+- The aim of this project is develop a model with at least 70% prediction accuracy. 
 
 ### Datasets and Inputs
 #### Dataset Description
