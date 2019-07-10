@@ -17,9 +17,15 @@ _(approx. 1 paragraph)_
 In this section, clearly describe the problem that is to be solved. The problem described should be well defined and should have at least one relevant potential solution. Additionally, describe the problem thoroughly such that it is clear that the problem is quantifiable (the problem can be expressed in mathematical or logical terms) , measurable (the problem can be measured by some metric and clearly observed), and replicable (the problem can be reproduced and occurs more than once).
 
 ### Datasets and Inputs
-_(approx. 2-3 paragraphs)_
+#### Dataset Description
+The Cars dataset contains 16,185 images of 196 classes of cars. The data is split into 8,144 training images and 8,041 testing images, where each class has been split roughly in a 50-50 split. Classes are typically at the level of Make, Model, Year, e.g. 2012 Tesla Model S or 2012 BMW M3 coupe.
 
-In this section, the dataset(s) and/or input(s) being considered for the project should be thoroughly described, such as how they relate to the problem and why they should be used. Information such as how the dataset or input is (was) obtained, and the characteristics of the dataset or input, should be included with relevant references and citations as necessary It should be clear how the dataset(s) or input(s) will be used in the project and whether their use is appropriate given the context of the problem.
+#### Acknowledgement
+Data source and banner image: http://ai.stanford.edu/~jkrause/cars/car_dataset.html contains all bounding boxes and labels for both training and tests.\
+\
+**3D Object Representations for Fine-Grained Categorization**\
+Jonathan Krause, Michael Stark, Jia Deng, Li Fei-Fei\
+4th IEEE Workshop on 3D Representation and Recognition, at ICCV 2013 (3dRR-13). Sydney, Australia. Dec. 8, 2013.
 
 ### Solution Statement
 _(approx. 1 paragraph)_
@@ -52,25 +58,29 @@ Workflow:
   - Perform one-hot encoding on the car labels.
   - Transform datasets into 4D tensors so that they can be used as input for Tensorflow Keras CNN.
   - Perform image augmentation to add more variety to the images.
-  - Train benchmarking model.
-  - Fine-tune InceptionV3 Model.
-    - Load base InceptionV3 model with pre-loaded "imagenet" weights.
-    - Freeze the first 254 layers.
-    - Make the rest of the layers trainable.
-    - Append the following model to the base model.
-    ```python
-    model = Sequential()
-    model.add(Xception_model)
-    model.add(BatchNormalization())
-    model.add(GlobalAveragePooling2D())
-    model.add(Dense(512, activation="relu", kernel_regularizer=regularizers.l2(0.01)))
-    model.add(Dropout(rate=0.5))
-    model.add(Dense(256, activation="relu", kernel_regularizer=regularizers.l2(0.01)))
-    model.add(Dropout(rate=0.5))
-    model.add(Dense(N_CLASSES, activation="softmax")) # N_CLASSES = 196
-    ```
-    - Train the combined model with Model Checkpoint, Early Stopping if there is no improvement in "val_acc" and Reduce Learning Rate if there is no improvement in "val_loss".
-    
-_(approx. 1 page)_
+- Train benchmarking model.
+- Test benchmarking model against Private and Public Test set.
+- Validate benchmarking model performance by charting out the learning curve.
+- Fine-tune Xception Model.
+  - Load base Xception model with pre-loaded "imagenet" weights.
+  - Freeze the first 94 layers.
+  - Make the rest of the layers trainable.
+  - Append the following model to the base model.
+  ```python
+  model = Sequential()
+  model.add(Xception_model)
+  model.add(BatchNormalization())
+  model.add(GlobalAveragePooling2D())
+  model.add(Dense(512, activation="relu", kernel_regularizer=regularizers.l2(0.01)))
+  model.add(Dropout(rate=0.5))
+  model.add(Dense(256, activation="relu", kernel_regularizer=regularizers.l2(0.01)))
+  model.add(Dropout(rate=0.5))
+  model.add(Dense(N_CLASSES, activation="softmax")) # N_CLASSES = 196
+  ```
+  - Train the combined model with Model Checkpoint, Early Stopping if there is no improvement in "val_acc" and Reduce Learning Rate if there is no improvement in "val_loss".
+- Test transfer learning model against Private and Public Test set.
+- Validate transfer learning model performance by charting out the learning curve.
+- Compare the accuracy of the transfer learning model against the benchmarking model.
 
-In this final section, summarize a theoretical workflow for approaching a solution given the problem. Provide thorough discussion for what strategies you may consider employing, what analysis of the data might be required before being used, or which algorithms will be considered for your implementation. The workflow and discussion that you provide should align with the qualities of the previous sections. Additionally, you are encouraged to include small visualizations, pseudocode, or diagrams to aid in describing the project design, but it is not required. The discussion should clearly outline your intended workflow of the capstone project.
+## Reference
+- [Xception: Deep Learning with Depthwise Separable Convolutions](https://arxiv.org/abs/1610.02357)
