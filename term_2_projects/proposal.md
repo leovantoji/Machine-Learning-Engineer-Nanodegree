@@ -1,6 +1,6 @@
 # Machine Learning Engineer Nanodegree
 ## Capstone Proposal
-**Car Make and Model Image Recognition**
+### Car Make and Model Image Recognition
 - Chu Nguyen Van
 - July 10, 2019
 
