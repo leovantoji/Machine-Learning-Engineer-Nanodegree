@@ -43,10 +43,10 @@ _(approx. 1-2 paragraphs)_
 In this section, propose at least one evaluation metric that can be used to quantify the performance of both the benchmark model and the solution model. The evaluation metric(s) you propose should be appropriate given the context of the data, the problem statement, and the intended solution. Describe how the evaluation metric(s) are derived and provide an example of their mathematical representations (if applicable). Complex evaluation metrics should be clearly defined and quantifiable (can be expressed in mathematical or logical terms).
 
 ### Project Design
-Programming language: Python 3.7\
-Library/Framework: Pandas, Numpy, Scikit-learn, Tensorflow Keras\
-Workflow:\
-- Data Collection: the cars dataset is originated from Stanford University AI Lab and was downloaded from the aforementioned website in the Datasets and Inputs section
+**Programming language**: Python 3.7\
+**Library/Framework**: Pandas, Numpy, Scikit-learn, Tensorflow Keras\
+**Workflow**:
+- Data Collection: the cars dataset is originated from Stanford University AI Lab and was downloaded from the aforementioned website in the *Datasets and Inputs* section
 - Explore the dataset: construct a bar chart to understand the number of car images associated with each car make and model.
 - Image Preprocessing: crop the car out of the original image based on the provided bounding box information. This will eliminate all noises in the image so that the model can have better accuracy thanks to cleaner input.
 - Data preparation: 
