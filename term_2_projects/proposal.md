@@ -28,20 +28,33 @@ In this section, clearly describe the problem that is to be solved. The problem 
   - 4th IEEE Workshop on 3D Representation and Recognition, at ICCV 2013 (3dRR-13). Sydney, Australia. Dec. 8, 2013.
 
 ### Solution Statement
-_(approx. 1 paragraph)_
-
-In this section, clearly describe a solution to the problem. The solution should be applicable to the project domain and appropriate for the dataset(s) or input(s) given. Additionally, describe the solution thoroughly such that it is clear that the solution is quantifiable (the solution can be expressed in mathematical or logical terms) , measurable (the solution can be measured by some metric and clearly observed), and replicable (the solution can be reproduced and occurs more than once).
+- Inspired by the results of the Deep Learning research for Cancer Detection by Sebastian Thrun, I intend to use Transfer Learning to solve this classification problem. To be specific, I will use the Xception model initialised with "imagenet" weights. Since the cars dataset is much smaller than the ImageNet dataset, retraining the whole model will probably result in overfitting. Thus, it is my intention to keep the majority of the pre-loaded weights intact so that I can leverage the top model to extract higher level features of the image. The last few layers of the top model will be retrained and subsequently connected with my own logistic layers specific to this problem. 
 
 ### Benchmark Model
-- A random guess of Car Make and Model has a ~0.5% (= 1/196) probability of being accurate.
-- I will train a model
-
-In this section, provide the details for a benchmark model or result that relates to the domain, problem statement, and intended solution. Ideally, the benchmark model or result contextualizes existing methods or known information in the domain and problem given, which could then be objectively compared to the solution. Describe how the benchmark model or result is measurable (can be measured by some metric and clearly observed) with thorough detail.
+- A random guess with equal probability assigned for each car class has a ~0.5% (= 1/196) probability of being accurate.
+- I will train a simple CNN model from scratch to serve as a benchmark for my transfer learning model.
+- The architecture of the benchmarking model is shown below.
+  ```python
+  model = Sequential()
+  model.add(Conv2D(filters=16, kernel_size=2, padding="same", activation="relu", input_shape=train_tensors[0].shape))
+  model.add(Conv2D(filters=16, kernel_size=2, padding="same", activation="relu"))
+  model.add(MaxPooling2D(pool_size=2))
+  model.add(Conv2D(filters=32, kernel_size=2, padding="same", activation="relu"))
+  model.add(Conv2D(filters=32, kernel_size=2, padding="same", activation="relu"))
+  model.add(MaxPooling2D(pool_size=2))
+  model.add(Conv2D(filters=64, kernel_size=2, padding="same", activation="relu"))
+  model.add(Conv2D(filters=64, kernel_size=2, padding="same", activation="relu"))
+  model.add(GlobalAveragePooling2D())
+  model.add(Dense(512, activation="relu", kernel_regularizer=regularizers.l2(0.01)))
+  model.add(Dropout(rate=0.5))
+  model.add(Dense(256, activation="relu", kernel_regularizer=regularizers.l2(0.01)))
+  model.add(Dropout(rate=0.5))  
+  model.add(Dense(N_CLASSES, activation='softmax')) # N_CLASSES = 196
+  ```
 
 ### Evaluation Metrics
-_(approx. 1-2 paragraphs)_
-
-In this section, propose at least one evaluation metric that can be used to quantify the performance of both the benchmark model and the solution model. The evaluation metric(s) you propose should be appropriate given the context of the data, the problem statement, and the intended solution. Describe how the evaluation metric(s) are derived and provide an example of their mathematical representations (if applicable). Complex evaluation metrics should be clearly defined and quantifiable (can be expressed in mathematical or logical terms).
+- An accuracy score comparing the model predictions of test images against the true test label will be computed. The higher the accuracy score is, the better the model is.
+- A confusion matrix can also be used to show the car classes that the model struggles the most to discern.
 
 ### Project Design
 - **Programming language**: Python 3.7
@@ -66,19 +79,8 @@ In this section, propose at least one evaluation metric that can be used to quan
     - Load base Xception model with pre-loaded "imagenet" weights.
     - Freeze the first 94 layers.
     - Make the rest of the layers trainable.
-    - Append the following model to the base model.
-    ```python
-    model = Sequential()
-    model.add(Xception_model)
-    model.add(BatchNormalization())
-    model.add(GlobalAveragePooling2D())
-    model.add(Dense(512, activation="relu", kernel_regularizer=regularizers.l2(0.01)))
-    model.add(Dropout(rate=0.5))
-    model.add(Dense(256, activation="relu", kernel_regularizer=regularizers.l2(0.01)))
-    model.add(Dropout(rate=0.5))
-    model.add(Dense(N_CLASSES, activation="softmax")) # N_CLASSES = 196
-    ```
-    - Train the combined model with Model Checkpoint, Early Stopping if there is no improvement in "val_acc" and Reduce Learning Rate if there is no improvement in "val_loss".
+    - Append a Batch Normalization layer, a Global Average Pooling 2D layer, 2 fully connected layers with kernel regularization and a Dense layer with softmax activation function to the top model.
+    - Train the final model with Model Checkpoint, Early Stopping if there is no improvement in "val_acc" and Reduce Learning Rate if there is no improvement in "val_loss".
   - Test transfer learning model against Private and Public Test set.
   - Validate transfer learning model performance by charting out the learning curve.
   - Compare the accuracy of the transfer learning model against the benchmarking model.
