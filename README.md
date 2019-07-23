@@ -4,7 +4,7 @@
 |Term|Official Duration|Date of Compeletion|Projects|
 |:-:|:-:|:-:|-|
 |1|20 Feb - 8 May 2019|20 Mar 2019|<ul><li>Predicting Boston Housing Prices</li><li>Finding Donors for CharityML</li><li>Creating Customer Segments</li></ul>|
-|2|10 Apr - 18 Aug 2019||<ul><li>Dog Breed Classifier</li><li>Teach a Quadcopter how to fly</li><li>Capstone Project</li></ul>|
+|2|10 Apr - 18 Aug 2019|18 Aug 2019|<ul><li>Dog Breed Classifier</li><li>Teach a Quadcopter how to fly</li><li>Capstone Project: Cars Make and Model Detection</li></ul>|
 
 ## Projects
 ### 1. Predicting Boston Housing Prices:
@@ -59,3 +59,5 @@
 - Feature Scaling
 - PCA
 - Random Projection and ICA
+- Convolutional Neural Network
+- Deep Reinforcement Learning
