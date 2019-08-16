@@ -44,6 +44,19 @@
 - **Project Overview:** The Quadcopter or Quadrotor Helicopter is becoming an increasingly popular aircraft for both personal and professional use. Its maneuverability lends itself to many applications, from last-mile delivery to cinematography, from acrobatics to search-and-rescue. Most quadcopters have 4 motors to provide thrust, although some other models with 6 or 8 motors are also sometimes referred to as quadcopters. Multiple points of thrust with the center of gravity in the middle improves stability and enables a variety of flying behaviors. But it also comes at a price–the high complexity of controlling such an aircraft makes it almost impossible to manually control each individual motor's thrust. So, most commercial quadcopters try to simplify the flying controls by accepting a single thrust magnitude and yaw/pitch/roll controls, making it much more intuitive and fun. The next step in this evolution is to enable quadcopters to autonomously achieve desired control behaviors such as takeoff and landing. You could design these controls with a classic approach (say, by implementing PID controllers). Or, you can use reinforcement learning to build agents that can learn these behaviors on their own. This is what you are going to do in this project!
 - **Project Highlights:** In this project, you will design your own reinforcement learning task and an agent to complete it. Note that getting a reinforcement learning agent to learn what you actually want it to learn can be hard, and very time consuming. For this project, we strongly encourage you to take the time to tweak your task and agent until your agent is able to demonstrate that it has learned your chosen task, but this is not necessary to complete the project. As long as you take the time to describe many attempts at specifying a reasonable reward function and a well-designed agent with well-informed hyperparameters, this is enough to pass the project.
 
+### 6. Car Make and Model Classification
+- **Machine Learning Concepts:** Convolutional Neural Network
+- **Project Overview:** Fine-grained image recognition is the task of distinguishing highly similar objects such as identifying canine breed, bird species, or aircraft model. Car Make and Model Image Recognition is a sub problem belonging to a large family of Fine-grained visual classification problems. This problem is challenging as the differences between cars could be extremely subtle and highly dependent on factors including angle of view and weather to name a few. The figures below show the process of identifying car make and model from an image input.
+- **Problem Statement:** The goal is to train an image classifier model that can correctly label the car make and model based on an input image of a car. This model should have at least 70% classification accuracy. The tasks involved are the following:
+    - Download the cars dataset which originated from Stanford University AI Lab. Data source and banner image: http://ai.stanford.edu/~jkrause/cars/car_dataset.html contains all bounding boxes and labels for both training and tests.
+    - Perform exploratory analysis and some visualizations on the dataset to understand how the data is distributed.
+    - Crop the car out of the original image based on the provided bounding box information. This will eliminate all noises in the image so that the model can have better accuracy thanks to cleaner input. Augment and transform images into 4D tensors which are later used as input for Tensorflow Keras CNN model.
+    - Train and test benchmarking model against test set. 
+    - Fine-tune Xception and InceptionV3 model.
+    - Test transfer learning models against test set.
+    - Validate transfer learning model performance by charting out the learning curve.
+    - Compare the accuracy of the transfer learning models against the benchmarking model.
+
 ## Course Contents:
 - Gradient Descent
 - Linear Regression
