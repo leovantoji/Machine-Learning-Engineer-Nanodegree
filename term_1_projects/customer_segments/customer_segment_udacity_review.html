@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html data-ng-app="udacity.grading" data-enforce-browser="" class="ng-scope" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow,[uib-popover-popup].popover.top-left > .arrow,[uib-popover-popup].popover.top-right > .arrow,[uib-popover-popup].popover.bottom-left > .arrow,[uib-popover-popup].popover.bottom-right > .arrow,[uib-popover-popup].popover.left-top > .arrow,[uib-popover-popup].popover.left-bottom > .arrow,[uib-popover-popup].popover.right-top > .arrow,[uib-popover-popup].popover.right-bottom > .arrow{top:auto;bottom:auto;left:auto;right:auto;margin:0;}[uib-popover-popup].popover,[uib-popover-template-popup].popover{display:block !important;}</style><style type="text/css">.uib-position-measure{display:block !important;visibility:hidden !important;position:absolute !important;top:-9999px !important;left:-9999px !important;}.uib-position-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll;}</style><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    <!--[if lte IE 9]>
+    <script type="text/javascript">
+      window.location = 'https://www.udacity.com/upgrade';
+    </script>
+    <![endif]-->
+    <title>Udacity Reviews</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="https://review.udacity.com/assets/images/favicon.ico">
+    <meta name="description" content="Discover online classes taught by top instructors and industry experts. Take courses at your own pace.">
+
+    <meta name="robots" content="noodp">
+
+    <!--
+      These properties are here so social shares of review pages works
+      properly. We decided to let them apply to every page on the site
+      because we only expect people to share the review pages.
+
+      Guidelines obtained from https://moz.com/blog/meta-data-templates-123
+    -->
+
+    <!-- facebook -->
+    <meta property="og:title" content="Look at my Udacity Project Feedback!">
+    <meta property="og:description" content="A review of my work and personalized tips to improve.">
+    <meta property="og:image" content="https://s3-us-west-1.amazonaws.com/udacity-content/images/reviews/facebook-thumbnail-neutral.png ">
+
+    <!-- twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@udacity">
+    <meta name="twitter:title" content="Udacity Project Feedback">
+    <meta name="twitter:description" content="A review of my work and personalized tips to improve.">
+    <!-- "Twitter Summary card images must be at least 120x120px" -->
+    <meta name="twitter:image" content="https://s3-us-west-1.amazonaws.com/udacity-content/images/reviews/twitter-thumbnail-neutral.png ">
+
+    <meta name="application-name" content="Udacity">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="assets/img/logos/udacity/windows_tile/udacity-full-144x144.png">
+
+    <meta name="google-site-verification" content="ELX2btu3VElBKIdvkGj5ESBnJh_Dg9PnWjuCwVkPEkA">
+
+    <meta http-equiv="X-UA-Compatible" content="requiresActiveX=true">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="https://review.udacity.com/assets/images/apple-touch-icon.png">
+
+    <link type="text/plain" rel="author" href="http://udacity.com/humans.txt">
+
+    <link href="customer_segment_udacity_review_files/css_002.css" rel="stylesheet" type="text/css">
+    <link href="customer_segment_udacity_review_files/css.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="customer_segment_udacity_review_files/udacity-base.css" type="text/css">
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="customer_segment_udacity_review_files/grading_29fc1463.css">
+    <!-- endinject -->
+
+    <style>
+    @font-face {
+      font-family: 'Glyphicons Halflings';
+
+      src: url('/assets/fonts/glyphicons/glyphicons-halflings-regular.eot');
+      src: url('/assets/fonts/glyphicons/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/glyphicons/glyphicons-halflings-regular.woff2') format('woff2'), url('/assets/fonts/glyphicons/glyphicons-halflings-regular.woff') format('woff'), url('/assets/fonts/glyphicons/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/fonts/glyphicons/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+    }
+    </style>
+    <script src="customer_segment_udacity_review_files/airbrake.js" async=""></script><script src="customer_segment_udacity_review_files/airbrake.js" async=""></script><script type="text/javascript" async="" src="customer_segment_udacity_review_files/analytics.js"></script><script type="text/javascript">
+      var segment_write_key = "toT8LUD8hh9KKz18k1i8l8AnAJlF27VY"; // production key for segment
+    </script>
+    <script type="text/javascript">
+      !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.1.0";
+        analytics.load(segment_write_key);
+      }}();
+    </script>
+
+  </head>
+  <body data-modal-anti-scroll-helper="" class="responsive ng-scope" ng-controller="MainCtrl as main">
+    <!-- ngInclude: main.pageContext.headerURL --><div ng-include="main.pageContext.headerURL" class="ng-scope"><header class="navbar site-nav navbar-inverse navbar-static-top ng-scope" role="navigation"> <div class="container"> <div class="navbar-header"> <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse"> <span class="sr-only ng-scope" translate="">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="logo navbar-brand" href="https://udacity.com/" id="header-logo"> <img alt="Udacity Logo" src="customer_segment_udacity_review_files/logo.svg"> </a> </div> <nav class="navbar-collapse collapse text-center-xs" id="navbar-collapse" role="navigation"> <ul class="nav navbar-nav navbar-right"> <!-- ngIf: isStaff --> <!-- ngIf: isGrader --> <li> <a data-ng-click="main.logout()" href="" translate="" class="ng-scope">Logout</a> </li> </ul> <ul class="nav navbar-nav navbar-right"> <li class="dropdown"> <ul class="dropdown-menu"> <a data-ng-click="main.logout()" href="" translate="" class="ng-scope">Logout</a> </ul> </li> </ul> </nav> </div> </header> </div>
+    <div id="page-content" data-qualaroo-survey-info-hack="">
+      <div loading-container="" class="container-fluid"><div ng-show="loading" class="row ng-hide" style=""> <div class="col-sm-6 col-sm-offset-3 text-center"> <div class="row row-gap-huge"></div> <img src="customer_segment_udacity_review_files/loading.gif"> <div class="row row-gap-huge"></div> </div> </div> <div ng-show="!loading" class="" style=""> <div ng-transclude="">
+        <div class="row row-gap-medium ng-scope ng-isolate-scope ng-hide fadeOutUp animated" ng-show="!!message &amp;&amp; !dismissed" ng-class="{fadeInDown: !!message, fadeOutUp: dismissed, animated: !!message || dismissed}" alert-box="" style=""> <div class="col-md-offset-2 col-md-8"> <div class="alert  hr-slim alert-info"> <button type="button" ng-click="dismiss()" class="close" aria-label="Close"> <span aria-hidden="true">×</span> </button> <span ng-bind-html="message" class="ng-binding"></span> </div> </div> </div>
+        <!-- uiView:  --><div ui-view="" autoscroll="true" class="ng-scope"><div class="row ng-scope"> <div class="col-xs-12 col-lg-10 col-lg-offset-1"> <!-- ngIf: submission.previous_submission_id --> <div class="review-header"> <div class="review-header__links"> <div> <a href="" ng-click="goToClassroomPath()" class="course-link"> <span class="arrow"></span>&nbsp; <span translate="" class="ng-scope ng-binding">Return to "Machine Learning Engineer Nanodegree" in the classroom</span> </a> </div> <div ng-show="isStudentHubEligible()" class="" style=""> <a href="" ng-click="goToStudentHubLink()" class="course-link btn btn-secondary btn-sm" target="_blank"> <img ng-src="/assets/images/icon-student-hub.svg" alt="Student Hub chat icon" class="student-hub-icon" src="customer_segment_udacity_review_files/icon-student-hub.svg" width="24" height="24"> <span translate="" class="ng-scope">Discuss on Student Hub</span>&nbsp; <span class="arrow right white"></span> </a> </div> </div> <p class="project-name-career-service ng-binding">Creating Customer Segments</p> </div> <div class="row row-gap-medium"></div> <div class="review-container"> <ul class="nav nav-tabs nav-justified ng-hide" ng-show="isUngradeable()"> <li ng-class="{'active': isCurrentTab('feedback')}" class="active" style=""> <a href="" ng-click="showTab('feedback')" class="ng-binding">Review</a> </li> <li ng-class="{'active': isCurrentTab('history')}"> <a href="" ng-click="showTab('history')" class="ng-binding">History</a> </li> </ul> <ul class="nav nav-tabs nav-justified" ng-hide="isUngradeable()"> <!-- ngIf: hasFeedback --><li ng-if="hasFeedback" ng-class="{'active': isCurrentTab('feedback')}" class="ng-scope active" style=""> <a href="" ng-click="showTab('feedback')" class="ng-binding">Review</a> </li><!-- end ngIf: hasFeedback --> <!-- ngIf: showCode --> <!-- ngIf: annotation_link --> <li ng-class="{'active': isCurrentTab('history')}"> <a href="" ng-click="showTab('history')" class="ng-binding">History</a> </li> <!-- ngIf: userCanCreateAudits() && !auditTabState.visible --> <!-- ngIf: auditTabState.visible --> </ul> <div class="row review-tab-body"> <div class="col-sm-10 col-sm-offset-1"> <div ng-show="isUngradeable()" class="ng-hide"> <div class="row row-gap-medium"></div> <section ng-show="isCurrentTab('feedback')" class="" style=""> <div class="ungradeable-tab"> <h3 class="result-label ng-scope" translate="">Unable to review</h3> <div ng-hide="submission.ungradeable_tag === 'plagiarism'" class=""> <p class="ungradeable-info ng-scope" translate="">Your project could not be reviewed. Please resubmit after you address the issue noted below by the reviewer.</p> <p class="result-reason ng-isolate-scope" marked="submission.result_reason"></p> </div> <div ng-show="submission.ungradeable_tag === 'plagiarism'" class="ng-hide"> <p class="ungradeable-info"> <span translate="" class="ng-scope">Key parts of your submission were the same as another student's submission or an online source.</span> <span>Please resubmit after you address the issue noted below by the reviewer.</span> </p> <p class="ungradeable-info ng-hide" ng-show="submission.plagiarism_source_url"> </p><h4 translate="" style="display: inline;" class="ng-scope">Potential Source URL:</h4> <a href="" class="ng-binding"></a> <p></p> <p class="result-reason ng-isolate-scope" marked="submission.result_reason"></p> </div> <div class="row row-gap-small"></div> <!-- ngIf: isResubmittable() --> <!-- ngIf: submission.archive_url --><div ng-if="submission.archive_url" class="row row-gap-small ng-scope"> <div class="col-xs-12 text-center wide-and-bold"> <a href="https://review-api.udacity.com/api/v1/submissions/1758434/archive" download="" class="ng-binding"><img src="customer_segment_udacity_review_files/download-icon.svg" class="img-initial icon-medium">Download project files</a> </div> </div><!-- end ngIf: submission.archive_url --> <!-- ngIf: submission.url --> <div class="row row-gap-small">&nbsp;</div> </div> </section> <section ng-show="isCurrentTab('history')" class="ng-hide"> <!-- ngIf: pastReviews !== undefined --><div reviews-list="" ng-if="pastReviews !== undefined" reviews="pastReviews" this-review="submission" class="ng-scope ng-isolate-scope"><h2 class="review-list-name current-review-name h-slim"> <!-- ngIf: thisReview.status !== 'canceled' --><span ng-if="thisReview.status !== 'canceled'" class="ng-binding ng-scope" style=""> Review #1 </span><!-- end ngIf: thisReview.status !== 'canceled' --> <!-- ngIf: thisReview.status === 'canceled' --> <span class="ng-binding"> (this review)</span> </h2> <!-- ngIf: thisReview.completed_at --><small class="text-muted ng-scope" ng-if="thisReview.completed_at" style=""> <!-- ngIf: thisReview.status !== 'canceled' --><span ng-if="thisReview.status !== 'canceled'" translate="" class="ng-scope">Reviewed</span><!-- end ngIf: thisReview.status !== 'canceled' --> <!-- ngIf: thisReview.status === 'canceled' --> <span> <span am-time-ago="thisReview.completed_at">5 months ago</span></span> </small><!-- end ngIf: thisReview.completed_at --> <!-- ngIf: !thisReview.completed_at --> <div class="text-uppercase submission-notes-header ng-scope" translate="">student notes</div> <div class="submission-notes ng-isolate-scope" marked="thisReview.notes || '_None provided_'"><p><em>None provided</em></p>
+</div> <!-- ngIf: filteredReviews.length > 1 --> <!-- ngRepeat: review in filteredReviews --><!-- ngIf: filteredReviews.length > 1 --><!-- end ngRepeat: review in filteredReviews --> <!-- ngIf: errorMessage --> <div class="row row-gap-large"></div> </div><!-- end ngIf: pastReviews !== undefined --> </section> </div> <div ng-hide="isUngradeable()" class=""> <div class="row row-gap-medium"></div> <section ng-show="isCurrentTab('history')" class="ng-hide"> <!-- ngIf: pastReviews !== undefined --><div reviews-list="" ng-if="pastReviews !== undefined" reviews="pastReviews" this-review="submission" is-career="currentProject.is_career" class="ng-scope ng-isolate-scope"><h2 class="review-list-name current-review-name h-slim"> <!-- ngIf: thisReview.status !== 'canceled' --><span ng-if="thisReview.status !== 'canceled'" class="ng-binding ng-scope" style=""> Review #1 </span><!-- end ngIf: thisReview.status !== 'canceled' --> <!-- ngIf: thisReview.status === 'canceled' --> <span class="ng-binding"> (this review)</span> </h2> <!-- ngIf: thisReview.completed_at --><small class="text-muted ng-scope" ng-if="thisReview.completed_at" style=""> <!-- ngIf: thisReview.status !== 'canceled' --><span ng-if="thisReview.status !== 'canceled'" translate="" class="ng-scope">Reviewed</span><!-- end ngIf: thisReview.status !== 'canceled' --> <!-- ngIf: thisReview.status === 'canceled' --> <span> <span am-time-ago="thisReview.completed_at">5 months ago</span></span> </small><!-- end ngIf: thisReview.completed_at --> <!-- ngIf: !thisReview.completed_at --> <div class="text-uppercase submission-notes-header ng-scope" translate="">student notes</div> <div class="submission-notes ng-isolate-scope" marked="thisReview.notes || '_None provided_'"><p><em>None provided</em></p>
+</div> <!-- ngIf: filteredReviews.length > 1 --> <!-- ngRepeat: review in filteredReviews --><!-- ngIf: filteredReviews.length > 1 --><!-- end ngRepeat: review in filteredReviews --> <!-- ngIf: errorMessage --> <div class="row row-gap-large"></div> </div><!-- end ngIf: pastReviews !== undefined --> </section> <section class="code-section ng-hide" ng-show="isCurrentTab('code')"> <!-- ngIf: files && currentRubric --><div code-review="" ng-if="files &amp;&amp; currentRubric" files="files" rubric="currentRubric" allow-comments="false" class="ng-scope ng-isolate-scope"><div ng-show="allowComments" class="ng-hide" style=""> <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty" ng-model="filterPattern" placeholder="File filter (e.g. &quot;readme.md&quot;, &quot;.css&quot;, &quot;src/lib/*.js&quot;)" style=""> <div class="row row-gap-small"></div> </div> <!-- ngRepeat: file in files --> </div><!-- end ngIf: files && currentRubric --> <div class="row row-gap-medium"></div> </section> <section ng-show="isCurrentTab('annotation')" class="ng-hide"> <div class="row row-gap-large"> <div class="col-xs-12 annotation-text ng-scope" translate="">Your reviewer has provided annotations for your project</div> </div> <div class="row row-gap-medium"> <div class="col-xs-12"> <a class="btn btn-primary btn-sm ng-binding" href="" download="" _target="_blank">Download annotations</a> </div> </div> <div class="row row-gap-huge"></div> </section> <!-- ngIf: critiquesAccessor --><section ng-if="critiquesAccessor" ng-show="isCurrentTab('feedback')" class="ng-scope" style=""> <!-- ngIf: hasFeedback && submission.result --><div ng-if="hasFeedback &amp;&amp; submission.result" class="flex-bio ng-scope" ng-class="{'send-right': currentProject.is_career}"> <h3 ng-show="!currentProject.is_career" class="result-label h-slim-top ng-binding"> Meets Specifications <!-- ngIf: doesNotMeetCount > 0 --> </h3> <!-- ngIf: currentProject.is_career && hasMentor --> </div><!-- end ngIf: hasFeedback && submission.result --> <!-- ngIf: submission.general_comment --><div ng-if="submission.general_comment" class="row row-gap-medium ng-scope"> <div class="col-xs-12 ng-isolate-scope" marked="submission.general_comment"><p>This
+ is a very solid analysis here and impressed with your answers. You have
+ an excellent grasp on these unsupervised learning techniques. We don't 
+pass to many on the first attempt, so congrats! Wish you the best of 
+luck in your future!</p>
+<p>If you would like to dive in deeper into Machine Learning material, here might be some cool books to check out</p>
+<ul>
+<li><a href="http://www-bcf.usc.edu/~gareth/ISL/" target="_blank">An Introduction to Statistical Learning Code</a> is in R, but great for understanding the topics</li>
+<li><a href="https://web.stanford.edu/~hastie/Papers/ESLII.pdf" target="_blank">elements of statistical learning</a> More math concepts</li>
+<li><a href="http://www.amazon.com/Python-Machine-Learning-Sebastian-Raschka-ebook/dp/B00YSILNL0" target="_blank">Python Machine Learning</a> Great intuitive ideas and goes through everything in code.</li>
+</ul>
+</div> </div><!-- end ngIf: submission.general_comment --> <div critiques-editor="" critiques-accessor="critiquesAccessor" editable="false" is-career="currentProject.is_career" class="ng-isolate-scope"><!-- ngRepeat: section in critiquesAccessor.getSections() --><div ng-repeat="section in critiquesAccessor.getSections()" class="ng-scope"> <div section-critiques="" section="section" critiques="critiquesAccessor.getCritiques(section.id)" editable="editable" failed-required-placeholder="failedRequiredPlaceholder" passed-required-placeholder="passedRequiredPlaceholder" optional-placeholder="optionalPlaceholder" state="sectionCritiquesState[section.id]" is-career="isCareer" class="ng-isolate-scope"><div> <div class="row row-gap-small"></div> <h3 class="section-name ng-binding"> Data Exploration </h3> <div> <!-- ngRepeat: critique in critiques --><div ng-repeat="critique in critiques" class="ng-scope"> <div row="" row-gap-small="" col-xs-12="" bg-white="" scroll-if="isCurrentEditingCritique(critique.id)" class="ng-isolate-scope"> <!-- ngIf: isEditingCritique(critique.id) --> <!-- ngIf: !isEditingCritique(critique.id) --><div class="critique-container ng-scope ng-isolate-scope" critique-view="" critique="critique" editable="editable" is-career="isCareer" edit-clicked="setEditingCritique(critique.id, true)" ng-if="!isEditingCritique(critique.id)"><div class="critique-view-header"> <div class="row result-label"> <div class="col-sm-1"> <div class="result-spacing"> <span ng-hide="isCareer" class="result-icon passed text-center"></span> </div> </div> <div class="col-xs-12 col-sm-10 critique-description ng-isolate-scope" marked="rubricItem.passed_description"><p>Three
+ separate samples of the data are chosen and their establishment 
+representations are proposed based on the statistical description of the
+ dataset.</p>
+</div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: !!critique.observation --><div ng-if="!!critique.observation" class="critique-view-body ng-scope"> <div class="row"> <div class="col-xs-12 col-sm-10 col-sm-offset-1"> <div class="p-slim ng-isolate-scope" marked="critique.observation"><p>Great
+ analysis here and good justification for your samples here by using the
+ mean values in the dataset. Just note that using the median/percentiles
+ would be much more appropriate than mean, since the median/percentiles 
+are more robust to outliers, which we have here. But nice job!</p>
+<hr>
+<p>Another really cool visualization you could make to analyze the 
+distribution of purchasing behavior of your sample, would be with a <a href="https://matplotlib.org/examples/api/radar_chart.html" target="_blank">Radar Plot</a></p>
+<pre><code><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">from</span> sklearn.preprocessing <span class="hljs-keyword">import</span> MinMaxScaler
+%matplotlib inline
+
+scaler = MinMaxScaler()
+df = np.round(samples, <span class="hljs-number">1</span>)
+index  = df.index[:]
+categories = list(df)
+df = scaler.fit_transform(df)*<span class="hljs-number">100</span>
+N = len(categories)
+angles = [n / float(N) * <span class="hljs-number">2</span> * np.pi <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> range(N)]
+angles += angles[:<span class="hljs-number">1</span>]
+
+plt.figure(figsize=(<span class="hljs-number">20</span>, <span class="hljs-number">5</span>))
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">Radar</span><span class="hljs-params">(index, title, color)</span>:</span>
+    ax = plt.subplot(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, index+<span class="hljs-number">1</span>, polar=<span class="hljs-keyword">True</span>)
+    ax.set_theta_offset(np.pi/<span class="hljs-number">2</span>)
+    ax.set_theta_direction(-<span class="hljs-number">1</span>)
+    plt.xticks(angles[:-<span class="hljs-number">1</span>], categories, color =<span class="hljs-string">'grey'</span>, size = <span class="hljs-number">8</span>)
+    plt.yticks((<span class="hljs-number">25</span>, <span class="hljs-number">50</span>, <span class="hljs-number">75</span>, <span class="hljs-number">100</span>), (<span class="hljs-string">"1/4"</span>, <span class="hljs-string">"1/2"</span>, <span class="hljs-string">"3/4"</span>, <span class="hljs-string">"Max"</span>), color = <span class="hljs-string">"grey"</span>, size = <span class="hljs-number">7</span>)
+    values = df[index]
+    values = np.append(values, values[:<span class="hljs-number">1</span>])
+    ax.plot(angles, values, color = color)
+    ax.fill(angles, values, color=color, alpha=<span class="hljs-number">0.5</span>)
+    plt.title(<span class="hljs-string">'Sample {}'</span>.format(title), y= <span class="hljs-number">1.1</span>)
+
+<span class="hljs-keyword">for</span> i, n <span class="hljs-keyword">in</span> enumerate(index):
+    Radar(index=i, title=n, color=<span class="hljs-string">'r'</span>)
+</code></pre></div> </div> </div> </div><!-- end ngIf: !!critique.observation --> <!-- ngIf: editable && !critiqueLocked() --> </div><!-- end ngIf: !isEditingCritique(critique.id) --> </div> </div><!-- end ngRepeat: critique in critiques --><div ng-repeat="critique in critiques" class="ng-scope"> <div row="" row-gap-small="" col-xs-12="" bg-white="" scroll-if="isCurrentEditingCritique(critique.id)" class="ng-isolate-scope"> <!-- ngIf: isEditingCritique(critique.id) --> <!-- ngIf: !isEditingCritique(critique.id) --><div class="critique-container ng-scope ng-isolate-scope" critique-view="" critique="critique" editable="editable" is-career="isCareer" edit-clicked="setEditingCritique(critique.id, true)" ng-if="!isEditingCritique(critique.id)"><div class="critique-view-header"> <div class="row result-label"> <div class="col-sm-1"> <div class="result-spacing"> <span ng-hide="isCareer" class="result-icon passed text-center"></span> </div> </div> <div class="col-xs-12 col-sm-10 critique-description ng-isolate-scope" marked="rubricItem.passed_description"><p>A
+ prediction score for the removed feature is accurately reported. 
+Justification is made for whether the removed feature is relevant.</p>
+</div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: !!critique.observation --><div ng-if="!!critique.observation" class="critique-view-body ng-scope"> <div class="row"> <div class="col-xs-12 col-sm-10 col-sm-offset-1"> <div class="p-slim ng-isolate-scope" marked="critique.observation"><blockquote>
+<p>"On the other hand, the high coefficient of determination scores for 
+Grocery and Detergents_Paper (above 0.7 and close to 1.0) show that 
+these features can be predicted using the other 5 remaining features, 
+which means these 2 features might not be as relevant as the other 
+features when it comes to determining customers' spending habits."</p>
+</blockquote>
+<p>Correct. Grocery and Detergents_Paper can be derived from the other 
+features, so not necessary. Thus if we have a high r^2 score(high 
+correlation with other features), this would not be good for identifying
+ customers' spending habits(since the customer would purchase other 
+products along with the one we are predicting, as we could actually 
+derive this feature from the rest of the features). Therefore a negative
+ / low r^2 value would represent the opposite as we could identify the 
+customer's specific behavior just from the one feature.</p>
+<p>Maybe also check out with features can derive Grocery and Detergents_Paper. Each other?</p>
+<pre><code><span class="hljs-tag">import</span> <span class="hljs-tag">seaborn</span> <span class="hljs-tag">as</span> <span class="hljs-tag">sns</span>
+<span class="hljs-tag">sns</span><span class="hljs-class">.barplot</span>(<span class="hljs-tag">X_train</span><span class="hljs-class">.columns</span>, <span class="hljs-tag">regressor</span><span class="hljs-class">.feature_importances_</span>)
+</code></pre></div> </div> </div> </div><!-- end ngIf: !!critique.observation --> <!-- ngIf: editable && !critiqueLocked() --> </div><!-- end ngIf: !isEditingCritique(critique.id) --> </div> </div><!-- end ngRepeat: critique in critiques --><div ng-repeat="critique in critiques" class="ng-scope"> <div row="" row-gap-small="" col-xs-12="" bg-white="" scroll-if="isCurrentEditingCritique(critique.id)" class="ng-isolate-scope"> <!-- ngIf: isEditingCritique(critique.id) --> <!-- ngIf: !isEditingCritique(critique.id) --><div class="critique-container ng-scope ng-isolate-scope" critique-view="" critique="critique" editable="editable" is-career="isCareer" edit-clicked="setEditingCritique(critique.id, true)" ng-if="!isEditingCritique(critique.id)"><div class="critique-view-header"> <div class="row result-label"> <div class="col-sm-1"> <div class="result-spacing"> <span ng-hide="isCareer" class="result-icon passed text-center"></span> </div> </div> <div class="col-xs-12 col-sm-10 critique-description ng-isolate-scope" marked="rubricItem.passed_description"><p>Student
+ identifies features that are correlated and compares these features to 
+the predicted feature. Student further discusses the data distribution 
+for those features.</p>
+</div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: !!critique.observation --><div ng-if="!!critique.observation" class="critique-view-body ng-scope"> <div class="row"> <div class="col-xs-12 col-sm-10 col-sm-offset-1"> <div class="p-slim ng-isolate-scope" marked="critique.observation"><p>Great job capturing the correlation between features. Maybe also add correlation to the plot as well with</p>
+<pre><code>axes = pd.scatter_matrix(data, alpha = <span class="hljs-number">0</span>.<span class="hljs-number">3</span>, figsize = (<span class="hljs-number">14</span>,<span class="hljs-number">8</span>), diagonal = <span class="hljs-string">'kde'</span>)
+corr = data.corr().as_matrix()
+<span class="hljs-keyword">for</span> i, j <span class="hljs-keyword">in</span> zip(*np.triu_indices_from(axes, k=<span class="hljs-number">1</span>))<span class="hljs-symbol">:</span>
+axes[i, j].annotate(<span class="hljs-string">"%.3f"</span> %corr[i,j], (<span class="hljs-number">0</span>.<span class="hljs-number">8</span>, <span class="hljs-number">0</span>.<span class="hljs-number">8</span>), xycoords=<span class="hljs-string">'axes fraction'</span>, ha=<span class="hljs-string">'center'</span>, va=<span class="hljs-string">'center'</span>)
+</code></pre><p>And good ideas regarding the data distributions with your comment of</p>
+<blockquote>
+<p>"Based on the above scatter matrix, the dataset is right-skewed with a large number of data points located near 0."</p>
+</blockquote>
+<p>Skewed right is correct. Could also mention log normal. As we can 
+actually get an idea of this from the basic stats of the dataset, since 
+the <a href="https://www.khanacademy.org/math/ap-statistics/density-curves-normal-distribution-ap/density-curves/v/median-mean-and-skew-from-density-curves" target="_blank">mean is above the median</a> for all features. We typically see this type of distribution when working with sales or income data.<br><a href="https://udacity-reviews-uploads.s3.us-west-2.amazonaws.com/_attachments/19273/1516506256/pearson-mode-skewness.jpg" target="_blank"><img src="customer_segment_udacity_review_files/pearson-mode-skewness.jpg" alt="pearson-mode-skewness.jpg"></a></p>
+</div> </div> </div> </div><!-- end ngIf: !!critique.observation --> <!-- ngIf: editable && !critiqueLocked() --> </div><!-- end ngIf: !isEditingCritique(critique.id) --> </div> </div><!-- end ngRepeat: critique in critiques --> </div> </div> </div> </div><!-- end ngRepeat: section in critiquesAccessor.getSections() --><div ng-repeat="section in critiquesAccessor.getSections()" class="ng-scope"> <div section-critiques="" section="section" critiques="critiquesAccessor.getCritiques(section.id)" editable="editable" failed-required-placeholder="failedRequiredPlaceholder" passed-required-placeholder="passedRequiredPlaceholder" optional-placeholder="optionalPlaceholder" state="sectionCritiquesState[section.id]" is-career="isCareer" class="ng-isolate-scope"><div> <div class="row row-gap-small"></div> <h3 class="section-name ng-binding"> Data Preprocessing </h3> <div> <!-- ngRepeat: critique in critiques --><div ng-repeat="critique in critiques" class="ng-scope"> <div row="" row-gap-small="" col-xs-12="" bg-white="" scroll-if="isCurrentEditingCritique(critique.id)" class="ng-isolate-scope"> <!-- ngIf: isEditingCritique(critique.id) --> <!-- ngIf: !isEditingCritique(critique.id) --><div class="critique-container ng-scope ng-isolate-scope" critique-view="" critique="critique" editable="editable" is-career="isCareer" edit-clicked="setEditingCritique(critique.id, true)" ng-if="!isEditingCritique(critique.id)"><div class="critique-view-header"> <div class="row result-label"> <div class="col-sm-1"> <div class="result-spacing"> <span ng-hide="isCareer" class="result-icon passed text-center"></span> </div> </div> <div class="col-xs-12 col-sm-10 critique-description ng-isolate-scope" marked="rubricItem.passed_description"><p>Feature scaling for both the data and the sample data has been properly implemented in code.</p>
+</div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: !!critique.observation --> <!-- ngIf: editable && !critiqueLocked() --> </div><!-- end ngIf: !isEditingCritique(critique.id) --> </div> </div><!-- end ngRepeat: critique in critiques --><div ng-repeat="critique in critiques" class="ng-scope"> <div row="" row-gap-small="" col-xs-12="" bg-white="" scroll-if="isCurrentEditingCritique(critique.id)" class="ng-isolate-scope"> <!-- ngIf: isEditingCritique(critique.id) --> <!-- ngIf: !isEditingCritique(critique.id) --><div class="critique-container ng-scope ng-isolate-scope" critique-view="" critique="critique" editable="editable" is-career="isCareer" edit-clicked="setEditingCritique(critique.id, true)" ng-if="!isEditingCritique(critique.id)"><div class="critique-view-header"> <div class="row result-label"> <div class="col-sm-1"> <div class="result-spacing"> <span ng-hide="isCareer" class="result-icon passed text-center"></span> </div> </div> <div class="col-xs-12 col-sm-10 critique-description ng-isolate-scope" marked="rubricItem.passed_description"><p>Student
+ identifies extreme outliers and discusses whether the outliers should 
+be removed. Justification is made for any data points removed. </p>
+</div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: !!critique.observation --><div ng-if="!!critique.observation" class="critique-view-body ng-scope"> <div class="row"> <div class="col-xs-12 col-sm-10 col-sm-offset-1"> <div class="p-slim ng-isolate-scope" marked="critique.observation"><p>Great job discovering the indices of the five data points which are outliers for more than one feature of <code>[65, 66, 75, 128, 154]</code>.</p>
+<p>Outlier removal is a tender subject, as we definitely don't want to 
+remove too many with this small dataset. But we definitely need to 
+remove some, since outliers can greatly affect distributions, influence a
+ distance based algorithm like clustering and/or PCA! The loss function 
+of the K-means algorithm is defined the terms of sum-of-squared 
+distances, making it sensitive to outliers. In an attempt to reduce the 
+loss function, the algorithm would move a centroid away from the true 
+center of a cluster towards the outlier. This is clearly not the 
+behavior we want.</p>
+<p>One cool thing about unsupervised learning is that we could actually 
+run our future analysis with these data points removed and with these 
+data points included and see how the results change.</p>
+<p>(<a href="http://www.theanalysisfactor.com/outliers-to-drop-or-not-to-drop/" target="_blank">http://www.theanalysisfactor.com/outliers-to-drop-or-not-to-drop/</a>)<br>(<a href="http://graphpad.com/guides/prism/6/statistics/index.htm?stat_checklist_identifying_outliers.htm" target="_blank">http://graphpad.com/guides/prism/6/statistics/index.htm?stat_checklist_identifying_outliers.htm</a>)</p>
+<p>Maybe also examine these duplicate data points further with a heatmap in the original data.</p>
+<pre><code><span class="hljs-comment"># Heatmap using percentiles to display outlier data</span>
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> seaborn <span class="hljs-keyword">as</span> sns
+percentiles = data.rank(pct=<span class="hljs-keyword">True</span>)
+percentiles = percentiles.iloc[outliers]
+plt.title(<span class="hljs-string">'Multiple Outliers Heatmap'</span>, fontsize=<span class="hljs-number">14</span>)
+heat = sns.heatmap(percentiles, annot=<span class="hljs-keyword">True</span>)
+display(heat)
+</code></pre></div> </div> </div> </div><!-- end ngIf: !!critique.observation --> <!-- ngIf: editable && !critiqueLocked() --> </div><!-- end ngIf: !isEditingCritique(critique.id) --> </div> </div><!-- end ngRepeat: critique in critiques --> </div> </div> </div> </div><!-- end ngRepeat: section in critiquesAccessor.getSections() --><div ng-repeat="section in critiquesAccessor.getSections()" class="ng-scope"> <div section-critiques="" section="section" critiques="critiquesAccessor.getCritiques(section.id)" editable="editable" failed-required-placeholder="failedRequiredPlaceholder" passed-required-placeholder="passedRequiredPlaceholder" optional-placeholder="optionalPlaceholder" state="sectionCritiquesState[section.id]" is-career="isCareer" class="ng-isolate-scope"><div> <div class="row row-gap-small"></div> <h3 class="section-name ng-binding"> Feature Transformation </h3> <div> <!-- ngRepeat: critique in critiques --><div ng-repeat="critique in critiques" class="ng-scope"> <div row="" row-gap-small="" col-xs-12="" bg-white="" scroll-if="isCurrentEditingCritique(critique.id)" class="ng-isolate-scope"> <!-- ngIf: isEditingCritique(critique.id) --> <!-- ngIf: !isEditingCritique(critique.id) --><div class="critique-container ng-scope ng-isolate-scope" critique-view="" critique="critique" editable="editable" is-career="isCareer" edit-clicked="setEditingCritique(critique.id, true)" ng-if="!isEditingCritique(critique.id)"><div class="critique-view-header"> <div class="row result-label"> <div class="col-sm-1"> <div class="result-spacing"> <span ng-hide="isCareer" class="result-icon passed text-center"></span> </div> </div> <div class="col-xs-12 col-sm-10 critique-description ng-isolate-scope" marked="rubricItem.passed_description"><p>The
+ total variance explained for two and four dimensions of the data from 
+PCA is accurately reported. The first four dimensions are interpreted as
+ a representation of customer spending with justification.</p>
+</div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: !!critique.observation --><div ng-if="!!critique.observation" class="critique-view-body ng-scope"> <div class="row"> <div class="col-xs-12 col-sm-10 col-sm-offset-1"> <div class="p-slim ng-isolate-scope" marked="critique.observation"><p>Nice work with the cumulative explained variance for two and four dimensions.</p>
+<ul>
+<li>As with two dimension we can easily visualize the data(as we do later)</li>
+<li>And with four components we retain much more information(great for new features)</li>
+</ul>
+<p>And good analysis of these PCA components. As always remember that 
+the sign of the features in the component really wouldn't matter too 
+much, since if we multiply the entire PCA dimension by -1 it would still
+ be the same PCA component(so in PCA3 Fresh and Deli could be 
+switched!).</p>
+<p>To go even further here with the interpretation of the PCA components:</p>
+<ul>
+<li>In terms of customers, since PCA deals with the variance of the data
+ and the correlation between features, the first component would 
+represent that we have some customers who purchase a lot of Milk, 
+Grocery and Detergents_Paper products while other customers purchase 
+very few amounts of Milk, Grocery and Detergents_Paper, hence spread in 
+the data.</li>
+</ul>
+<p><strong>Pro Tip</strong>:  You can also visualize the percent of 
+variance explained to get a very clear understanding of the drop off 
+between dimension. Here is a some starter code, as np.cumsum acts like <code>+=</code> in python.</p>
+<pre><code><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+x = np.arange(1, 7)
+plt.plot(x, np.cumsum(pca.explained_variance_ratio_), <span class="hljs-string">'-o'</span>)
+</code></pre></div> </div> </div> </div><!-- end ngIf: !!critique.observation --> <!-- ngIf: editable && !critiqueLocked() --> </div><!-- end ngIf: !isEditingCritique(critique.id) --> </div> </div><!-- end ngRepeat: critique in critiques --><div ng-repeat="critique in critiques" class="ng-scope"> <div row="" row-gap-small="" col-xs-12="" bg-white="" scroll-if="isCurrentEditingCritique(critique.id)" class="ng-isolate-scope"> <!-- ngIf: isEditingCritique(critique.id) --> <!-- ngIf: !isEditingCritique(critique.id) --><div class="critique-container ng-scope ng-isolate-scope" critique-view="" critique="critique" editable="editable" is-career="isCareer" edit-clicked="setEditingCritique(critique.id, true)" ng-if="!isEditingCritique(critique.id)"><div class="critique-view-header"> <div class="row result-label"> <div class="col-sm-1"> <div class="result-spacing"> <span ng-hide="isCareer" class="result-icon passed text-center"></span> </div> </div> <div class="col-xs-12 col-sm-10 critique-description ng-isolate-scope" marked="rubricItem.passed_description"><p>PCA
+ has been properly implemented and applied to both the scaled data and 
+scaled sample data for the two-dimensional case in code.</p>
+</div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: !!critique.observation --> <!-- ngIf: editable && !critiqueLocked() --> </div><!-- end ngIf: !isEditingCritique(critique.id) --> </div> </div><!-- end ngRepeat: critique in critiques --> </div> </div> </div> </div><!-- end ngRepeat: section in critiquesAccessor.getSections() --><div ng-repeat="section in critiquesAccessor.getSections()" class="ng-scope"> <div section-critiques="" section="section" critiques="critiquesAccessor.getCritiques(section.id)" editable="editable" failed-required-placeholder="failedRequiredPlaceholder" passed-required-placeholder="passedRequiredPlaceholder" optional-placeholder="optionalPlaceholder" state="sectionCritiquesState[section.id]" is-career="isCareer" class="ng-isolate-scope"><div> <div class="row row-gap-small"></div> <h3 class="section-name ng-binding"> Clustering </h3> <div> <!-- ngRepeat: critique in critiques --><div ng-repeat="critique in critiques" class="ng-scope"> <div row="" row-gap-small="" col-xs-12="" bg-white="" scroll-if="isCurrentEditingCritique(critique.id)" class="ng-isolate-scope"> <!-- ngIf: isEditingCritique(critique.id) --> <!-- ngIf: !isEditingCritique(critique.id) --><div class="critique-container ng-scope ng-isolate-scope" critique-view="" critique="critique" editable="editable" is-career="isCareer" edit-clicked="setEditingCritique(critique.id, true)" ng-if="!isEditingCritique(critique.id)"><div class="critique-view-header"> <div class="row result-label"> <div class="col-sm-1"> <div class="result-spacing"> <span ng-hide="isCareer" class="result-icon passed text-center"></span> </div> </div> <div class="col-xs-12 col-sm-10 critique-description ng-isolate-scope" marked="rubricItem.passed_description"><p>The
+ Gaussian Mixture Model and K-Means algorithms have been compared in 
+detail. Student’s choice of algorithm is justified based on the 
+characteristics of the algorithm and data.</p>
+</div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: !!critique.observation --><div ng-if="!!critique.observation" class="critique-view-body ng-scope"> <div class="row"> <div class="col-xs-12 col-sm-10 col-sm-offset-1"> <div class="p-slim ng-isolate-scope" marked="critique.observation"><p>Good
+ comparison and choice in GMM, as I would choose the same. As we can 
+actually measure the level of uncertainty of our predictions!</p>
+<p>Since you have mentioned the speed comparison. Try this, as we can 
+run the speed comparison explicitly as well in terms of this specific 
+dataset.</p>
+<p>(Note this may take a while to run, you can reduce <code>n</code> if desired)</p>
+<pre><code>import time
+from sklearn.cluster import KMeans
+from sklearn.mixture import GaussianMixture
+import matplotlib.pyplot as plt
+
+n = 1000
+k = 6
+
+kmeans_train_times = []
+for k in xrange(1, 7):
+    cum_time = 0.
+    for i in xrange(n):
+        <span class="hljs-operator"><span class="hljs-keyword">start</span> = <span class="hljs-keyword">time</span>.<span class="hljs-keyword">time</span>()
+        KMeans(n_clusters=k).fit(reduced_data)
+        cum_time += (<span class="hljs-keyword">time</span>.<span class="hljs-keyword">time</span>() - <span class="hljs-keyword">start</span>)
+
+    train_time = cum_time / n
+    kmeans_train_times.append([k, train_time])
+
+km_df = pd.DataFrame(kmeans_train_times, <span class="hljs-keyword">columns</span>=[<span class="hljs-string">'KM_Clusters'</span>, <span class="hljs-string">'KM_Time'</span>])
+
+gmm_train_times = []
+<span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> xrange(<span class="hljs-number">1</span>, <span class="hljs-number">7</span>):
+    cum_time = <span class="hljs-number">0.</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> xrange(n):
+        <span class="hljs-keyword">start</span> = <span class="hljs-keyword">time</span>.<span class="hljs-keyword">time</span>()
+        GaussianMixture(n_components=k).fit(reduced_data)
+        cum_time += (<span class="hljs-keyword">time</span>.<span class="hljs-keyword">time</span>() - <span class="hljs-keyword">start</span>)
+
+    train_time = cum_time / n
+    gmm_train_times.append([k, train_time])
+
+gmm_df = pd.DataFrame(gmm_train_times, <span class="hljs-keyword">columns</span>=[<span class="hljs-string">'GMM_Components'</span>, <span class="hljs-string">'GMM_Time'</span>])
+times_df = km_df.<span class="hljs-keyword">join</span>(gmm_df)
+
+plt.plot(times_df.GMM_Components, times_df.GMM_Time * <span class="hljs-number">1000.</span>, label=<span class="hljs-string">'GMM Train Time'</span>)
+plt.plot(times_df.GMM_Components, times_df.KM_Time * <span class="hljs-number">1000.</span>, label=<span class="hljs-string">'Kmeans Train Time'</span>)
+plt.legend(loc=<span class="hljs-string">'best'</span>)
+plt.ylabel(<span class="hljs-string">'Train time (in millisec.)'</span>)
+plt.xlabel(<span class="hljs-string">'Cluster/Components Used in Training'</span>)
+plt.title(<span class="hljs-string">'Training Time for Different Cluster/Component Sizes \n Averaged Over {} Runs Per Size'</span>.<span class="hljs-keyword">format</span>(n))
+plt.<span class="hljs-keyword">show</span>()</span>
+</code></pre></div> </div> </div> </div><!-- end ngIf: !!critique.observation --> <!-- ngIf: editable && !critiqueLocked() --> </div><!-- end ngIf: !isEditingCritique(critique.id) --> </div> </div><!-- end ngRepeat: critique in critiques --><div ng-repeat="critique in critiques" class="ng-scope"> <div row="" row-gap-small="" col-xs-12="" bg-white="" scroll-if="isCurrentEditingCritique(critique.id)" class="ng-isolate-scope"> <!-- ngIf: isEditingCritique(critique.id) --> <!-- ngIf: !isEditingCritique(critique.id) --><div class="critique-container ng-scope ng-isolate-scope" critique-view="" critique="critique" editable="editable" is-career="isCareer" edit-clicked="setEditingCritique(critique.id, true)" ng-if="!isEditingCritique(critique.id)"><div class="critique-view-header"> <div class="row result-label"> <div class="col-sm-1"> <div class="result-spacing"> <span ng-hide="isCareer" class="result-icon passed text-center"></span> </div> </div> <div class="col-xs-12 col-sm-10 critique-description ng-isolate-scope" marked="rubricItem.passed_description"><p>Several
+ silhouette scores are accurately reported, and the optimal number of 
+clusters is chosen based on the best reported score. The cluster 
+visualization provided produces the optimal number of clusters based on 
+the clustering algorithm chosen.</p>
+</div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: !!critique.observation --><div ng-if="!!critique.observation" class="critique-view-body ng-scope"> <div class="row"> <div class="col-xs-12 col-sm-10 col-sm-offset-1"> <div class="p-slim ng-isolate-scope" marked="critique.observation"><p>Good
+ work with the for loop! As we can clearly see that K = 2 gives the 
+highest silhouette score. Another cool interpretation method for 
+Silhouette score is like this</p>
+<p>(<a href="http://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_silhouette_analysis.html" target="_blank">http://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_silhouette_analysis.html</a>)<br><a href="https://udacity-github-sync-content.s3.amazonaws.com/_imgs/19273/1469650492/plot_kmeans_silhouette_analysis_003.png" target="_blank"><img src="customer_segment_udacity_review_files/plot_kmeans_silhouette_analysis_003.png" alt="plot_kmeans_silhouette_analysis_003.png"></a></p>
+</div> </div> </div> </div><!-- end ngIf: !!critique.observation --> <!-- ngIf: editable && !critiqueLocked() --> </div><!-- end ngIf: !isEditingCritique(critique.id) --> </div> </div><!-- end ngRepeat: critique in critiques --><div ng-repeat="critique in critiques" class="ng-scope"> <div row="" row-gap-small="" col-xs-12="" bg-white="" scroll-if="isCurrentEditingCritique(critique.id)" class="ng-isolate-scope"> <!-- ngIf: isEditingCritique(critique.id) --> <!-- ngIf: !isEditingCritique(critique.id) --><div class="critique-container ng-scope ng-isolate-scope" critique-view="" critique="critique" editable="editable" is-career="isCareer" edit-clicked="setEditingCritique(critique.id, true)" ng-if="!isEditingCritique(critique.id)"><div class="critique-view-header"> <div class="row result-label"> <div class="col-sm-1"> <div class="result-spacing"> <span ng-hide="isCareer" class="result-icon passed text-center"></span> </div> </div> <div class="col-xs-12 col-sm-10 critique-description ng-isolate-scope" marked="rubricItem.passed_description"><p>The
+ establishments represented by each customer segment are proposed based 
+on the statistical description of the dataset. The inverse 
+transformation and inverse scaling has been properly implemented and 
+applied to the cluster centers in code.</p>
+</div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: !!critique.observation --><div ng-if="!!critique.observation" class="critique-view-body ng-scope"> <div class="row"> <div class="col-xs-12 col-sm-10 col-sm-offset-1"> <div class="p-slim ng-isolate-scope" marked="critique.observation"><p>Good
+ justification for your cluster centroids by comparing the cluster 
+centers with dataset mean values. You could also examine the reduce PCA 
+plot. Anything interesting about dimension 1 and how the clusters are 
+split?</p>
+<p><strong>Pro Tip</strong>: We can also add the mean values from the data and very easily visualize the cluster centroids with a pandas bar plot</p>
+<pre><code><span class="hljs-literal">true</span>_centers = <span class="hljs-literal">true</span>_centers.append(data.describe().ix[<span class="hljs-string">'mean'</span>])
+<span class="hljs-literal">true</span>_centers.plot(kind = <span class="hljs-string">'bar'</span>, figsize = (<span class="hljs-number">16</span>, <span class="hljs-number">4</span>))
+</code></pre></div> </div> </div> </div><!-- end ngIf: !!critique.observation --> <!-- ngIf: editable && !critiqueLocked() --> </div><!-- end ngIf: !isEditingCritique(critique.id) --> </div> </div><!-- end ngRepeat: critique in critiques --><div ng-repeat="critique in critiques" class="ng-scope"> <div row="" row-gap-small="" col-xs-12="" bg-white="" scroll-if="isCurrentEditingCritique(critique.id)" class="ng-isolate-scope"> <!-- ngIf: isEditingCritique(critique.id) --> <!-- ngIf: !isEditingCritique(critique.id) --><div class="critique-container ng-scope ng-isolate-scope" critique-view="" critique="critique" editable="editable" is-career="isCareer" edit-clicked="setEditingCritique(critique.id, true)" ng-if="!isEditingCritique(critique.id)"><div class="critique-view-header"> <div class="row result-label"> <div class="col-sm-1"> <div class="result-spacing"> <span ng-hide="isCareer" class="result-icon passed text-center"></span> </div> </div> <div class="col-xs-12 col-sm-10 critique-description ng-isolate-scope" marked="rubricItem.passed_description"><p>Sample points are correctly identified by customer segment, and the predicted cluster for each sample point is discussed.</p>
+</div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: !!critique.observation --><div ng-if="!!critique.observation" class="critique-view-body ng-scope"> <div class="row"> <div class="col-xs-12 col-sm-10 col-sm-offset-1"> <div class="p-slim ng-isolate-scope" marked="critique.observation"><p>Excellent
+ justification for your predictions by comparing the purchasing behavior
+ of the sample to the purchasing behavior of the cluster centroid!</p>
+<p>Could also check out the distance to each cluster centroid for justification</p>
+<pre><code><span class="hljs-keyword">for</span> i, pred <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(sample_preds):
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">"Sample point"</span>, i, <span class="hljs-string">"predicted to be in Cluster"</span>, pred)
+    <span class="hljs-built_in">print</span>('<span class="hljs-type">The</span> <span class="hljs-built_in">distance</span> between sample point {} and center of cluster {}:'.format(i, pred))
+    <span class="hljs-built_in">print</span>((samples.iloc[i] - true_centers.iloc[pred]))
+</code></pre></div> </div> </div> </div><!-- end ngIf: !!critique.observation --> <!-- ngIf: editable && !critiqueLocked() --> </div><!-- end ngIf: !isEditingCritique(critique.id) --> </div> </div><!-- end ngRepeat: critique in critiques --> </div> </div> </div> </div><!-- end ngRepeat: section in critiquesAccessor.getSections() --><div ng-repeat="section in critiquesAccessor.getSections()" class="ng-scope"> <div section-critiques="" section="section" critiques="critiquesAccessor.getCritiques(section.id)" editable="editable" failed-required-placeholder="failedRequiredPlaceholder" passed-required-placeholder="passedRequiredPlaceholder" optional-placeholder="optionalPlaceholder" state="sectionCritiquesState[section.id]" is-career="isCareer" class="ng-isolate-scope"><div> <div class="row row-gap-small"></div> <h3 class="section-name ng-binding"> Conclusion </h3> <div> <!-- ngRepeat: critique in critiques --><div ng-repeat="critique in critiques" class="ng-scope"> <div row="" row-gap-small="" col-xs-12="" bg-white="" scroll-if="isCurrentEditingCritique(critique.id)" class="ng-isolate-scope"> <!-- ngIf: isEditingCritique(critique.id) --> <!-- ngIf: !isEditingCritique(critique.id) --><div class="critique-container ng-scope ng-isolate-scope" critique-view="" critique="critique" editable="editable" is-career="isCareer" edit-clicked="setEditingCritique(critique.id, true)" ng-if="!isEditingCritique(critique.id)"><div class="critique-view-header"> <div class="row result-label"> <div class="col-sm-1"> <div class="result-spacing"> <span ng-hide="isCareer" class="result-icon passed text-center"></span> </div> </div> <div class="col-xs-12 col-sm-10 critique-description ng-isolate-scope" marked="rubricItem.passed_description"><p>Student
+ correctly identifies how an A/B test can be performed on customers 
+after a change in the wholesale distributor’s service.</p>
+</div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: !!critique.observation --><div ng-if="!!critique.observation" class="critique-view-body ng-scope"> <div class="row"> <div class="col-xs-12 col-sm-10 col-sm-offset-1"> <div class="p-slim ng-isolate-scope" marked="critique.observation"><blockquote>
+<p>"A sample of customers from 2 customer segments can be selected and 
+applied the new delivery schedule, while the rest of customers will 
+still have the original delivery service. This allows us to have 2 sets 
+of control and test groups. If there's positive response from the test 
+groups (results of test groups is better than results of control group),
+ we can roll out the change to the whole customer base or to the whole 
+customer segment that responds positively to the change."</p>
+</blockquote>
+<p>Exactly! The key takeaway here is that we should run separate A/B 
+tests for each cluster independently. As if we were to use all of our 
+customers we would essentially have multiple variables(different 
+delivery methods and different purchasing behaviors).<br><a href="https://en.wikipedia.org/wiki/A/B_testing#Segmentation_and_targeting" target="_blank">https://en.wikipedia.org/wiki/A/B_testing#Segmentation_and_targeting</a><br><a href="https://stats.stackexchange.com/questions/192752/clustering-and-a-b-testing" target="_blank">https://stats.stackexchange.com/questions/192752/clustering-and-a-b-testing</a></p>
+<p>The two clusters that we have in our model reveal two different 
+consumer profiles that can be tested via A/B test. To better assess the 
+impact of the changes on the delivery service, we would have to split 
+the segment 0 and segment 1 into subgroups measuring its consequences 
+within a delta time. Hypothetically we can raise a scenario where the 
+segment 0 is A/B tested. For this we divide the segment 0 (can also be 
+implemented in segment 1) into two sub-groups of establishments where 
+only one of them would suffer the implementation of the new delivery 
+period of three days a week, and the another would remain as a control 
+with five days a week as usual. After a certain period of time, we 
+could, through the consumption levels of the establishments, come to 
+some conclusions, such as: whether the new frequency of deliveries is 
+sufficient or not for a buyer. Where a sensible increase in overall 
+consumption of all products may indicate the need for the establishment 
+to maintain a storage because of the decreasing delivery frequency; or 
+if it negatively affects the consumption profile of certain products, 
+like groups of costumers who have greater buying fresh produce that can 
+be negatively impacted, precisely because of the demand for fresh 
+products with a higher delivery frequency. We can not say that the 
+change in frequency will affect equally all customers because of the 
+different consumption profiles that are part of the two segments. There 
+will therefore consumers that will be affected, and possibly groups of 
+buyers who will not undergo any change.</p>
+</div> </div> </div> </div><!-- end ngIf: !!critique.observation --> <!-- ngIf: editable && !critiqueLocked() --> </div><!-- end ngIf: !isEditingCritique(critique.id) --> </div> </div><!-- end ngRepeat: critique in critiques --><div ng-repeat="critique in critiques" class="ng-scope"> <div row="" row-gap-small="" col-xs-12="" bg-white="" scroll-if="isCurrentEditingCritique(critique.id)" class="ng-isolate-scope"> <!-- ngIf: isEditingCritique(critique.id) --> <!-- ngIf: !isEditingCritique(critique.id) --><div class="critique-container ng-scope ng-isolate-scope" critique-view="" critique="critique" editable="editable" is-career="isCareer" edit-clicked="setEditingCritique(critique.id, true)" ng-if="!isEditingCritique(critique.id)"><div class="critique-view-header"> <div class="row result-label"> <div class="col-sm-1"> <div class="result-spacing"> <span ng-hide="isCareer" class="result-icon passed text-center"></span> </div> </div> <div class="col-xs-12 col-sm-10 critique-description ng-isolate-scope" marked="rubricItem.passed_description"><p>Student discusses with justification how the clustering data can be used in a supervised learner for new predictions.</p>
+</div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: !!critique.observation --><div ng-if="!!critique.observation" class="critique-view-body ng-scope"> <div class="row"> <div class="col-xs-12 col-sm-10 col-sm-offset-1"> <div class="p-slim ng-isolate-scope" marked="critique.observation"><p>Nice idea to use the cluster assignment as new labels. This refers to the idea of <a href="https://en.wikipedia.org/wiki/Semi-supervised_learning" target="_blank">semi-supervised learning</a>. </p>
+<p>Another cool idea would be to use a subset of the newly engineered 
+PCA components as new features(great for curing the curse of 
+dimensionality). PCA is really cool and seem almost like magic at time. 
+Just wait till you work with hundreds of features and you can reduce 
+them down into just a handful. This technique becomes very handy 
+especially with images. There is actually a handwritten digits dataset, 
+using the "famous MNIST data" where you do just this and can get around a
+ 98% classification accuracy after doing so. This is a kaggle 
+competition and if you want to learn more check it out here <a href="https://www.kaggle.com/c/digit-recognizer" target="_blank">KAGGLE</a></p>
+</div> </div> </div> </div><!-- end ngIf: !!critique.observation --> <!-- ngIf: editable && !critiqueLocked() --> </div><!-- end ngIf: !isEditingCritique(critique.id) --> </div> </div><!-- end ngRepeat: critique in critiques --><div ng-repeat="critique in critiques" class="ng-scope"> <div row="" row-gap-small="" col-xs-12="" bg-white="" scroll-if="isCurrentEditingCritique(critique.id)" class="ng-isolate-scope"> <!-- ngIf: isEditingCritique(critique.id) --> <!-- ngIf: !isEditingCritique(critique.id) --><div class="critique-container ng-scope ng-isolate-scope" critique-view="" critique="critique" editable="editable" is-career="isCareer" edit-clicked="setEditingCritique(critique.id, true)" ng-if="!isEditingCritique(critique.id)"><div class="critique-view-header"> <div class="row result-label"> <div class="col-sm-1"> <div class="result-spacing"> <span ng-hide="isCareer" class="result-icon passed text-center"></span> </div> </div> <div class="col-xs-12 col-sm-10 critique-description ng-isolate-scope" marked="rubricItem.passed_description"><p>Comparison
+ is made between customer segments and customer ‘Channel’ data. 
+Discussion of customer segments being identified by ‘Channel’ data is 
+provided, including whether this representation is consistent with 
+previous results.</p>
+</div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: editable && critiqueLocked() --> </div> <!-- ngIf: !!critique.observation --><div ng-if="!!critique.observation" class="critique-view-body ng-scope"> <div class="row"> <div class="col-xs-12 col-sm-10 col-sm-offset-1"> <div class="p-slim ng-isolate-scope" marked="critique.observation"><p>Real world data is really never perfectly linearly separable but it seems as our K-Means algorithm did a decent job.</p>
+<p>Maybe also fully examine how well the clustering algorithm did!</p>
+<pre><code>#find percentage of correctly classified customers
+data = pd.read_csv("customers.csv")
+data = data.drop(data.index[outliers]).reset_index(<span class="hljs-operator"><span class="hljs-keyword">drop</span> = <span class="hljs-literal">True</span>)
+# might need <span class="hljs-keyword">to</span> switch around the <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> <span class="hljs-number">1</span>, based <span class="hljs-keyword">on</span> your cluster seed
+df = np.<span class="hljs-keyword">where</span>(<span class="hljs-keyword">data</span>[<span class="hljs-string">'Channel'</span>] == <span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>)
+print(<span class="hljs-string">"Percentage of correctly classified customers: {:.2%}"</span>.<span class="hljs-keyword">format</span>(<span class="hljs-keyword">sum</span>(df == preds)/<span class="hljs-built_in">float</span>(<span class="hljs-keyword">len</span>(preds))))</span>
+</code></pre></div> </div> </div> </div><!-- end ngIf: !!critique.observation --> <!-- ngIf: editable && !critiqueLocked() --> </div><!-- end ngIf: !isEditingCritique(critique.id) --> </div> </div><!-- end ngRepeat: critique in critiques --> </div> </div> </div> </div><!-- end ngRepeat: section in critiquesAccessor.getSections() --> <div class="row"> <!-- ngIf: !editable && submission.general_comment --> </div> <div class="row"> <!-- ngIf: !(state && state.audit) --><ng-form ng-if="!(state &amp;&amp; state.audit)" name="general-comment-form" class="ng-pristine ng-valid ng-scope"> <!-- ngIf: editable --> </ng-form><!-- end ngIf: !(state && state.audit) --> </div> <div class="row row-gap-small"></div> </div> <div class="row row-gap-small"></div> <!-- ngIf: isResubmittable() --> <div class="row row-gap-small"> <div class="col-xs-12 text-center"> <!-- ngIf: submission.archive_url --><a class="wide-and-bold ng-binding ng-scope" ng-if="submission.archive_url" href="https://review-api.udacity.com/api/v1/submissions/1758434/archive" download=""> <img src="customer_segment_udacity_review_files/download-icon.svg" class="icon-medium">&nbsp;Download Project </a><!-- end ngIf: submission.archive_url --> </div> </div> <!-- ngIf: commentsCount > 0 --> <div class="row row-gap-medium"></div> </section><!-- end ngIf: critiquesAccessor --> <section ng-show="isCurrentTab('audit')" class="ng-hide"> <div audit-tab="" submission="submission" state="auditTabState" class="ng-isolate-scope"><!-- ngIf: auditCritiquesAccessor --> </div> </section> </div>  </div>  </div>  <!-- ngIf: currentProject.entitlement_required && !isUngradeable() && !hasActiveEntitlement --> </div>  </div>  </div>  <div ng-show="isCurrentTab('feedback') || isUngradeable()" class="ng-scope" style=""> <!-- ngIf: !hasViewedResubmissionVideo() && isResubmittable() --> </div> <!-- ngIf: hasViewedResubmissionVideo() && isResubmittable() || isSubmissionByCurrentUser() --><div ng-if="hasViewedResubmissionVideo() &amp;&amp; isResubmittable() || isSubmissionByCurrentUser()" class="row row-gap-medium ng-scope"> <div class="col-md-10 col-md-offset-1 text-center"> <!-- ngIf: hasViewedResubmissionVideo() && isResubmittable() --> </div> </div><!-- end ngIf: hasViewedResubmissionVideo() && isResubmittable() || isSubmissionByCurrentUser() --> <div class="row row-gap-medium ng-scope"></div> <!-- ngIf: !currentProject.entitlement_required && isSubmissionByCurrentUser() && currentProject.nanodegree_key --><div ng-if="!currentProject.entitlement_required &amp;&amp; isSubmissionByCurrentUser() &amp;&amp; currentProject.nanodegree_key" class="row row-gap-medium ng-scope" style=""> <div class="col-xs-12 text-center"> <a class="btn btn-secondary ng-binding" ng-click="goToClassroomPath()">Return to Path</a> </div> </div><!-- end ngIf: !currentProject.entitlement_required && isSubmissionByCurrentUser() && currentProject.nanodegree_key -->  <div class="visible-xs row row-gap-medium ng-scope"> <div class="col-xs-12"> <div ng-show="!isUngradeable() &amp;&amp; showStudentFeedback" class="locked-feedback-footer ng-hide"> <div ng-switch="hoverValue"> <!-- ngSwitchWhen: 1 --> <!-- ngSwitchWhen: 2 --> <!-- ngSwitchWhen: 3 --> <!-- ngSwitchWhen: 4 --> <!-- ngSwitchWhen: 5 --> <!-- ngSwitchDefault:  --><span ng-switch-default="" class="ng-binding ng-scope">Rate this review</span><!-- end ngSwitchWhen: --> </div> <div class="star-rating"> <span ng-mouseleave="reset()" ng-keydown="onKeydown($event)" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" aria-valuetext="" uib-rating="" state-on="'feedback-star-on'" state-off="'feedback-star-off'" on-leave="hoverValue = null" on-hover="hoverValue = value" ng-model="studentFeedback.rating" class="ng-isolate-scope ng-not-empty ng-valid">
+    <!-- ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope feedback-star-off" ng-class="$index &lt; value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" title="one"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope feedback-star-off" ng-class="$index &lt; value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" title="two"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope feedback-star-off" ng-class="$index &lt; value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" title="three"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope feedback-star-off" ng-class="$index &lt; value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" title="four"></i><!-- end ngRepeat: r in range track by $index --><span ng-repeat-start="r in range track by $index" class="sr-only ng-binding ng-scope">( )</span>
+    <i ng-repeat-end="" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)" class="glyphicon ng-scope feedback-star-off" ng-class="$index &lt; value &amp;&amp; (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')" ng-attr-title="{{r.title}}" title="five"></i><!-- end ngRepeat: r in range track by $index -->
+</span> </div> </div> </div> </div> <!-- ngIf: shouldShowAssessmentFooter() --> <div class="row row-gap-medium ng-scope"></div> <div id="comment-wrapper" class="ng-scope"></div> </div>
+      </div> </div> </div>
+    </div>
+
+    <!-- ngInclude: main.pageContext.footerURL --><div ng-include="main.pageContext.footerURL" class="ng-scope"><footer id="footer" ng-controller="FooterCtrl as ctrl" class="ng-scope"> <div class="container"> <ul class="nav nav-pills"> <!-- ngIf: currentUser && currentUser.role !== 'student' --> <!-- ngIf: currentUser && currentUser.role !== 'student' --> </ul> </div> </footer> </div>
+
+    <script src="customer_segment_udacity_review_files/jquery.js"></script>
+    <script src="customer_segment_udacity_review_files/materialize.js"></script>
+
+    <script type="text/javascript" src="customer_segment_udacity_review_files/airbrake-shim.js" data-airbrake-project-id="108424" data-airbrake-project-key="585b2c42b7a3ccfb360e6b1461185702" data-airbrake-environment-name="production"></script>
+    <script data-airbrake-onload="initAirbrake">
+      function initAirbrake() {
+        Airbrake.addFilter(function (notice) {
+          console.log(notice);
+          return true;
+        });
+      }
+    </script>
+    <script src="customer_segment_udacity_review_files/angular.js"></script>
+
+    <!-- inject:js -->
+    <script src="customer_segment_udacity_review_files/_vendor_2d83980e.js"></script>
+    <script src="customer_segment_udacity_review_files/grading_2d83980e.js"></script>
+    <script src="customer_segment_udacity_review_files/airbrake-shim.js"></script>
+    <!-- endinject -->
+  
+
+<div class="hiddendiv common"></div></body></html>
